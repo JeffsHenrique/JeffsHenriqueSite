@@ -13,8 +13,23 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      keyframes: {
+        'zoom-in-zoom-out': {
+          '0%': {transform: 'scale(1)'},
+          '100%': {transform: 'scale(1.2)'},
+        },
+        'fade-in': {
+          '0%': {opacity: '0', transform: 'translateY(-50px)'},
+          '100%': {opacity: '1', transform: 'translateY(0)'},
+        }
+      },
+      animation: {
+        zoomIn: 'zoom-in-zoom-out 0.2s ease-in-out forwards',
+        fadeIn: 'fade-in 0.5s ease forwards'
+      },
     },
   },
   plugins: [],
+  darkMode: 'class'
 };
 export default config;
