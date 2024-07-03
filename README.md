@@ -12,7 +12,7 @@
 
 <div align="center">
     <h4>This is my professional website, developed in ReactJS framework (NextJS) using TypeScript, npm libs, Tailwindcss and some MaterialUI Components. Deployed in Vercel.</h4>
-    <a href="" target="_blank">Give it a visit :D</a></br></br>
+    <a href="https://jeffshenrique.vercel.app/" target="_blank">Give it a visit :D</a></br></br>
     <div align="center">
         <img src="https://cdna.artstation.com/p/assets/images/images/018/454/158/original/carolyn-jong-cat-animation.gif?1559441634" width="180px" />
     </div>
