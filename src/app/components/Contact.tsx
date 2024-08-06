@@ -58,15 +58,26 @@ export const Contact = (props: ContactDialogProps) => {
                             style: {
                                 backgroundColor: `${themeCtx?.theme === 'dark' ? '#020617' : '#0c4a6e'}`,
                                 color: '#bae6fd'
-                            }            
+                            },
+                            className: 'max-tablet:text-sm max-tablet-w-48'
                         })
                     }
                     emailSent()
                     handleBackdropClose()
                 },
                 (error): void => {
-                    console.log('Failed...', error)
-                }
+                    toast.error('Ops, deu algum erro :(', {
+                        position: 'bottom-left',
+                            autoClose: 3000,
+                            style: {
+                                backgroundColor: `${themeCtx?.theme === 'dark' ? '#020617' : '#0c4a6e'}`,
+                                color: '#bae6fd'
+                            },
+                            className: 'max-tablet:text-sm max-tablet-w-48'
+                        })
+                    console.log('Error: ', error)
+                    handleBackdropClose()
+                },
             )
         } else {
             toast.warn('Preencha os dois campos, por favor!', {
@@ -74,8 +85,9 @@ export const Contact = (props: ContactDialogProps) => {
                 autoClose: 3000,
                 style: {
                     backgroundColor: `${themeCtx?.theme === 'dark' ? '#020617' : '#0c4a6e'}`,
-                    color: '#bae6fd'
-                }
+                    color: '#bae6fd',
+                },
+                className: 'max-tablet:text-sm max-tablet-w-48'
             })
         }
     }
@@ -100,16 +112,16 @@ export const Contact = (props: ContactDialogProps) => {
         <Dialog onClose={handleClose} open={open} fullWidth>
             <div className={dialogBox}>
                 <DialogTitle className="text-sky-900 dark:text-sky-200 my-4 flex justify-center">
-                    <p className="text-2xl font-bold">Você pode me encontrar nas redes:</p>
+                    <p className="text-2xl max-tablet:text-lg text-center font-bold">Você pode me encontrar nas redes:</p>
                 </DialogTitle>
 
                 <DialogContent dividers>
-                    <div className="flex justify-center items-center gap-12 text-sky-900 dark:text-sky-200">
+                    <div className="flex max-mobile:flex-col justify-center items-center gap-12 max-mobile:gap-6 text-sky-900 dark:text-sky-200">
                         {socialMedias.map((socialMedia) => {
                             return (
                                 <a className="flex flex-col justify-center items-center hover:scale-105 transition-all" href={`${socialMedia.href}`} target="_blank">
-                                    <p className="text-xl font-bold mb-2 underline">{socialMedia.name}</p>
-                                    <img className="w-16" src={`${socialMedia.image}`} />
+                                    <p className="text-xl max-tablet:text-base font-bold mb-2 underline">{socialMedia.name}</p>
+                                    <img className="w-16 max-tablet:w-12" src={`${socialMedia.image}`} />
                                 </a>
                             )
                         })}
@@ -118,16 +130,16 @@ export const Contact = (props: ContactDialogProps) => {
                     <hr className="my-8 mx-2 border border-slate-700 dark:border-slate-300" />
 
                     <div className="text-sky-900 dark:text-sky-200 my-2 flex justify-center">
-                        <p className="text-2xl font-bold">Ou pode me mandar um e-mail:</p>
+                        <p className="text-2xl max-tablet:text-lg text-center font-bold">Ou pode me mandar um e-mail:</p>
                     </div>
 
                     <div className="flex justify-center h-5/6">
                         <div className="m-2 p-2 w-10/12 gap-12 text-sky-900 dark:text-sky-200">
                             <form className="flex flex-col gap-3" onSubmit={sendEmail}>
-                                <div className="flex flex-row gap-4 justify-start items-center">
-                                    <label className="text-xl font-bold" htmlFor="emailFrom">Digite o seu e-mail:</label>
+                                <div className="flex flex-row max-laptop:flex-col gap-4 justify-start items-center">
+                                    <label className="text-xl max-tablet:text-base text-center font-bold" htmlFor="emailFrom">Digite o seu e-mail:</label>
                                     <input
-                                        className="my-2 p-2 w-6/12 h-8 rounded-md bg-sky-300 dark:bg-slate-950 border border-slate-700 dark:border-slate-300"
+                                        className="my-2 p-2 w-6/12 text-center max-tablet:text-xs max-laptop:w-full h-8 rounded-md bg-sky-300 dark:bg-slate-950 border border-slate-700 dark:border-slate-300"
                                         type="text"
                                         name="email_from"
                                         value={emailValue}
@@ -135,16 +147,16 @@ export const Contact = (props: ContactDialogProps) => {
                                     />
                                 </div>
 
-                                <label className="mt-8 text-2xl font-bold" htmlFor="message">Escreva a sua mensagem:</label>
+                                <label className="mt-8 text-xl max-tablet:text-base text-center font-bold" htmlFor="message">Escreva a sua mensagem:</label>
                                 <textarea
-                                    className="p-2 resize-none h-[32vh] rounded-md bg-sky-300 dark:bg-slate-950 border border-slate-700 dark:border-slate-300"
+                                    className="p-2 resize-none h-[32vh] max-tablet:text-xs rounded-md bg-sky-300 dark:bg-slate-950 border border-slate-700 dark:border-slate-300"
                                     name="message"
                                     value={contentFormValue}
                                     onChange={handleContentFormInput}
                                 />
                                 <div className="flex justify-center">
                                     <button
-                                        className="text-2xl p-2 border border-slate-700 dark:border-slate-300 hover:scale-105 transition-all duration-300 bg-sky-300 hover:bg-sky-400 dark:bg-slate-800 hover:dark:bg-slate-700 rounded-md shadow-lg"
+                                        className="text-2xl max-tablet:text-lg p-2 border border-slate-700 dark:border-slate-300 hover:scale-105 transition-all duration-300 bg-sky-300 hover:bg-sky-400 dark:bg-slate-800 hover:dark:bg-slate-700 rounded-md shadow-lg"
                                         type="submit"
                                     >
                                         Enviar

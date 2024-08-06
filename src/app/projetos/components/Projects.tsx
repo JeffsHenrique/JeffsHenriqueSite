@@ -37,22 +37,22 @@ export const Projects = () => {
     }, [getProjects])
 
     return (
-        <div className="m-2 p-2 grid grid-cols-2 gap-12 text-sky-900 dark:text-sky-200">
+        <div className="m-2 p-2 grid grid-cols-2 max-laptop:flex max-laptop:flex-col gap-12 text-sky-900 dark:text-sky-200">
             {filteredProjectsByLevel.map((project) => {
                 return (
                     <Section>
                         <div className="min-h-full flex flex-col items-center justify-between border-2 border-slate-700 dark:border-slate-300 shadow-lg rounded-md">
-                            <p className="my-2 text-3xl font-bold underline">{project.title}</p>
-                            <p className="my-2 flex flex-col items-center overflow-auto px-2 text-center text-purple-700 dark:text-purple-500">Descrição do projeto:
+                            <p className="my-2 text-3xl text-center max-laptop:text-lg font-bold underline">{project.title}</p>
+                            <p className="my-2 flex flex-col items-center overflow-auto px-2 text-center max-laptop:text-xs text-purple-700 dark:text-purple-500">Descrição do projeto:
                                 <span className="font-bold text-sky-900 dark:text-sky-200">{project.description.projectDetails}</span>
                             </p>
-                            <p className="mb-2 px-2 text-center text-purple-700 dark:text-purple-500">Linguagens usadas: <span className="font-bold text-sky-900 dark:text-sky-200">{project.description.techsUsed}</span></p>
+                            <p className="mb-2 px-2 text-center max-laptop:text-xs text-purple-700 dark:text-purple-500">Linguagens usadas: <span className="font-bold text-sky-900 dark:text-sky-200">{project.description.techsUsed}</span></p>
                             <Swiper
                                 modules={[Pagination]}
                                 spaceBetween={1}
                                 slidesPerView={1}
                                 pagination={{ clickable: true }}
-                                className="w-9/12"
+                                className="w-9/12 max-laptop:size-48"
                             >
                                 {project.images.map((img, index) => (
                                     <SwiperSlide key={index}>
@@ -60,7 +60,7 @@ export const Projects = () => {
                                             <div className="m-2 p-2">
                                                 <button onClick={() => handleSelectedProjectImgOpen(img)}>
                                                     <img
-                                                        className="size-96 object-cover rounded-md cursor-pointer"
+                                                        className="size-96 max-laptop:size-24 object-cover rounded-md cursor-pointer"
                                                         src={img}
                                                         alt={project.imageAlt}
                                                         loading="lazy"
@@ -71,15 +71,15 @@ export const Projects = () => {
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
-                            <p className="mb-2 px-2 text-center text-green-800 dark:text-green-500">Arraste para o lado e veja outras imagens do projeto.</p>
-                            <p className="mb-2 px-2 text-center text-green-800 dark:text-green-500">Clique para ampliá-las.</p>
+                            <p className="mb-2 px-2 text-center max-laptop:text-xs text-green-800 dark:text-green-500">Arraste para o lado e veja outras imagens do projeto.</p>
+                            <p className="mb-2 px-2 text-center max-laptop:text-xs text-green-800 dark:text-green-500">Clique para ampliá-las.</p>
                             <div className="flex flex-col gap-4">
                                 {project.externalLinks?.projectLink && (
-                                    <a className="my-2 px-2 text-xl text-center underline text-sky-900 dark:text-sky-200" href={project.externalLinks.projectLink} target="_blank">Link do projeto</a>
+                                    <a className="my-2 px-2 text-xl text-center max-laptop:text-sm underline text-sky-900 dark:text-sky-200" href={project.externalLinks.projectLink} target="_blank">Link do projeto</a>
                                 )}
 
                                 {project.externalLinks?.ref && (
-                                    <p className="my-2 px-2 text-center text-purple-700 dark:text-purple-500">Referências: <a className="font-bold underline text-sky-900 dark:text-sky-200" href={project.externalLinks.ref.link} target="_blank">{project.externalLinks.ref.name}</a></p>
+                                    <p className="my-2 px-2 text-center max-laptop:text-xs text-purple-700 dark:text-purple-500">Referências: <a className="font-bold underline text-sky-900 dark:text-sky-200" href={project.externalLinks.ref.link} target="_blank">{project.externalLinks.ref.name}</a></p>
                                 )}
                             </div>
                         </div>

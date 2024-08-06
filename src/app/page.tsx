@@ -28,7 +28,7 @@ const Homepage = () => {
       <div className={mainScreen}>
 
         <Section>
-          <div className="flex flex-row justify-between m-8">
+          <div className="flex flex-row max-laptop:flex-col-reverse justify-between m-8 gap-8">
             <AboutMe scrollToGames={scrollToGames} />
             <PhotoAndSkills />
           </div>

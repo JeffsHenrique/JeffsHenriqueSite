@@ -86,7 +86,7 @@ export const TimelineContent = () => {
     return (
         <div className="m-2 p-2 flex flex-col gap-4">
 
-            <div className="p-2 flex flex-row gap-4 justify-center items-center text-sky-900 dark:text-sky-200">
+            <div className="p-2 flex flex-row max-laptop:flex-col gap-4 max-laptop:gap-2 justify-center items-center max-laptop:text-xs text-sky-900 dark:text-sky-200">
                 <p>Filtrar por:</p>
                 <Button variant={filteredType === 'study' ? 'contained' : 'outlined'} color="secondary" onClick={() => setFilteredType('study')}>Especialização</Button>
                 <Button variant={filteredType === 'work' ? 'contained' : 'outlined'} color="primary" onClick={() => setFilteredType('work')}>Trabalho</Button>
@@ -113,15 +113,15 @@ export const TimelineContent = () => {
                                         minHeight: '200px',
                                     }}
                                 >
-                                    <div className="flex flex-col justify-center items-center text-center">
+                                    <div className="flex flex-col gap-2 justify-center items-center text-center">
                                         {experience.isMyCurrentExperience && (
                                             <p className="absolute top-0 px-2 bg-green-900 rounded-full shadow-lg text-sky-200">Atualmente</p>
                                         )}
-                                        <p style={{fontSize: '24px'}}>{experience.positionName}</p>
-                                        <p>{experience.companyName}</p>
-                                        <p style={{fontSize: '12px'}}>{experience.mainRole}</p>
+                                        <h1 className="text-2xl max-tablet:text-base pt-8">{experience.positionName}</h1>
+                                        <h3 className="max-tablet:text-xs">{experience.companyName}</h3>
+                                        <h3 className="max-tablet:text-xs">{experience.mainRole}</h3>
                                         {experience.mainTools && (
-                                            <p style={{fontSize: '12px'}}>Principais Ferramentas: <span className="font-bold">{experience.mainTools}</span></p>
+                                            <h3 className="max-tablet:text-xs">Principais Ferramentas: <span className="font-bold">{experience.mainTools}</span></h3>
                                         )}
                                     </div>
                                     {experience.photos && (
@@ -130,7 +130,7 @@ export const TimelineContent = () => {
                                                 return (
                                                     <button onClick={() => handleSelectedPictureOpen(pic)}>
                                                         <div key={index}>
-                                                            <img className="w-10 hover:animate-zoomIn aspect-square rounded-lg shadow-lg" src={pic}/>
+                                                            <img className="w-10 max-tablet:w-6 hover:animate-zoomIn aspect-square rounded-lg shadow-lg" src={pic}/>
                                                         </div>
                                                     </button>
                                                 )

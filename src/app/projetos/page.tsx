@@ -15,8 +15,8 @@ const Projetos = () => {
 
             <div className={mainScreen}>
 
-                <div className="my-4 flex justify-center items-center gap-8 text-sky-900 dark:text-sky-200">
-                    <h1 className="text-5xl">Conheça os meus projetos!</h1>
+                <div className="my-4 flex max-laptop:flex-col justify-center items-center gap-8 text-sky-900 dark:text-sky-200">
+                    <h1 className="text-5xl text-center max-laptop:text-xl">Conheça os meus projetos!</h1>
                     <img
                         className="border border-slate-700 dark:border-slate-300 shadow-lg rounded-md w-48"
                         src={catDrinkingCoffee.src}
