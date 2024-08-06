@@ -7,11 +7,17 @@ import { Game } from "../types/Game"
 import { gameData } from "../utils/GameData"
 import { Tooltip } from '@mui/material'
 
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import { useTheme } from '../contexts/ThemeContext'
+
 export const GamesContainer = () => {
     const [games, setGames] = useState<Game[]>([])
     const [selectedGame, setSelectedGame] = useState<Game | null>(null)
     const [isInternetGamesShowing, setIsInternetGamesShowing] = useState<boolean>(false)
     const [isMyGamesShowing, setisMyGamesShowing] = useState<boolean>(false)
+
+    const theme = useTheme()
 
     const getGames = useCallback(async () => {
         try {
@@ -32,12 +38,10 @@ export const GamesContainer = () => {
 
     const handleShowingMyGames = () => {
         setisMyGamesShowing(!isMyGamesShowing)
-        setIsInternetGamesShowing(false)
     }
 
     const handleShowingInternetGames = () => {
         setIsInternetGamesShowing(!isInternetGamesShowing)
-        setisMyGamesShowing(false)
     }
 
     useEffect(() => {
@@ -45,14 +49,16 @@ export const GamesContainer = () => {
     }, [getGames])
 
     return (
-        <div className="w-[80vw] min-h-[65vh] m-2 flex flex-row gap-8 justify-start overflow-x-scroll scroll-smooth border-2 border-slate-700 dark:border-slate-300 rounded-md shadow-lg text-sky-900 dark:text-sky-200 p-2">
-            <div className="ml-4 flex flex-col gap-3 justify-center min-w-[12vw] max-w-[12vw]">
-                <h1 className="text-2xl font-bold text-center underline">Tire um tempo para se divertir</h1>
-                <img
-                    className="border border-slate-700 dark:border-slate-300 shadow-lg rounded-md"
-                    src={catPlaying.src}
-                    alt="White cat playing gif"
-                />
+        <div className="w-[80vw] max-laptop:max-w-80 min-h-[65vh] m-2 flex flex-row max-laptop:flex-col gap-8 justify-start overflow-x-scroll max-laptop:overflow-x-hidden scroll-smooth border-2 border-slate-700 dark:border-slate-300 rounded-md shadow-lg text-sky-900 dark:text-sky-200 p-2">
+            <div className="ml-4 max-laptop:ml-0 flex flex-col gap-3 justify-center min-w-[12vw] max-w-[12vw] max-laptop:max-w-full">
+                <h1 className="text-2xl max-laptop:text-lg font-bold text-center underline">Tire um tempo para se divertir</h1>
+                <div className='flex justify-center'>
+                    <img
+                        className="border border-slate-700 dark:border-slate-300 shadow-lg rounded-md max-laptop:size-48"
+                        src={catPlaying.src}
+                        alt="White cat playing gif"
+                    />
+                </div>
 
                 <div className='flex flex-col items-center gap-8'>
                     <Tooltip
@@ -62,12 +68,22 @@ export const GamesContainer = () => {
                     >
                         <button onClick={handleShowingMyGames}>
                             <div className='p-2 flex flex-row gap-4 justify-center items-center border rounded-md shadow-lg border-slate-700 dark:border-slate-300'>
-                                <p className='text-xl font-bold'>Jogos autorais:</p>
+                                <p className='text-base font-bold'>Jogos autorais:</p>
                                 <div className="bg-sky-300 dark:bg-slate-800 rounded-full shadow-lg">
                                     {isMyGamesShowing === true ?
-                                        <svg className="fill-sky-900 dark:fill-sky-200 -rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="48"><path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/></svg>
+                                        <CheckBoxIcon
+                                            sx={{
+                                                fontSize: 24,
+                                                color: `${theme?.theme === 'dark' ? '#7dd3fc' : '#0c4a6e'}`
+                                            }}
+                                        />
                                         :
-                                        <svg className="fill-sky-900 dark:fill-sky-200 -rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="48"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg>
+                                        <CheckBoxOutlineBlankIcon
+                                            sx={{
+                                                fontSize: 24,
+                                                color: `${theme?.theme === 'dark' ? '#7dd3fc' : '#0c4a6e'}`
+                                            }}
+                                        />
                                     }
                                 </div>
                             </div>
@@ -81,12 +97,22 @@ export const GamesContainer = () => {
                     >
                         <button onClick={handleShowingInternetGames}>
                             <div className='p-2 flex flex-row gap-4 justify-center items-center border rounded-md shadow-lg border-slate-700 dark:border-slate-300'>
-                                <p className='text-xl font-bold'>Jogos da Internet:</p>
+                                <p className='text-base font-bold'>Jogos da Internet:</p>
                                 <div className="bg-sky-300 dark:bg-slate-800 rounded-full shadow-lg">
                                     {isInternetGamesShowing === true ?
-                                        <svg className="fill-sky-900 dark:fill-sky-200 -rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="48"><path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/></svg>
+                                        <CheckBoxIcon
+                                            sx={{
+                                                fontSize: 24,
+                                                color: `${theme?.theme === 'dark' ? '#7dd3fc' : '#0c4a6e'}`
+                                            }}
+                                        />
                                         :
-                                        <svg className="fill-sky-900 dark:fill-sky-200 -rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="48"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg>
+                                        <CheckBoxOutlineBlankIcon
+                                            sx={{
+                                                fontSize: 24,
+                                                color: `${theme?.theme === 'dark' ? '#7dd3fc' : '#0c4a6e'}`
+                                            }}
+                                        />
                                     }
                                 </div>
                             </div>
@@ -96,18 +122,23 @@ export const GamesContainer = () => {
 
             </div>
 
-            <hr className="h-full border border-slate-700 dark:border-slate-300" />
+            <hr className={`h-full border border-slate-700 dark:border-slate-300 ${!isInternetGamesShowing && !isMyGamesShowing ? 'max-laptop:hidden' : ''}`} />
 
             {games.map((game) => {
                 const conditions = (game.developedBy === 'internet' && isInternetGamesShowing) || (game.developedBy === 'jeffs' && isMyGamesShowing) || (!isInternetGamesShowing && !isMyGamesShowing)
 
                 if (conditions) {
                     return (
-                        <div className="p-4 min-w-[20vw] h-full border border-slate-700 dark:border-slate-300 rounded-md shadow-lg">
-                            <div className="h-full flex flex-col gap-12 justify-center items-center">
-                                <h1 className="text-2xl font-bold underline">{game.title}</h1>
+                        <div
+                            className={`
+                                p-4 min-w-[20vw] h-full border border-slate-700 dark:border-slate-300 rounded-md shadow-lg
+                                ${!isInternetGamesShowing && !isMyGamesShowing ? 'max-laptop:hidden' : ''}
+                            `}
+                        >
+                            <div className="h-full flex flex-col gap-12 max-laptop:gap-6 justify-center items-center">
+                                <h1 className="text-2xl max-laptop:text-lg text-center font-bold underline">{game.title}</h1>
                                 <button onClick={() => handleGameDialogOpen(game)}>
-                                    <img className='size-72 border-2 border-slate-700 dark:border-slate-300 rounded-md' src={game.img} alt={game.title}/>
+                                    <img className='size-72 max-laptop:size-24 border-2 border-slate-700 dark:border-slate-300 rounded-md' src={game.img} alt={game.title}/>
                                 </button>
                             </div>
                         </div>

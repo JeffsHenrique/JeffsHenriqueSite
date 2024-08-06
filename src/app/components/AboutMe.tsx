@@ -15,18 +15,18 @@ export const AboutMe = ({ scrollToGames }: AboutMeProps) => {
     }
 
     return (
-        <div className="w-2/5 border-2 overflow-auto border-slate-700 dark:border-slate-300 rounded-md shadow-lg text-sky-900 dark:text-sky-200 p-2">
+        <div className="w-2/5 max-laptop:w-full border-2 overflow-auto border-slate-700 dark:border-slate-300 rounded-md shadow-lg text-sky-900 dark:text-sky-200 p-2">
             <div className="flex justify-center">
-                <h1 className="my-2 text-5xl">Quem sou eu?</h1>
+                <h1 className="my-2 text-5xl max-laptop:text-3xl text-center">Quem sou eu?</h1>
             </div>
 
             <hr className="my-2 border border-slate-700 dark:border-slate-300" />
 
-            <div className="flex flex-col gap-2 text-lg text-center px-2">
+            <div className="flex flex-col gap-2 text-lg max-laptop:text-sm text-center px-2">
                 <p>
                     Apaixonado por computador desde a infância, descobri recentemente o quão mais apaixonante essa área pode ser.<br />
                     Gosto de colocar os conhecimentos em prática, estes adquiridos com estudo ou vivência.<br />
-                    Apesar de apreciar o mundo na solidão das telas, sou uma pessoa bem comunicativa, estando sempre disposto a entender a outra parte 😊.<br />
+                    Também sou uma pessoa bem comunicativa, estando sempre disposto a entender a outra parte 😊.<br />
                 </p>
 
                 <p>
@@ -43,7 +43,7 @@ export const AboutMe = ({ scrollToGames }: AboutMeProps) => {
                 />
 
                 <p className="text-sm">
-                    Se quiser, você também pode, apenas, <button className="text-purple-700 dark:text-purple-500" onClick={scrollToGames}>tirar um tempo para se divertir.</button>
+                    Ou também, se quiser, você também pode <button className="text-purple-700 dark:text-purple-500" onClick={scrollToGames}>tirar um tempo para se divertir.</button>
                 </p>
 
                 <div className="flex justify-center items-center">

@@ -52,7 +52,7 @@ class SkillsData {
                 name: 'JavaScript',
                 image: javascriptIcon.src,
                 progressBar: {
-                    progressLevel: 70,
+                    progressLevel: 75,
                     color: '#F7E018'
                 },
             },
@@ -61,7 +61,7 @@ class SkillsData {
                 name: 'TypeScript',
                 image: typescriptIcon.src,
                 progressBar: {
-                    progressLevel: 50,
+                    progressLevel: 60,
                     color: '#007ACC'
                 },
             },
@@ -70,7 +70,7 @@ class SkillsData {
                 name: 'React',
                 image: reactIcon.src,
                 progressBar: {
-                    progressLevel: 60,
+                    progressLevel: 65,
                     color: '#7DDFFF'
                 },
             },
@@ -97,7 +97,7 @@ class SkillsData {
                 name: 'TailwindCss',
                 image: tailwindcssIcon.src,
                 progressBar: {
-                    progressLevel: 80,
+                    progressLevel: 85,
                     color: '#38BDF8'
                 },
             },
@@ -133,7 +133,7 @@ class SkillsData {
                 name: 'Next.js',
                 image: nextjsIcon.src,
                 progressBar: {
-                    progressLevel: 35,
+                    progressLevel: 50,
                     color: '#0f0f0f'
                 },
             },
@@ -142,7 +142,7 @@ class SkillsData {
                 name: 'MaterialUI',
                 image: materialuiIcon.src,
                 progressBar: {
-                    progressLevel: 70,
+                    progressLevel: 80,
                     color: '#00B0FF'
                 },
             },
@@ -160,7 +160,7 @@ class SkillsData {
                 name: 'VsCode',
                 image: vscodeIcon.src,
                 progressBar: {
-                    progressLevel: 70,
+                    progressLevel: 75,
                     color: '#0086D1'
                 },
             },

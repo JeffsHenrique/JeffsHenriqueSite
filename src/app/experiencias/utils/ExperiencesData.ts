@@ -46,7 +46,7 @@ class ExperiencesData {
                 },
                 professionalType: "work",
                 isMyCurrentExperience: true,
-                positionName: 'Legendas Descritivas - Freelancer/Autônomo',
+                positionName: 'Legendas Descritivas - Freelancer | Autônomo',
                 companyName: 'ETC Filmes',
                 mainRole: 'Como legendador de obras audiovisuais, aplico todo meu conhecimento acerca das legendas voltadas para acessibilidade e as aplico. Como não tinha nenhuma ferramenta que pudesse me auxiliar na transcrição dos vídeos (da maneira como eu desejava), para este trabalho, desenvolvi uma aplicação voltada para as transcrições dos vídeos, além de transcrevê-los automaticamente usando o Whisper da OpenAI (instalada localmente).',
                 photos: [
