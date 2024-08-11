@@ -95,8 +95,25 @@ export const TimelineContent = () => {
 
             <VerticalTimeline lineColor={themeCtx?.theme === 'dark' ? '#185688' : '#7dd3fc'}>
                 {filteredExperiences.map((experience) => {
-                    const yearsPeriod = calculatePeriod(experience.period.start, experience.period.end).years
-                    const monthsPeriod = calculatePeriod(experience.period.start, experience.period.end).months
+                    const experiencePeriod = () => {
+                        const { years, months } = calculatePeriod(experience.period.start, experience.period.end)
+
+                        const yearLabel = years === 1 ? 'ano' : 'anos'
+                        const monthLabel = months === 1 ? 'mês' : 'meses'
+
+                        if (years === 0) {
+                            if (months < 1) {
+                                return 'Menos de 1 mês'
+                            }
+                            return `${months} ${monthLabel}`
+                        }
+
+                        if (months > 0) {
+                            return `${years} ${yearLabel} e ${months} ${monthLabel}`
+                        }
+
+                        return `${years} ${yearLabel}`
+                    }
 
                     return (
                         <div className="vertical-timeline-element transition-all hover:scale-105">
@@ -104,7 +121,7 @@ export const TimelineContent = () => {
                                 <VerticalTimelineElement
                                     contentStyle={experience.professionalType === 'work' ? workContentStyle : studyContentStyle}
                                     contentArrowStyle={{ borderRight: `7px solid ${experience.professionalType === 'work' ? workContentArrowStyle : studyContentArrowStyle}` }}
-                                    date={`${experience.period.start} - ${experience.period.end} • ${yearsPeriod === 0 ? '' : (yearsPeriod === 1 ? `${yearsPeriod} ano` : `${yearsPeriod} anos`)} ${monthsPeriod === 0 ? '' : (monthsPeriod === 1 ? `${monthsPeriod} mês` : `${monthsPeriod} meses`)} `}
+                                    date={`${experience.period.start} - ${experience.period.end} • ${experiencePeriod()} `}
                                     dateClassName="text-black dark:text-white"
                                     iconStyle={experience.professionalType === 'work' ? workIconStyle : studyIconStyle}
                                     icon={experience.professionalType === 'work' ? <WorkIcon /> : <SchoolIcon />}
