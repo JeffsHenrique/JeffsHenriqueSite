@@ -17,3 +17,13 @@
         <img src="https://cdna.artstation.com/p/assets/images/images/018/454/158/original/carolyn-jong-cat-animation.gif?1559441634" width="180px" />
     </div>
 </div>
+
+<br />
+
+<hr />
+
+<h1 align="center">Version Updates</h1>
+
+- 1.1.0: Responsivity;
+- 1.0.0: Site release;
+- 0.1.0: Site developing.
