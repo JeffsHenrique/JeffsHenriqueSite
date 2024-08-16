@@ -25,6 +25,8 @@ import englishIcon from '../assets/englishicon.png'
 
 class SkillsData {
     getSkills(): Promise<Skill[]> {
+        const currentLang = localStorage.getItem('LangContextKey')
+
         const skills: Skill[] = [
 
             // DEV SKILLS
@@ -106,7 +108,7 @@ class SkillsData {
                 name: 'Git',
                 image: gitIcon.src,
                 progressBar: {
-                    progressLevel: 60,
+                    progressLevel: 70,
                     color: '#F34F29'
                 },
             },
@@ -115,7 +117,7 @@ class SkillsData {
                 name: 'Github',
                 image: githubIcon.src,
                 progressBar: {
-                    progressLevel: 60,
+                    progressLevel: 65,
                     color: '#f0f0f0'
                 },
             },
@@ -133,8 +135,8 @@ class SkillsData {
                 name: 'Next.js',
                 image: nextjsIcon.src,
                 progressBar: {
-                    progressLevel: 50,
-                    color: '#0f0f0f'
+                    progressLevel: 55,
+                    color: '#f0f0f0'
                 },
             },
             {
@@ -147,21 +149,23 @@ class SkillsData {
                 },
             },
             {
-                type: 'other',
-                name: 'Figma',
-                image: figmaIcon.src,
-                progressBar: {
-                    progressLevel: 70,
-                    color: '#FF7262'
-                },
-            },
-            {
                 type: 'dev',
                 name: 'VsCode',
                 image: vscodeIcon.src,
                 progressBar: {
                     progressLevel: 75,
                     color: '#0086D1'
+                },
+            },
+
+            // OTHERS SKILLS
+            {
+                type: 'other',
+                name: 'Figma',
+                image: figmaIcon.src,
+                progressBar: {
+                    progressLevel: 70,
+                    color: '#FF7262'
                 },
             },
             {
@@ -202,7 +206,7 @@ class SkillsData {
             },
             {
                 type: 'other',
-                name: 'Revisão Gramatical',
+                name: `${currentLang === 'us-en' ? `Grammar Review` : 'Revisão Gramatical'}`,
                 image: revisaoIcon.src,
                 progressBar: {
                     progressLevel: 100,
@@ -211,7 +215,7 @@ class SkillsData {
             },
             {
                 type: 'other',
-                name: 'Legendas (CC | OC)',
+                name: `${currentLang === 'us-en' ? `Subtitles (CC | OC)` : 'Legendas (CC | OC)'}`,
                 image: subtitleeditIcon.src,
                 progressBar: {
                     progressLevel: 100,
@@ -220,15 +224,13 @@ class SkillsData {
             },
             {
                 type: 'other',
-                name: 'Inglês',
+                name: `${currentLang === 'us-en' ? `English` : 'Inglês'}`,
                 image: englishIcon.src,
                 progressBar: {
                     progressLevel: 90,
                     color: '#EE382B'
                 },
             },
-
-            // OTHER SKILLS
         ]
 
         return Promise.resolve(skills)

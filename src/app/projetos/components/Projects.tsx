@@ -12,6 +12,8 @@ export const Projects = () => {
     const [projects, setProjects] = useState<Project[]>([])
     const [selectedProjectImg, setSelectedProjectImg] = useState<string | null>('')
 
+    const currentLang = localStorage.getItem('LangContextKey')
+
     const getProjects = useCallback(async () => {
         try {
             const data = await projectsData.getProjects()
@@ -43,10 +45,10 @@ export const Projects = () => {
                     <Section>
                         <div className="min-h-full flex flex-col items-center justify-between border-2 border-slate-700 dark:border-slate-300 shadow-lg rounded-md">
                             <p className="my-2 text-3xl text-center max-laptop:text-lg font-bold underline">{project.title}</p>
-                            <p className="my-2 flex flex-col items-center overflow-auto px-2 text-center max-laptop:text-xs text-purple-700 dark:text-purple-500">Descrição do projeto:
+                            <p className="my-2 flex flex-col items-center overflow-auto px-2 text-center max-laptop:text-xs text-purple-700 dark:text-purple-500">{currentLang === 'us-en' ? `Project Description:` : 'Descrição do projeto:'}
                                 <span className="font-bold text-sky-900 dark:text-sky-200">{project.description.projectDetails}</span>
                             </p>
-                            <p className="mb-2 px-2 text-center max-laptop:text-xs text-purple-700 dark:text-purple-500">Linguagens usadas: <span className="font-bold text-sky-900 dark:text-sky-200">{project.description.techsUsed}</span></p>
+                            <p className="mb-2 px-2 text-center max-laptop:text-xs text-purple-700 dark:text-purple-500">{currentLang === 'us-en' ? `Tools used: ` : 'Linguagens usadas: '}<span className="font-bold text-sky-900 dark:text-sky-200">{project.description.techsUsed}</span></p>
                             <Swiper
                                 modules={[Pagination]}
                                 spaceBetween={1}
@@ -71,15 +73,15 @@ export const Projects = () => {
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
-                            <p className="mb-2 px-2 text-center max-laptop:text-xs text-green-800 dark:text-green-500">Arraste para o lado e veja outras imagens do projeto.</p>
-                            <p className="mb-2 px-2 text-center max-laptop:text-xs text-green-800 dark:text-green-500">Clique para ampliá-las.</p>
+                            <p className="mb-2 px-2 text-center max-laptop:text-xs text-green-800 dark:text-green-500">{currentLang === 'us-en' ? `Swipe it and see more images of the project.` : 'Arraste para o lado e veja outras imagens do projeto.'}</p>
+                            <p className="mb-2 px-2 text-center max-laptop:text-xs text-green-800 dark:text-green-500">{currentLang === 'us-en' ? `Click to open the image.` : 'Clique para ampliá-las.'}</p>
                             <div className="flex flex-col gap-4">
                                 {project.externalLinks?.projectLink && (
-                                    <a className="my-2 px-2 text-xl text-center max-laptop:text-sm underline text-sky-900 dark:text-sky-200" href={project.externalLinks.projectLink} target="_blank">Link do projeto</a>
+                                    <a className="my-2 px-2 text-xl text-center max-laptop:text-sm underline text-sky-900 dark:text-sky-200" href={project.externalLinks.projectLink} target="_blank">{currentLang === 'us-en' ? `Project Link` : 'Link do projeto'}</a>
                                 )}
 
                                 {project.externalLinks?.ref && (
-                                    <p className="my-2 px-2 text-center max-laptop:text-xs text-purple-700 dark:text-purple-500">Referências: <a className="font-bold underline text-sky-900 dark:text-sky-200" href={project.externalLinks.ref.link} target="_blank">{project.externalLinks.ref.name}</a></p>
+                                    <p className="my-2 px-2 text-center max-laptop:text-xs text-purple-700 dark:text-purple-500">{currentLang === 'us-en' ? `References: ` : 'Referências: '}<a className="font-bold underline text-sky-900 dark:text-sky-200" href={project.externalLinks.ref.link} target="_blank">{project.externalLinks.ref.name}</a></p>
                                 )}
                             </div>
                         </div>

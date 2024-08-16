@@ -7,47 +7,10 @@ import { Contact } from "./Contact"
 
 import HomeIcon from '@mui/icons-material/Home';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import { Button, ButtonProps, Menu, MenuItem, MenuProps, styled } from "@mui/material";
+import { MenuItem } from "@mui/material";
 import { useTheme } from '../contexts/ThemeContext'
-
-const StyledMenuLight = styled((props: MenuProps) => (
-    <Menu
-        {...props}
-    />
-))(() => ({
-    '& .MuiPaper-root': {
-        background: '#7dd3fc'
-    },
-    '& .MuiMenuItem-root': {
-        color: '#0c4a6e',
-        transitionDuration: '0.4s',
-        '&:hover': {
-            backgroundColor: '#0d3652'
-        }
-    },
-}))
-
-const StyledMenuDark = styled((props: MenuProps) => (
-    <Menu
-        {...props}
-    />
-))(() => ({
-    '& .MuiPaper-root': {
-        background: '#0c4a6e'
-    },
-    '& .MuiMenuItem-root': {
-        color: '#bae6fd',
-        transitionDuration: '0.4s',
-        '&:hover': {
-            backgroundColor: '#0d3652'
-        }
-    },
-}))
-
-const StyledButton = styled(Button)<ButtonProps>(() => ({
-    color: '#7dd3fc',
-    fontWeight: 'bold'
-}))
+import LanguageSwitch from './LanguageSwitch'
+import { StyledMenuLight, StyledMenuDark, StyledButton } from '../utils/StyledMaterialComponents'
 
 export const Header = () => {
     const [contactIsOpen, setContactIsOpen] = useState(false)
@@ -55,6 +18,7 @@ export const Header = () => {
 
     const open = Boolean(anchorMenuEl)
     const theme = useTheme()
+    const currentLang = localStorage.getItem('LangContextKey')
 
     const handleMoreButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorMenuEl(event.currentTarget)
@@ -81,6 +45,8 @@ export const Header = () => {
                 <hr className="h-10 border opacity-35 border-slate-600 dark:border-slate-400 max-laptop:hidden" />
 
                 <div className="hidden max-laptop:flex w-full justify-end">
+                    <LanguageSwitch />
+
                     <StyledButton
                         id="more-button"
                         aria-controls={open ? 'more-menu' : undefined}
@@ -103,23 +69,25 @@ export const Header = () => {
                         >
                             <a href="/projetos">
                                 <MenuItem onClick={handleMoreButtonClose}>
-                                    Projetos
+                                    {currentLang === 'us-en' ? 'Projects' : 'Projetos'}
                                 </MenuItem>
                             </a>
 
                             <a href="/conhecimentos">
                                 <MenuItem onClick={handleMoreButtonClose}>
-                                    Conhecimentos 
+                                    {currentLang === 'us-en' ? 'Skills' : 'Conhecimentos'}
                                 </MenuItem>
                             </a>
 
                             <a href="/experiencias">
                                 <MenuItem onClick={handleMoreButtonClose}>
-                                    Experiências
+                                    {currentLang === 'us-en' ? 'Experiences' : 'Experiências'}
                                 </MenuItem>
                             </a>
 
-                            <MenuItem onClick={handleContactOpen}>Contato</MenuItem>
+                            <MenuItem onClick={handleContactOpen}>
+                                {currentLang === 'us-en' ? 'Contact' : 'Contato'}
+                            </MenuItem>
 
                             <MenuItem>
                                 <ThemeSwitch />
@@ -139,23 +107,25 @@ export const Header = () => {
                         >
                             <a href="/projetos">
                                 <MenuItem onClick={handleMoreButtonClose}>
-                                    Projetos
+                                    {currentLang === 'us-en' ? 'Projects' : 'Projetos'}
                                 </MenuItem>
                             </a>
 
                             <a href="/conhecimentos">
                                 <MenuItem onClick={handleMoreButtonClose}>
-                                    Conhecimentos 
+                                    {currentLang === 'us-en' ? 'Skills' : 'Conhecimentos'}
                                 </MenuItem>
                             </a>
 
                             <a href="/experiencias">
                                 <MenuItem onClick={handleMoreButtonClose}>
-                                    Experiências
+                                    {currentLang === 'us-en' ? 'Experiences' : 'Experiências'}
                                 </MenuItem>
                             </a>
 
-                            <MenuItem onClick={handleContactOpen}>Contato</MenuItem>
+                            <MenuItem onClick={handleContactOpen}>
+                                {currentLang === 'us-en' ? 'Contact' : 'Contato'}
+                            </MenuItem>
 
                             <MenuItem>
                                 <ThemeSwitch />
@@ -166,12 +136,12 @@ export const Header = () => {
 
                 <div className="flex w-full justify-between max-laptop:hidden">
                     <ul className="flex flex-row items-center justify-end text-lg gap-8">
-                        <li className="hover:scale-105 hover:text-sky-300 transition-all"><a href="/projetos"> Projetos </a></li>
-                        <li className="hover:scale-105 hover:text-sky-300 transition-all"><a href="/conhecimentos"> Conhecimentos </a></li>
-                        <li className="hover:scale-105 hover:text-sky-300 transition-all"><a href="/experiencias"> Experiências </a></li>
+                        <li className="hover:scale-105 hover:text-sky-300 transition-all"><a href="/projetos"> {currentLang === 'us-en' ? 'Projects' : 'Projetos'} </a></li>
+                        <li className="hover:scale-105 hover:text-sky-300 transition-all"><a href="/conhecimentos"> {currentLang === 'us-en' ? 'Skills' : 'Conhecimentos'} </a></li>
+                        <li className="hover:scale-105 hover:text-sky-300 transition-all"><a href="/experiencias"> {currentLang === 'us-en' ? 'Experiences' : 'Experiências'} </a></li>
                         <li className="hover:scale-105 hover:text-sky-300 transition-all">
                             <button onClick={handleContactOpen}>
-                                Contato
+                                {currentLang === 'us-en' ? 'Contact' : 'Contato'}
                             </button>
                             <Contact
                                 open={contactIsOpen}
@@ -180,7 +150,12 @@ export const Header = () => {
                         </li>
                     </ul>
 
-                    <ThemeSwitch />
+                    <div className='flex justify-center items-center gap-4'>
+                        <LanguageSwitch />
+
+                        <ThemeSwitch />
+                    </div>
+
                 </div>
 
             </header>
