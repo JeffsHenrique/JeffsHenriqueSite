@@ -20,6 +20,8 @@ export const Contact = (props: ContactDialogProps) => {
     const [contentFormValue, setContentFormValue] = useState<string>('')
     const [shouldBackdropshow, setShouldBackdropShow] = useState<boolean>(false)
 
+    const currentLang = localStorage.getItem('LangContextKey')
+
     const { onClose, open } = props
 
     const handleEmailInput = (event: ChangeEvent<HTMLInputElement>) => {
@@ -52,7 +54,7 @@ export const Contact = (props: ContactDialogProps) => {
                     setEmailValue('')
                     setContentFormValue('')
                     const emailSent = () => {
-                        toast.success('O e-mail foi enviado com sucesso! 😄', {
+                        toast.success(`${currentLang === 'us-en' ? `The e-mail has been sent successfully!` : 'O e-mail foi enviado com sucesso!'} 😄`, {
                             position: 'bottom-left',
                             autoClose: 3000,
                             style: {
@@ -66,7 +68,7 @@ export const Contact = (props: ContactDialogProps) => {
                     handleBackdropClose()
                 },
                 (error): void => {
-                    toast.error('Ops, deu algum erro :(', {
+                    toast.error(`${currentLang === 'us-en' ? `Oops, something went wrong... :(` : 'Ops, deu algum erro :('}`, {
                         position: 'bottom-left',
                             autoClose: 3000,
                             style: {
@@ -80,7 +82,7 @@ export const Contact = (props: ContactDialogProps) => {
                 },
             )
         } else {
-            toast.warn('Preencha os dois campos, por favor!', {
+            toast.warn(`${currentLang === 'us-en' ? `Fill in both fields, please!` : 'Preencha os dois campos, por favor!'}`, {
                 position: 'bottom-left',
                 autoClose: 3000,
                 style: {
@@ -112,7 +114,7 @@ export const Contact = (props: ContactDialogProps) => {
         <Dialog onClose={handleClose} open={open} fullWidth>
             <div className={dialogBox}>
                 <DialogTitle className="text-sky-900 dark:text-sky-200 my-4 flex justify-center">
-                    <p className="text-2xl max-tablet:text-lg text-center font-bold">Você pode me encontrar nas redes:</p>
+                    <p className="text-2xl max-tablet:text-lg text-center font-bold">{currentLang === 'us-en' ? `You can find me on the social medias:` : 'Você pode me encontrar nas redes:'}</p>
                 </DialogTitle>
 
                 <DialogContent dividers>
@@ -130,14 +132,14 @@ export const Contact = (props: ContactDialogProps) => {
                     <hr className="my-8 mx-2 border border-slate-700 dark:border-slate-300" />
 
                     <div className="text-sky-900 dark:text-sky-200 my-2 flex justify-center">
-                        <p className="text-2xl max-tablet:text-lg text-center font-bold">Ou pode me mandar um e-mail:</p>
+                        <p className="text-2xl max-tablet:text-lg text-center font-bold">{currentLang === 'us-en' ? `Or you can send me an e-mail:` : 'Ou pode me mandar um e-mail:'}</p>
                     </div>
 
                     <div className="flex justify-center h-5/6">
                         <div className="m-2 p-2 w-10/12 gap-12 text-sky-900 dark:text-sky-200">
                             <form className="flex flex-col gap-3" onSubmit={sendEmail}>
                                 <div className="flex flex-row max-laptop:flex-col gap-4 justify-start items-center">
-                                    <label className="text-xl max-tablet:text-base text-center font-bold" htmlFor="emailFrom">Digite o seu e-mail:</label>
+                                    <label className="text-xl max-tablet:text-base text-center font-bold" htmlFor="emailFrom">{currentLang === 'us-en' ? `Type your e-mail:` : 'Digite o seu e-mail:'}</label>
                                     <input
                                         className="my-2 p-2 w-6/12 text-center max-tablet:text-xs max-laptop:w-full h-8 rounded-md bg-sky-300 dark:bg-slate-950 border border-slate-700 dark:border-slate-300"
                                         type="text"
@@ -147,7 +149,7 @@ export const Contact = (props: ContactDialogProps) => {
                                     />
                                 </div>
 
-                                <label className="mt-8 text-xl max-tablet:text-base text-center font-bold" htmlFor="message">Escreva a sua mensagem:</label>
+                                <label className="mt-8 text-xl max-tablet:text-base text-center font-bold" htmlFor="message">{currentLang === 'us-en' ? `Write your message:` : 'Escreva a sua mensagem:'}</label>
                                 <textarea
                                     className="p-2 resize-none h-[32vh] max-tablet:text-xs rounded-md bg-sky-300 dark:bg-slate-950 border border-slate-700 dark:border-slate-300"
                                     name="message"
@@ -159,7 +161,7 @@ export const Contact = (props: ContactDialogProps) => {
                                         className="text-2xl max-tablet:text-lg p-2 border border-slate-700 dark:border-slate-300 hover:scale-105 transition-all duration-300 bg-sky-300 hover:bg-sky-400 dark:bg-slate-800 hover:dark:bg-slate-700 rounded-md shadow-lg"
                                         type="submit"
                                     >
-                                        Enviar
+                                        {currentLang === 'us-en' ? `Send` : 'Enviar'}
                                     </button>
                                 </div>
                             </form>

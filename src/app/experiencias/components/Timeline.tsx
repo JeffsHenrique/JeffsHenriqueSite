@@ -21,6 +21,8 @@ export const TimelineContent = () => {
     const [selectedPic, setSelectedPic] = useState<string | null>('')
     const [filteredType, setFilteredType] = useState<string>('')
 
+    const currentLang = localStorage.getItem('LangContextKey')
+
     const getExperiences = useCallback(async () => {
         try {
             const data = await experiencesData.getExperiences()
@@ -87,10 +89,10 @@ export const TimelineContent = () => {
         <div className="m-2 p-2 flex flex-col gap-4">
 
             <div className="p-2 flex flex-row max-laptop:flex-col gap-4 max-laptop:gap-2 justify-center items-center max-laptop:text-xs text-sky-900 dark:text-sky-200">
-                <p>Filtrar por:</p>
-                <Button variant={filteredType === 'study' ? 'contained' : 'outlined'} color="secondary" onClick={() => setFilteredType('study')}>Especialização</Button>
-                <Button variant={filteredType === 'work' ? 'contained' : 'outlined'} color="primary" onClick={() => setFilteredType('work')}>Trabalho</Button>
-                <Button variant={filteredType === '' ? 'contained' : 'outlined'} color="success" onClick={() => setFilteredType('')}>Todos</Button>
+                <p>{currentLang === 'us-en' ? `Filter by:` : 'Filtrar por:'}</p>
+                <Button variant={filteredType === 'study' ? 'contained' : 'outlined'} color="secondary" onClick={() => setFilteredType('study')}>{currentLang === 'us-en' ? `Study` : 'Especialização'}</Button>
+                <Button variant={filteredType === 'work' ? 'contained' : 'outlined'} color="primary" onClick={() => setFilteredType('work')}>{currentLang === 'us-en' ? `Work` : 'Trabalho'}</Button>
+                <Button variant={filteredType === '' ? 'contained' : 'outlined'} color="success" onClick={() => setFilteredType('')}>{currentLang === 'us-en' ? `All` : 'Todos'}</Button>
             </div>
 
             <VerticalTimeline lineColor={themeCtx?.theme === 'dark' ? '#185688' : '#7dd3fc'}>
@@ -98,18 +100,18 @@ export const TimelineContent = () => {
                     const experiencePeriod = () => {
                         const { years, months } = calculatePeriod(experience.period.start, experience.period.end)
 
-                        const yearLabel = years === 1 ? 'ano' : 'anos'
-                        const monthLabel = months === 1 ? 'mês' : 'meses'
+                        const yearLabel = years === 1 ? `${currentLang === 'us-en' ? 'year' : 'ano'}` : `${currentLang === 'us-en' ? 'years' : 'anos'}`
+                        const monthLabel = months === 1 ? `${currentLang === 'us-en' ? 'month' : 'mês'}` : `${currentLang === 'us-en' ? 'months' : 'meses'}`
 
                         if (years === 0) {
                             if (months < 1) {
-                                return 'Menos de 1 mês'
+                                return `${currentLang === 'us-en' ? `Less than 1 month` : 'Menos de 1 mês'}`
                             }
                             return `${months} ${monthLabel}`
                         }
 
                         if (months > 0) {
-                            return `${years} ${yearLabel} e ${months} ${monthLabel}`
+                            return `${years} ${yearLabel} ${currentLang === 'us-en' ? 'and' : 'e'} ${months} ${monthLabel}`
                         }
 
                         return `${years} ${yearLabel}`
@@ -132,13 +134,13 @@ export const TimelineContent = () => {
                                 >
                                     <div className="flex flex-col gap-2 justify-center items-center text-center">
                                         {experience.isMyCurrentExperience && (
-                                            <p className="absolute top-0 px-2 bg-green-900 rounded-full shadow-lg text-sky-200">Atualmente</p>
+                                            <p className="absolute top-0 px-2 bg-green-900 rounded-full shadow-lg text-sky-200">{currentLang === 'us-en' ? `Current` : 'Atualmente'}</p>
                                         )}
                                         <h1 className="text-2xl max-tablet:text-base pt-8">{experience.positionName}</h1>
                                         <h3 className="max-tablet:text-xs">{experience.companyName}</h3>
                                         <h3 className="max-tablet:text-xs">{experience.mainRole}</h3>
                                         {experience.mainTools && (
-                                            <h3 className="max-tablet:text-xs">Principais Ferramentas: <span className="font-bold">{experience.mainTools}</span></h3>
+                                            <h3 className="max-tablet:text-xs">{currentLang === 'us-en' ? `Main Tools: ` : 'Principais Ferramentas: '}<span className="font-bold">{experience.mainTools}</span></h3>
                                         )}
                                     </div>
                                     {experience.photos && (

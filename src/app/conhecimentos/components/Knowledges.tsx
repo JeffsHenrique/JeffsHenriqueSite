@@ -12,6 +12,8 @@ export const Knowledges = () => {
     const [searchSkill, setSearchSkill] = useState<string>('')
     const [typeSkill, setTypeSkill] = useState<string>('dev')
 
+    const currentLang = localStorage.getItem('LangContextKey')
+
     const getSkills = useCallback(async () => {
         try {
             const data = await skillsData.getSkills()
@@ -44,18 +46,18 @@ export const Knowledges = () => {
                 <div className="flex max-laptop:flex-col justify-end items-center gap-8 max-laptop:gap-4">
                     <div className="flex flex-row gap-4">
                         <Button variant={typeSkill === 'dev' ? 'contained' : 'outlined'} color='primary' onClick={() => setTypeSkill('dev')}>DEV SKILLS</Button>
-                        <Button variant={typeSkill === 'other' ? 'contained' : 'outlined'} color='primary' onClick={() => setTypeSkill('other')}>OUTRAS SKILLS</Button>
+                        <Button variant={typeSkill === 'other' ? 'contained' : 'outlined'} color='primary' onClick={() => setTypeSkill('other')}>{currentLang === 'us-en' ? `OTHERS SKILLS` : 'OUTRAS SKILLS'}</Button>
                     </div>
                     <input
                         className="px-2 w-96 max-laptop:w-72 h-8 rounded-md max-laptop:text-center max-laptop:text-xs bg-sky-300 dark:bg-slate-950 border border-slate-700 dark:border-slate-300 text-sky-900 dark:text-sky-200"
-                        placeholder="Procure por uma skill específica :)"
+                        placeholder={currentLang === 'us-en' ? `Search for a specific skill :)` : 'Procure por uma skill específica :)'}
                         value={searchSkill}
                         onChange={handleSearchInput}
                     />
 
                     <div className="max-laptop:hidden">
                         <Tooltip
-                            title={<h1 className="text-lg text-center">Clique para abrir a <span className="font-bold text-purple-300">Escala de Proficiência de Skills</span></h1>}
+                            title={<h1 className="text-lg text-center">{currentLang === 'us-en' ? `Click to open ` : 'Clique para abrir a '}<span className="font-bold text-purple-300">{currentLang === 'us-en' ? `Skills Proficiency Scale` : 'Escala de Proficiência de Skills'}</span></h1>}
                             arrow
                             disableInteractive
                             placement="top-start"
@@ -86,7 +88,7 @@ export const Knowledges = () => {
                             <p className="mt-2 flex items-center justify-center text-center">{skill.name}</p>
                             <img className="w-24 max-tablet:w-12 max-laptop:w-16" src={skill.image} />
                             <Tooltip
-                                title={<h1 className="text-lg">Progresso: <span className={`font-bold`}>{skill.progressBar.progressLevel}%</span></h1>}
+                                title={<h1 className="text-lg">{currentLang === 'us-en' ? `Progress:` : 'Progresso:'} <span className={`font-bold`}>{skill.progressBar.progressLevel}%</span></h1>}
                                 arrow
                                 disableInteractive
                             >
@@ -109,7 +111,7 @@ export const Knowledges = () => {
                     )
                 })}
 
-                {filteredSkills.length === 0 && <p>Não foi encontrada a skill :(</p>}
+                {filteredSkills.length === 0 && <p>{currentLang === 'us-en' ? `Your search didn't match any skill :(` : 'Não foi encontrada a skill :('}</p>}
 
             </div>
         </Section>

@@ -9,6 +9,7 @@ import { Footer } from "./components/Footer"
 import { mainScreen } from "./utils/Styles"
 import { MouseEventHandler, useRef } from "react"
 import { Section } from "./components/Section"
+import { LanguageProvider } from "./contexts/LanguageContext"
 
 const Homepage = () => {
   const gameContainer = useRef<HTMLDivElement>(null)
@@ -22,27 +23,28 @@ const Homepage = () => {
 
   return (
     <ThemeProvider>
+      <LanguageProvider>
+        <Header />
 
-      <Header />
+        <div className={mainScreen}>
 
-      <div className={mainScreen}>
+          <Section>
+            <div className="flex flex-row max-laptop:flex-col-reverse justify-between m-8 gap-8">
+              <AboutMe scrollToGames={scrollToGames} />
+              <PhotoAndSkills />
+            </div>
+          </Section>
 
-        <Section>
-          <div className="flex flex-row max-laptop:flex-col-reverse justify-between m-8 gap-8">
-            <AboutMe scrollToGames={scrollToGames} />
-            <PhotoAndSkills />
-          </div>
-        </Section>
+          <Section>
+            <div ref={gameContainer} className="flex my-8 justify-center">
+              <GamesContainer />
+            </div>
+          </Section>
 
-        <Section>
-          <div ref={gameContainer} className="flex my-8 justify-center">
-            <GamesContainer />
-          </div>
-        </Section>
+          <Footer />
 
-        <Footer />
-
-      </div>
+        </div>
+      </LanguageProvider>
     </ThemeProvider>
   )
 }

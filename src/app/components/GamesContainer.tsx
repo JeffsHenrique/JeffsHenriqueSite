@@ -18,6 +18,7 @@ export const GamesContainer = () => {
     const [isMyGamesShowing, setisMyGamesShowing] = useState<boolean>(false)
 
     const theme = useTheme()
+    const currentLang = localStorage.getItem('LangContextKey')
 
     const getGames = useCallback(async () => {
         try {
@@ -51,7 +52,7 @@ export const GamesContainer = () => {
     return (
         <div className="w-[80vw] max-laptop:max-w-80 min-h-[65vh] m-2 flex flex-row max-laptop:flex-col gap-8 justify-start overflow-x-scroll max-laptop:overflow-x-hidden scroll-smooth border-2 border-slate-700 dark:border-slate-300 rounded-md shadow-lg text-sky-900 dark:text-sky-200 p-2">
             <div className="ml-4 max-laptop:ml-0 flex flex-col gap-3 justify-center min-w-[12vw] max-w-[12vw] max-laptop:max-w-full">
-                <h1 className="text-2xl max-laptop:text-lg font-bold text-center underline">Tire um tempo para se divertir</h1>
+                <h1 className="text-2xl max-laptop:text-lg font-bold text-center underline">{currentLang === 'us-en' ? `Take a break and have fun` : 'Tire um tempo para se divertir'}</h1>
                 <div className='flex justify-center'>
                     <img
                         className="border border-slate-700 dark:border-slate-300 shadow-lg rounded-md max-laptop:size-48"
@@ -62,13 +63,13 @@ export const GamesContainer = () => {
 
                 <div className='flex flex-col items-center gap-8'>
                     <Tooltip
-                        title={<h1 className='text-lg text-center'>Jogos desenvolvidos por mim</h1>}
+                        title={<h1 className='text-lg text-center'>{currentLang === 'us-en' ? `Games developed by me` : 'Jogos desenvolvidos por mim'}</h1>}
                         arrow
                         disableInteractive
                     >
                         <button onClick={handleShowingMyGames}>
                             <div className='p-2 flex flex-row gap-4 justify-center items-center border rounded-md shadow-lg border-slate-700 dark:border-slate-300'>
-                                <p className='text-base font-bold'>Jogos autorais:</p>
+                                <p className='text-base font-bold'>{currentLang === 'us-en' ? `My games:` : 'Jogos autorais:'}</p>
                                 <div className="bg-sky-300 dark:bg-slate-800 rounded-full shadow-lg">
                                     {isMyGamesShowing === true ?
                                         <CheckBoxIcon
@@ -91,13 +92,13 @@ export const GamesContainer = () => {
                     </Tooltip>
 
                     <Tooltip
-                        title={<h1 className='text-lg text-center'>Jogos incorporados da internet. <p className='font-bold text-sky-200'>Pode conter anúncios!</p></h1>}
+                        title={<h1 className='text-lg text-center'>{currentLang === 'us-en' ? `Embedded Games` : 'Jogos incorporados da internet.'} <p className='font-bold text-sky-200'>{currentLang === 'us-en' ? `They may contain ads!` : 'Pode conter anúncios!'}</p></h1>}
                         arrow
                         disableInteractive
                     >
                         <button onClick={handleShowingInternetGames}>
                             <div className='p-2 flex flex-row gap-4 justify-center items-center border rounded-md shadow-lg border-slate-700 dark:border-slate-300'>
-                                <p className='text-base font-bold'>Jogos da Internet:</p>
+                                <p className='text-base font-bold'>{currentLang === 'us-en' ? `Internet Games:` : 'Jogos da Internet:'}</p>
                                 <div className="bg-sky-300 dark:bg-slate-800 rounded-full shadow-lg">
                                     {isInternetGamesShowing === true ?
                                         <CheckBoxIcon

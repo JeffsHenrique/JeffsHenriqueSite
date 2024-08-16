@@ -20,6 +20,8 @@ import miraPortfolio3 from '../assets/miraportfolio-3.png'
 
 class ProjectsData {
     getProjects(): Promise<Project[]> {
+        const currentLang = localStorage.getItem('LangContextKey')
+
         const projects: Project[] = [
             {
                 title: 'Pokedex',
@@ -30,10 +32,10 @@ class ProjectsData {
                     pokedex3.src,
                     pokedexGif1.src,
                 ],
-                imageAlt: 'Sequência de fotos do meu projeto Pokedex',
+                imageAlt: `${currentLang === 'us-en' ? `Sequence of pictures of my Pokedex project` : 'Sequência de fotos do meu projeto Pokedex'}`,
                 description: {
-                    projectDetails: 'Esse projeto foi feito seguindo um vídeo do youtube. Foi muito especial, pois o realizei apenas com um breve conhecimento em JavaScript.',
-                    techsUsed: 'JavaScript, HTML e CSS'
+                    projectDetails: `${currentLang === 'us-en' ? `This project was made following a youtube video. It was really special because I did it with little knowledge in JavaScript.` : 'Esse projeto foi feito seguindo um vídeo do youtube. Foi muito especial, pois o realizei apenas com um breve conhecimento em JavaScript.'}`,
+                    techsUsed: `JavaScript, HTML ${currentLang === 'us-en' ? `and` : 'e'} CSS`
                 },
                 externalLinks: {
                     projectLink: 'https://jeffshenrique.github.io/pokedex/',
@@ -50,10 +52,10 @@ class ProjectsData {
                     memoryCow1.src,
                     memoryCow2.src
                 ],
-                imageAlt: 'Sequência de fotos do meu projeto Jogo da Memória de Vaca',
+                imageAlt: `${currentLang === 'us-en' ? `Sequence of pictures of my Memory Cow Game project` : 'Sequência de fotos do meu projeto Jogo da Memória de Vaca'}`,
                 description: {
-                    projectDetails: 'Esse projeto foi feito a partir das aulas de React com TypeScript do professor Bonieky. Alterei os ícones para deixá-los do meu jeito ^^',
-                    techsUsed: 'TypeScript, HTML e CSS'
+                    projectDetails: `${currentLang === 'us-en' ? `This project was made from my React with TypeScript classes, taught by Bonieky. I changed the icons to give it my own aesthetic ^^` : 'Esse projeto foi feito a partir das aulas de React com TypeScript do professor Bonieky. Alterei os ícones para deixá-los do meu jeito ^^'}`,
+                    techsUsed: `TypeScript, HTML ${currentLang === 'us-en' ? `and` : 'e'} CSS`
                 },
                 externalLinks: {
                     projectLink: 'https://memory-cow-game.vercel.app/',
@@ -64,7 +66,7 @@ class ProjectsData {
                 },
             },
             {
-                title: 'Jamille Subs (EM CONSTRUÇÃO)',
+                title: `Jamille Subs ${currentLang === 'us-en' ? `(WORKING)` : '(EM CONSTRUÇÃO)'}`,
                 projectLevel: 4,
                 images: [
                     jamilleSubsGif1.src,
@@ -75,27 +77,27 @@ class ProjectsData {
                     jamilleSubs5.src,
                     jamilleSubs6.src,
                 ],
-                imageAlt: 'Sequência de fotos do meu projeto Jamille Subs',
+                imageAlt: `${currentLang === 'us-en' ? `Sequence of pictures of my Jamille Subs project` : 'Sequência de fotos do meu projeto Jamille Subs'}`,
                 description: {
-                    projectDetails: 'Esse projeto foi pensado, inicialmente, apenas para me ajudar com trabalhos autônomos de legendagem. A última imagem é o projeto desenvolvido apenas com HTML, CSS e JavaScript (antes de eu adquirir mais conhecimentos em react). Ainda está em construção, com muitas ideias que requerem mais estudos. Alguns dos meus objetivos são: sistema de autenticação (com pessoas cadastradas em um banco de dados); manipulação com IA para realizar a transcrição automática de vídeos; substituição de texto na transcrição; sistema de sincronia utilizando front-end; dentre outros!',
-                    techsUsed: 'Next.js, React com TypeScript e TailwindCss'
+                    projectDetails: `${currentLang === 'us-en' ? `At first, this project was thought only to help me with my subtitles freelancer jobs. The last image is the project developed using only HTML, CSS and JavaScript (before I get more understanding in React). It's still in progress, with lots of ideas that will require more study. Some of my goals are: An authentication system (with users registered in a database); an AI manipulation, to generate the automatic transcription of the videos; a text substitution when transcribing; a synchronization system, using only front-end; and so on!` : 'Esse projeto foi pensado, inicialmente, apenas para me ajudar com trabalhos autônomos de legendagem. A última imagem é o projeto desenvolvido apenas com HTML, CSS e JavaScript (antes de eu adquirir mais conhecimentos em react). Ainda está em construção, com muitas ideias que requerem mais estudos. Alguns dos meus objetivos são: sistema de autenticação (com pessoas cadastradas em um banco de dados); manipulação com IA para realizar a transcrição automática de vídeos; substituição de texto na transcrição; sistema de sincronia utilizando front-end; dentre outros!'}`,
+                    techsUsed: `Next.js, React com TypeScript ${currentLang === 'us-en' ? `and` : 'e'} TailwindCss`
                 },
                 externalLinks: {
                     projectLink: 'https://jamille-subs-fe.vercel.app/'
                 }
             },
             {
-                title: 'Mira - Site Portfolio',
+                title: 'Mira - Website Portfolio',
                 projectLevel: 2,
                 images: [
                     miraPortfolio2.src,
                     miraPortfolio1.src,
                     miraPortfolio3.src,
                 ],
-                imageAlt: 'Sequência de fotos do site portfolio da Editora de Vídeos Mira Agda',
+                imageAlt: `${currentLang === 'us-en' ? `Sequence of pictures of Mira's portfolio website` : 'Sequência de fotos do site portfolio da Editora de Vídeos Mira Agda'}`,
                 description: {
-                    projectDetails: 'Esse site foi criado com a finalidade de ser um portfolio online para a profissional Mira Agda, especializada em pós-produção de obras audiovisuais. Alinhando com os interesses dela, desenhamos o site como ficaria e quais ideias eram essenciais, como a opção do site português e inglês.',
-                    techsUsed: 'Next.js, React com TypeScript, Material UI e TailwindCss'
+                    projectDetails: `${currentLang === 'us-en' ? `This site was developed to be an online portfolio of the professional, Mira Agda, skilled in post-production and VFX of audiovisual works. Considering her interests and ideas, we sketch how the site would look like and which ideas were essential to be in her site, such as an option for the user to choose the language: Portuguese or English.` : 'Esse site foi criado com a finalidade de ser um portfolio online para a profissional Mira Agda, especializada em pós-produção de obras audiovisuais. Alinhando com os interesses dela, desenhamos o site como ficaria e quais ideias eram essenciais, como a opção do site português e inglês.'}`,
+                    techsUsed: `Next.js, React com TypeScript, Material UI ${currentLang === 'us-en' ? `and` : 'e'} TailwindCss`
                 },
                 externalLinks: {
                     projectLink: 'https://miracampos.vercel.app/'
