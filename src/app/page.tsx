@@ -10,6 +10,7 @@ import { mainScreen } from "./utils/Styles"
 import { MouseEventHandler, useRef } from "react"
 import { Section } from "./components/Section"
 import { LanguageProvider } from "./contexts/LanguageContext"
+import CurrentProjects from "./components/CurrentProjects"
 
 const Homepage = () => {
   const gameContainer = useRef<HTMLDivElement>(null)
@@ -34,6 +35,12 @@ const Homepage = () => {
               <PhotoAndSkills />
             </div>
           </Section>
+
+          {/* <Section>
+            <div className="flex my-8 justify-center">
+              <CurrentProjects />
+            </div>
+          </Section> */}
 
           <Section>
             <div ref={gameContainer} className="flex my-8 justify-center">

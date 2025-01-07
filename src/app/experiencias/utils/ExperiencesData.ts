@@ -1,5 +1,7 @@
 import type { Experience } from "../types/Experience";
 
+import { formatPeriod, formatCurrentDate } from "@/app/utils/DateFormatter";
+
 // assets
 import etclegendas1 from '../assets/etclegendas-1.png'
 import etclegendas2 from '../assets/etclegendas-2.png'
@@ -20,22 +22,6 @@ import esamcaudiovisual7 from '../assets/esamcaudiovisual-7.jpeg'
 class ExperiencesData {
     getExperiences(): Promise<Experience[]> {
         const currentLang = localStorage.getItem('LangContextKey')
-
-        const formatPeriod = (dd: number, mm: number, yyyy: number) => {
-            let date = new Date(`${mm.toString()}/${dd.toString()}/${yyyy.toString()}`)
-
-            const newDate = `${("0" + date.getDate()).slice(-2)}/${("0" + (date.getMonth() + 1)).slice(-2)}/${date.getFullYear()}`
-
-            return newDate
-        }
-
-        const formatCurrentDate = () => {
-            let date = new Date()
-
-            const newDate = `${("0" + date.getDate()).slice(-2)}/${("0" + (date.getMonth() + 1)).slice(-2)}/${date.getFullYear()}`
-
-            return newDate
-        }
 
         const experiences: Experience[] = [
 
