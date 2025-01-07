@@ -13,6 +13,10 @@ import githubIcon from '../assets/githubicon.png'
 import mysqlIcon from '../assets/mysqlicon.png'
 import nextjsIcon from '../assets/nextjsicon.png'
 import materialuiIcon from '../assets/materialuiicon.png'
+import reactnativeIcon from '../assets/reactnativeicon.png'
+import awsIcon from '../assets/awsicon.png'
+import dockerIcon from '../assets/dockericon.png'
+
 import figmaIcon from '../assets/figmaicon.png'
 import vscodeIcon from '../assets/vscodeicon.png'
 import aftereffectsIcon from '../assets/aftereffectsicon.png'
@@ -36,7 +40,7 @@ class SkillsData {
                 name: 'HTML',
                 image: htmlIcon.src,
                 progressBar: {
-                    progressLevel: 90,
+                    progressLevel: 95,
                     color: '#E54C21'
                 },
             },
@@ -54,7 +58,7 @@ class SkillsData {
                 name: 'JavaScript',
                 image: javascriptIcon.src,
                 progressBar: {
-                    progressLevel: 75,
+                    progressLevel: 80,
                     color: '#F7E018'
                 },
             },
@@ -72,7 +76,7 @@ class SkillsData {
                 name: 'React',
                 image: reactIcon.src,
                 progressBar: {
-                    progressLevel: 65,
+                    progressLevel: 75,
                     color: '#7DDFFF'
                 },
             },
@@ -90,7 +94,7 @@ class SkillsData {
                 name: 'Python',
                 image: pythonIcon.src,
                 progressBar: {
-                    progressLevel: 20,
+                    progressLevel: 30,
                     color: '#F7CE36'
                 },
             },
@@ -155,6 +159,33 @@ class SkillsData {
                 progressBar: {
                     progressLevel: 75,
                     color: '#0086D1'
+                },
+            },
+            {
+                type: 'dev',
+                name: 'React Native',
+                image: reactnativeIcon.src,
+                progressBar: {
+                    progressLevel: 20,
+                    color: '#7DDFFF'
+                },
+            },
+            {
+                type: 'dev',
+                name: 'Amazon AWS',
+                image: awsIcon.src,
+                progressBar: {
+                    progressLevel: 15,
+                    color: '#FF9900'
+                },
+            },
+            {
+                type: 'dev',
+                name: 'Docker',
+                image: dockerIcon.src,
+                progressBar: {
+                    progressLevel: 15,
+                    color: '#0DB7ED'
                 },
             },
 

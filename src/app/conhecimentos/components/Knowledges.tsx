@@ -5,10 +5,12 @@ import { ProficiencySkillsHelper } from "./ProficiencySkillsHelper";
 import { Button, Tooltip } from "@mui/material"
 import HelpIcon from '@mui/icons-material/Help';
 import { Section } from "@/app/components/Section";
+import CertificatesDialog from "./CertificatesDialog";
 
 export const Knowledges = () => {
     const [skills, setSkills] = useState<Skill[]>([])
     const [shouldProficiencySkillsShow, setShouldProficiencySkillsShow] = useState<boolean>(false)
+    const [shouldCertificatesOpen, setShouldCertificatesOpen] = useState<boolean>(false)
     const [searchSkill, setSearchSkill] = useState<string>('')
     const [typeSkill, setTypeSkill] = useState<string>('dev')
 
@@ -31,6 +33,10 @@ export const Knowledges = () => {
         setShouldProficiencySkillsShow(!shouldProficiencySkillsShow)
     }
 
+    const handleCertificatesOpen = () => {
+        setShouldCertificatesOpen(!shouldCertificatesOpen)
+    }
+
     const filteredSkills = skills
         .filter((skill) => skill.type === typeSkill)
         .filter((skill) => skill.name.toLowerCase().includes(searchSkill.toLowerCase()))
@@ -43,33 +49,44 @@ export const Knowledges = () => {
     return (
         <Section>
             <div className="p-2 text-sky-900 dark:text-sky-200">
-                <div className="flex max-laptop:flex-col justify-end items-center gap-8 max-laptop:gap-4">
-                    <div className="flex flex-row gap-4">
-                        <Button variant={typeSkill === 'dev' ? 'contained' : 'outlined'} color='primary' onClick={() => setTypeSkill('dev')}>DEV SKILLS</Button>
-                        <Button variant={typeSkill === 'other' ? 'contained' : 'outlined'} color='primary' onClick={() => setTypeSkill('other')}>{currentLang === 'us-en' ? `OTHERS SKILLS` : 'OUTRAS SKILLS'}</Button>
-                    </div>
-                    <input
-                        className="px-2 w-96 max-laptop:w-72 h-8 rounded-md max-laptop:text-center max-laptop:text-xs bg-sky-300 dark:bg-slate-950 border border-slate-700 dark:border-slate-300 text-sky-900 dark:text-sky-200"
-                        placeholder={currentLang === 'us-en' ? `Search for a specific skill :)` : 'Procure por uma skill específica :)'}
-                        value={searchSkill}
-                        onChange={handleSearchInput}
-                    />
-
-                    <div className="max-laptop:hidden">
-                        <Tooltip
-                            title={<h1 className="text-lg text-center">{currentLang === 'us-en' ? `Click to open ` : 'Clique para abrir a '}<span className="font-bold text-purple-300">{currentLang === 'us-en' ? `Skills Proficiency Scale` : 'Escala de Proficiência de Skills'}</span></h1>}
-                            arrow
-                            disableInteractive
-                            placement="top-start"
+                <div className="flex max-laptop:flex-col justify-between max-laptop:gap-4">
+                    <div className="flex flex-row max-laptop:justify-center">
+                        <Button
+                            variant="contained"
+                            color="secondary"
+                            onClick={handleCertificatesOpen}
                         >
-                            <button onClick={handleProficiencySkillsHelperOpen}>
-                                <HelpIcon
-                                    color="info"
-                                    fontSize="large"
-                                />
-                            </button>
-                        </Tooltip>
+                            {currentLang === 'us-en' ? `Certificates` : 'Certificados'}
+                        </Button>
                     </div>
+                    <div className="flex flex-row max-laptop:flex-col justify-end items-center gap-8 max-laptop:gap-4">
+                        <div className="flex flex-row gap-4">
+                            <Button variant={typeSkill === 'dev' ? 'contained' : 'outlined'} color='primary' onClick={() => setTypeSkill('dev')}>DEV SKILLS</Button>
+                            <Button variant={typeSkill === 'other' ? 'contained' : 'outlined'} color='primary' onClick={() => setTypeSkill('other')}>{currentLang === 'us-en' ? `OTHERS SKILLS` : 'OUTRAS SKILLS'}</Button>
+                        </div>
+                        <input
+                            className="px-2 w-96 max-laptop:w-72 h-8 rounded-md max-laptop:text-center max-laptop:text-xs bg-sky-300 dark:bg-slate-950 border border-slate-700 dark:border-slate-300 text-sky-900 dark:text-sky-200"
+                            placeholder={currentLang === 'us-en' ? `Search for a specific skill :)` : 'Procure por uma skill específica :)'}
+                            value={searchSkill}
+                            onChange={handleSearchInput}
+                        />
+                        <div className="max-laptop:hidden">
+                            <Tooltip
+                                title={<h1 className="text-lg text-center">{currentLang === 'us-en' ? `Click to open ` : 'Clique para abrir a '}<span className="font-bold text-purple-300">{currentLang === 'us-en' ? `Skills Proficiency Scale` : 'Escala de Proficiência de Skills'}</span></h1>}
+                                arrow
+                                disableInteractive
+                                placement="top-start"
+                            >
+                                <button onClick={handleProficiencySkillsHelperOpen}>
+                                    <HelpIcon
+                                        color="info"
+                                        fontSize="large"
+                                    />
+                                </button>
+                            </Tooltip>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -77,6 +94,13 @@ export const Knowledges = () => {
                 <ProficiencySkillsHelper
                     open={shouldProficiencySkillsShow}
                     onClose={handleProficiencySkillsHelperOpen}
+                />
+            )}
+
+            {shouldCertificatesOpen && (
+                <CertificatesDialog
+                    open={shouldCertificatesOpen}
+                    onClose={handleCertificatesOpen}
                 />
             )}
 

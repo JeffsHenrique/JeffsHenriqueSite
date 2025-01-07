@@ -3,7 +3,7 @@
 import { Dialog, DialogContent, DialogTitle, Tooltip } from "@mui/material"
 import { useState } from "react"
 
-export interface HelperProps{
+export interface HelperProps {
     open: boolean
     onClose: () => void
 }
@@ -72,7 +72,7 @@ export const ProficiencySkillsHelper = (props: HelperProps) => {
                                     </Tooltip>
 
                                     {shouldBasicShow && (
-                                        <ul className="ml-16 flex flex-col gap-4 list-disc">
+                                        <ul className="ml-16 my-2 flex flex-col gap-4 list-disc">
                                             <li>{currentLang === 'us-en' ? `I know the basic;` : 'Sei o básico;'}</li>
                                             <li>{currentLang === 'us-en' ? `I can understand simple examples and modify small pieces of code;` : 'Consigo entender exemplos simples e modificar pequenos trechos de código;'}</li>
                                             <li>{currentLang === 'us-en' ? `I need much guidance or consult references frequently.` : 'Preciso de muita orientação ou consultar referências frequentemente.'}</li>

@@ -1,26 +1,25 @@
 import type { Ambition } from "../types/Ambition";
-import reactnativeIcon from '../assets/reactnativeicon.png'
 import javaIcon from '../assets/javaicon.png'
-import dockerIcon from '../assets/dockericon.png'
 import phpIcon from '../assets/phpicon.png'
 import aiIcon from '../assets/aiicon.png'
-import awsIcon from '../assets/awsicon.png'
-
+import angularIcon from '../assets/angular.png'
+import googleCloudIcon2 from '../assets/googlecloud2.png'
+import nestJSIcon from '../assets/nestjs.png'
 
 class AmbitionsData {
     getAmbitions(): Promise<Ambition[]> {
         const ambitions: Ambition[] = [
             {
-                name: 'React Native',
-                image: reactnativeIcon.src
+                name: 'Angular',
+                image: angularIcon.src
             },
             {
                 name: 'Java',
                 image: javaIcon.src
             },
             {
-                name: 'Docker',
-                image: dockerIcon.src
+                name: 'NestJS',
+                image: nestJSIcon.src
             },
             {
                 name: 'PHP',
@@ -31,8 +30,8 @@ class AmbitionsData {
                 image: aiIcon.src
             },
             {
-                name: 'Amazon AWS',
-                image: awsIcon.src
+                name: 'Google Cloud',
+                image: googleCloudIcon2.src
             },
         ]
 

@@ -24,6 +24,7 @@
 
 <h1 align="center">Version Updates</h1>
 
+- 1.3.0: Implementing Current Projects and Certificates (Current Projects are commented. Data will be inserted soon...)
 - 1.2.0: Languages: Portuguese / English
 - 1.1.0: Responsivity;
 - 1.0.0: Site release;
