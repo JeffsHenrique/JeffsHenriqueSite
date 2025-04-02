@@ -20,7 +20,7 @@ class SocialMediasData {
             {
                 name: 'Instagram',
                 image: instagramIcon.src,
-                href: 'https://www.instagram.com/jeffshenrique/'
+                href: 'https://www.instagram.com/jeffshenrique_dev/'
             },
         ]
 
