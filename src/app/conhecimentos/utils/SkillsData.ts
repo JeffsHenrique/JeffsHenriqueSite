@@ -16,6 +16,9 @@ import materialuiIcon from '../assets/materialuiicon.png'
 import reactnativeIcon from '../assets/reactnativeicon.png'
 import awsIcon from '../assets/awsicon.png'
 import dockerIcon from '../assets/dockericon.png'
+import kubernetesIcon from '../assets/kubernetesicon.png'
+import aiIcon from '../assets/aiicon.png'
+import googleCloudIcon2 from '../assets/googlecloud2.png'
 
 import figmaIcon from '../assets/figmaicon.png'
 import vscodeIcon from '../assets/vscodeicon.png'
@@ -175,7 +178,7 @@ class SkillsData {
                 name: 'Amazon AWS',
                 image: awsIcon.src,
                 progressBar: {
-                    progressLevel: 15,
+                    progressLevel: 20,
                     color: '#FF9900'
                 },
             },
@@ -184,8 +187,35 @@ class SkillsData {
                 name: 'Docker',
                 image: dockerIcon.src,
                 progressBar: {
-                    progressLevel: 15,
+                    progressLevel: 45,
                     color: '#0DB7ED'
+                },
+            },
+            {
+                type: 'dev',
+                name: 'Kubernetes',
+                image: kubernetesIcon.src,
+                progressBar: {
+                    progressLevel: 20,
+                    color: '#0DB7ED'
+                },
+            },
+            {
+                type: 'dev',
+                name: 'AI',
+                image: aiIcon.src,
+                progressBar: {
+                    progressLevel: 15,
+                    color: '#3A9DEE'
+                },
+            },
+            {
+                type: 'dev',
+                name: 'Google Cloud',
+                image: googleCloudIcon2.src,
+                progressBar: {
+                    progressLevel: 15,
+                    color: '#E9C825'
                 },
             },
 

@@ -86,6 +86,37 @@ const CertificatesDialog: FC<CertificatesDialogProps> = ({ open, onClose }) => {
                                                     Bancos de Dados (B7Web)
                                                 </a>
                                             </li>
+
+                                            {/* GOOGLE - CLOUDSKILLSBOOST */}
+                                            <li>
+                                                <a className="text-sky-700 dark:text-sky-500 underline" href="https://www.cloudskillsboost.google/public_profiles/d0f4633d-e83c-4705-b932-bf445ef4df34/badges/14509369?locale=en&utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share" target="_blank">
+                                                    Responsible AI: Applying AI Principles with Google Cloud (Google Cloud)
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a className="text-sky-700 dark:text-sky-500 underline" href="https://www.credly.com/badges/b2c6da2e-c8a3-4154-b195-21be8f4c4dc4/linked_in_profile" target="_blank">
+                                                    Prompt Design in Vertex AI Skill Badge (Google Cloud)
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a className="text-sky-700 dark:text-sky-500 underline" href="https://www.cloudskillsboost.google/public_profiles/d0f4633d-e83c-4705-b932-bf445ef4df34/badges/14388249?locale=en&utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share" target="_blank">
+                                                    Introduction to Responsible AI (Google Cloud)
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a className="text-sky-700 dark:text-sky-500 underline" href="https://www.cloudskillsboost.google/public_profiles/d0f4633d-e83c-4705-b932-bf445ef4df34/badges/14387089?locale=en&utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share" target="_blank">
+                                                    Introduction to Large Language Models (Google Cloud)
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a className="text-sky-700 dark:text-sky-500 underline" href="https://www.cloudskillsboost.google/public_profiles/d0f4633d-e83c-4705-b932-bf445ef4df34/badges/14360197?locale=en&utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share" target="_blank">
+                                                    Introduction to Generative AI (Google Cloud)
+                                                </a>
+                                            </li>
                                         </ul>
                                     )}
                                 </li>
