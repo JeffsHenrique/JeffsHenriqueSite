@@ -68,6 +68,12 @@ const CertificatesDialog: FC<CertificatesDialogProps> = ({ open, onClose }) => {
                                                 </a>
                                             </li>
 
+                                            <li>
+                                                <a className="text-sky-700 dark:text-sky-500 underline" href="https://www.udemy.com/certificate/UC-14d0fd21-3180-4a40-9e6f-2ca0f1b4defd/" target="_blank">
+                                                    Docker & Kubernetes: The Practical Guide [2025 Edition]
+                                                </a>
+                                            </li>
+
                                             {/* B7WEB */}
                                             <li>
                                                 <a className="text-sky-700 dark:text-sky-500 underline" href="https://alunos.b7web.com.br/media/certificates/certificado_655084.jpg" target="_blank">

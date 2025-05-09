@@ -48,7 +48,7 @@ export const Projects = () => {
                             <p className="my-2 flex flex-col items-center overflow-auto px-2 text-center max-laptop:text-xs text-purple-700 dark:text-purple-500">{currentLang === 'us-en' ? `Project Description:` : 'Descrição do projeto:'}
                                 <span className="font-bold text-sky-900 dark:text-sky-200">{project.description.projectDetails}</span>
                             </p>
-                            <p className="mb-2 px-2 text-center max-laptop:text-xs text-purple-700 dark:text-purple-500">{currentLang === 'us-en' ? `Tools used: ` : 'Linguagens usadas: '}<span className="font-bold text-sky-900 dark:text-sky-200">{project.description.techsUsed}</span></p>
+                            <p className="mb-2 px-2 text-center max-laptop:text-xs text-purple-700 dark:text-purple-500">{currentLang === 'us-en' ? `Tools used: ` : 'Ferramentas usadas: '}<span className="font-bold text-sky-900 dark:text-sky-200">{project.description.techsUsed}</span></p>
                             <Swiper
                                 modules={[Pagination]}
                                 spaceBetween={1}

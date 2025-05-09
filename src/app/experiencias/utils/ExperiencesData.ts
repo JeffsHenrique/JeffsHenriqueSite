@@ -29,10 +29,9 @@ class ExperiencesData {
             {
                 period: {
                     start: formatPeriod(5, 3, 2025),
-                    end: formatCurrentDate(),
+                    end: formatPeriod(10, 4, 2025),
                 },
                 professionalType: "work",
-                isMyCurrentExperience: true,
                 positionName: `${currentLang === 'us-en' ? `Tech Support - Internship` : 'Técnico de suporte em TI'}`,
                 companyName: 'Prefeitura Municipal de Campinas',
                 mainRole: `${currentLang === 'us-en' ? `Tech support trainee, being responsible for: helping City Hall Department of Education users, with hardware and software; technical support to Education Departments, "NAEDs" and administrative departments, with the internet access, equipments, such as keyboard, mouse, printer, monitor), computers, notebooks, cromebooks, and tablets; Organizing cables and basic infrastructure; Approval of new equipments acquired directly from schools; assisting users by phone and e-mails; helping in maintenance of computers, notebooks and tablets from City Hall Department of Education` : 'Estagiário de suporte, tendo como principais atividades: Auxiliar os usuários da SME em suporte a Hardware e Software; Suporte técnico às Unidades Educacionais, aos NAEDs e aos prédios administrativos, referentes ao acesso à internet, aos periféricos (teclado, mouse, impressora, monitor), computadores, notebooks, cromebooks e tablets; Organização de cabos e infraestrutura básica; Homologação de equipamentos novos adquiridos diretamente pelas escolas; Auxiliar no atendimento ao usuário por telefone e também por e-mails; Auxiliar na manutenção dos computadores, notebooks e tablets adquiridos pela SME.'}`,
@@ -106,7 +105,7 @@ class ExperiencesData {
                 companyName: 'ICASA - Instituto Campineiro de análise de Solo e Adubo',
                 mainRole: `${currentLang === 'us-en' ? `An agricultural company, specialized in soil and fertilizer. Main activities: typing of the results and printing of the report; customer's service; quality assurance (daily update of sheets, file control, etc).` : 'Empresa de agricultura de precisão, realizando análises em solos e fertilizantes em geral (comumente adubo e calcário). As principais atividades eram: digitação de resultados e impressão de laudos; atendimento ao cliente; controle de qualidade (atualização diária de planilhas, controle de arquivos, etc).'}`,
                 photos: [
-                    
+
                 ],
             },
 
