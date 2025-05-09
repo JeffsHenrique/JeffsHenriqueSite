@@ -196,7 +196,7 @@ class SkillsData {
                 name: 'Kubernetes',
                 image: kubernetesIcon.src,
                 progressBar: {
-                    progressLevel: 20,
+                    progressLevel: 30,
                     color: '#0DB7ED'
                 },
             },
@@ -205,7 +205,7 @@ class SkillsData {
                 name: 'AI',
                 image: aiIcon.src,
                 progressBar: {
-                    progressLevel: 15,
+                    progressLevel: 20,
                     color: '#3A9DEE'
                 },
             },

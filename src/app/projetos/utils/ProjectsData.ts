@@ -13,6 +13,10 @@ import jamilleSubs3 from '../assets/jamillesubs-3.png'
 import jamilleSubs4 from '../assets/jamillesubs-4.png'
 import jamilleSubs5 from '../assets/jamillesubs-5.png'
 import jamilleSubs6 from '../assets/jamillesubs-6.png'
+import jamilleSubs7 from '../assets/jamillesubs-7.png'
+import jamilleSubs8 from '../assets/jamillesubs-8.png'
+import jamilleSubs9 from '../assets/jamillesubs-9.png'
+import jamilleSubs10 from '../assets/jamillesubs-10.png'
 import jamilleSubsGif1 from '../assets/jamillesubsgif-1.gif'
 import miraPortfolio1 from '../assets/miraportfolio-1.png'
 import miraPortfolio2 from '../assets/miraportfolio-2.png'
@@ -69,22 +73,16 @@ class ProjectsData {
                 title: `Jamille Subs ${currentLang === 'us-en' ? `(WORKING)` : '(EM CONSTRUÇÃO)'}`,
                 projectLevel: 4,
                 images: [
-                    jamilleSubsGif1.src,
-                    jamilleSubs1.src,
-                    jamilleSubs2.src,
-                    jamilleSubs3.src,
-                    jamilleSubs4.src,
-                    jamilleSubs5.src,
-                    jamilleSubs6.src,
+                    jamilleSubs10.src,
+                    jamilleSubs9.src,
+                    jamilleSubs7.src,
+                    jamilleSubs8.src,
                 ],
                 imageAlt: `${currentLang === 'us-en' ? `Sequence of pictures of my Jamille Subs project` : 'Sequência de fotos do meu projeto Jamille Subs'}`,
                 description: {
-                    projectDetails: `${currentLang === 'us-en' ? `At first, this project was thought only to help me with my subtitles freelancer jobs. The last image is the project developed using only HTML, CSS and JavaScript (before I get more understanding in React). It's still in progress, with lots of ideas that will require more study. Some of my goals are: An authentication system (with users registered in a database); an AI manipulation, to generate the automatic transcription of the videos; a text substitution when transcribing; a synchronization system, using only front-end; and so on!` : 'Esse projeto foi pensado, inicialmente, apenas para me ajudar com trabalhos autônomos de legendagem. A última imagem é o projeto desenvolvido apenas com HTML, CSS e JavaScript (antes de eu adquirir mais conhecimentos em react). Ainda está em construção, com muitas ideias que requerem mais estudos. Alguns dos meus objetivos são: sistema de autenticação (com pessoas cadastradas em um banco de dados); manipulação com IA para realizar a transcrição automática de vídeos; substituição de texto na transcrição; sistema de sincronia utilizando front-end; dentre outros!'}`,
-                    techsUsed: `Next.js, React com TypeScript ${currentLang === 'us-en' ? `and` : 'e'} TailwindCss`
+                    projectDetails: `${currentLang === 'us-en' ? `At first, this project was thought only to help me with my subtitles freelancer jobs. It's still in progress to, in a near future, be commercialized. Currently, there are on this project: Authentication; Transcription screen, with real time functionalities, like pause/unpause video, increase/decrease speed, boost up 400% of the audio, download in .txt or .srt format; Synchronization screen, with real time functionalities to beyond transcription, like synchronize subtitles, fast subtitle management, waveform, spell check for grammar errors (in Portuguese or English), download subtitles in .srt format.` : 'Esse projeto foi pensado, inicialmente, apenas para me ajudar com trabalhos autônomos de legendagem. Ainda está em construção para, no futuro, ser comercializado. Atualmente, o projeto consiste em: Sistema de autenticação; Tela de transcrição, com funcionalidades em tempo real, como pausar/despausar o vídeo, aumentar/diminuir a velocidade, aumentar o som até 400%, marcações de tags, download em formato .txt ou .srt; Tela de sincronia, com funcionalidades em tempo real para além da transcrição, como sincronizar legendas, edição rápida da legenda, ondas sonoras, spell check para erros na legenda (com opção de dicionário em português ou inglês), download das legendas sincronizadas em formato .srt.'}`,
+                    techsUsed: `Next.js, React, TypeScript, TailwindCss, Node.js, Express, Postgresql, Prisma, Docker`
                 },
-                externalLinks: {
-                    projectLink: 'https://jamille-subs-fe.vercel.app/'
-                }
             },
             {
                 title: 'Mira - Website Portfolio',
