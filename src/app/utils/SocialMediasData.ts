@@ -15,7 +15,7 @@ class SocialMediasData {
             {
                 name: 'LinkedIn',
                 image: linkedinIcon.src,
-                href: 'https://www.linkedin.com/in/jeffersonalmeida/'
+                href: 'https://www.linkedin.com/in/jeffshenrique/'
             },
             {
                 name: 'Instagram',

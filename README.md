@@ -24,6 +24,7 @@
 
 <h1 align="center">Version Updates</h1>
 
+- 1.3.3: Changing new LinkedIn URL
 - 1.3.2: Adding new information: Docker & Kubernetes certificate; end date of internship; update project session
 - 1.3.1: Adding new information: Knowledge (docker & kubernetes, AI & Google Cloud); New Experience (internship at Prefeitura Municipal de Campinas); and New Certificates (Program Generative AI by Google Cloud)
 - 1.3.0: Implementing Current Projects and Certificates (Current Projects are commented. Data will be inserted soon...)
