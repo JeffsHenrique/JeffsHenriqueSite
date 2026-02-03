@@ -8,10 +8,11 @@ export interface Project {
         techsUsed: string
     },
     externalLinks?: {
-        projectLink: string,
+        projectLink?: string,
         ref?: {
             name: string,
             link?: string
-        }
+        },
+        videos?: string[]
     }
 }
