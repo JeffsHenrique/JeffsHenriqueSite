@@ -1,12 +1,12 @@
+import { PhotoDialog } from "@/app/components/PhotoDialog"
+import { Section } from "@/app/components/Section"
 import { useCallback, useEffect, useState } from "react"
-import { Project } from "../types/Project"
-import { projectsData } from "../utils/ProjectsData"
-import { Swiper, SwiperSlide } from "swiper/react"
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination } from "swiper/modules"
-import { PhotoDialog } from "@/app/components/PhotoDialog"
-import { Section } from "@/app/components/Section"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Project } from "../types/Project"
+import { projectsData } from "../utils/ProjectsData"
 
 export const Projects = () => {
     const [projects, setProjects] = useState<Project[]>([])
@@ -82,6 +82,14 @@ export const Projects = () => {
 
                                 {project.externalLinks?.ref && (
                                     <p className="my-2 px-2 text-center max-laptop:text-xs text-purple-700 dark:text-purple-500">{currentLang === 'us-en' ? `References: ` : 'Referências: '}<a className="font-bold underline text-sky-900 dark:text-sky-200" href={project.externalLinks.ref.link} target="_blank">{project.externalLinks.ref.name}</a></p>
+                                )}
+
+                                {project.externalLinks?.videos && (
+                                    <div>
+                                        {project.externalLinks.videos.map((video, index) => (
+                                            <p className="my-2 px-2 text-center max-laptop:text-xs text-purple-700 dark:text-purple-500">{currentLang === 'us-en' ? `➛ ` : '➛ '}<a className="font-bold underline text-sky-900 dark:text-sky-200" href={video} target="_blank">Dashboard Antigo - Vídeo {index + 1}</a></p>
+                                        ))}
+                                    </div>
                                 )}
                             </div>
                         </div>

@@ -1,23 +1,23 @@
 import type { Experience } from "../types/Experience";
 
-import { formatPeriod, formatCurrentDate } from "@/app/utils/DateFormatter";
+import { formatCurrentDate, formatPeriod } from "@/app/utils/DateFormatter";
 
 // assets
-import etclegendas1 from '../assets/etclegendas-1.png'
-import etclegendas2 from '../assets/etclegendas-2.png'
-import showcaseanalista1 from '../assets/showcaseanalista-1.jpg'
-import showcaseanalista2 from '../assets/showcaseanalista-2.jpg'
-import showcaseanalista3 from '../assets/showcaseanalista-3.jpg'
-import showcaseestagio1 from '../assets/showcaseestagio-1.jpg'
-import showcaseestagio2 from '../assets/showcaseestagio-2.jpg'
-import showcaseestagio3 from '../assets/showcaseestagio-3.jpg'
-import esamcaudiovisual1 from '../assets/esamcaudiovisual-1.jpeg'
-import esamcaudiovisual2 from '../assets/esamcaudiovisual-2.jpeg'
-import esamcaudiovisual3 from '../assets/esamcaudiovisual-3.jpeg'
-import esamcaudiovisual4 from '../assets/esamcaudiovisual-4.jpeg'
-import esamcaudiovisual5 from '../assets/esamcaudiovisual-5.jpeg'
-import esamcaudiovisual6 from '../assets/esamcaudiovisual-6.jpeg'
-import esamcaudiovisual7 from '../assets/esamcaudiovisual-7.jpeg'
+import esamcaudiovisual1 from '../assets/esamcaudiovisual-1.jpeg';
+import esamcaudiovisual2 from '../assets/esamcaudiovisual-2.jpeg';
+import esamcaudiovisual3 from '../assets/esamcaudiovisual-3.jpeg';
+import esamcaudiovisual4 from '../assets/esamcaudiovisual-4.jpeg';
+import esamcaudiovisual5 from '../assets/esamcaudiovisual-5.jpeg';
+import esamcaudiovisual6 from '../assets/esamcaudiovisual-6.jpeg';
+import esamcaudiovisual7 from '../assets/esamcaudiovisual-7.jpeg';
+import etclegendas1 from '../assets/etclegendas-1.png';
+import etclegendas2 from '../assets/etclegendas-2.png';
+import showcaseanalista1 from '../assets/showcaseanalista-1.jpg';
+import showcaseanalista2 from '../assets/showcaseanalista-2.jpg';
+import showcaseanalista3 from '../assets/showcaseanalista-3.jpg';
+import showcaseestagio1 from '../assets/showcaseestagio-1.jpg';
+import showcaseestagio2 from '../assets/showcaseestagio-2.jpg';
+import showcaseestagio3 from '../assets/showcaseestagio-3.jpg';
 
 class ExperiencesData {
     getExperiences(): Promise<Experience[]> {
@@ -26,6 +26,17 @@ class ExperiencesData {
         const experiences: Experience[] = [
 
             // WORK EXPERIENCES
+            {
+                period: {
+                    start: formatPeriod(1, 7, 2025),
+                    end: formatPeriod(20, 12, 2025),
+                },
+                professionalType: "work",
+                positionName: `${currentLang === 'us-en' ? `Frontend Developer` : 'Desenvolvedor Web Frontend'}`,
+                companyName: 'EMS-A.COM',
+                mainRole: `${currentLang === 'us-en' ? `5 Months Temporary contract. Web frontend development, using Firebase as BAAS. Refactoring of mTs sensors' management site, using React-Router/Vite for the frontend: ➛ Implementing authentication and customer/product registration screens; ➛ Refactoring and improving the dashboard for dynamic graphics visualization; ➛ Improving the interface` : 'Contrato temporário de 5 meses. Desenvolvimento web frontend, utilizando Firebase como BAAS. Reformulação do site de gerenciamento de sensores mTs, utilizando React-Router/Vite para o Frontend: ➛ Implementação de telas de autenticação e cadastro de clientes/produtos; ➛ Reformulação e melhoria no dashboard para visualização de gráficos dinâmicos; ➛ Melhoria na interface.'}`,
+                mainTools: 'React Router, Firebase, Shadcn, BitBucket',
+            },
             {
                 period: {
                     start: formatPeriod(5, 3, 2025),

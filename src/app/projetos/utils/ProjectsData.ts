@@ -1,26 +1,26 @@
 import type { Project } from "../types/Project";
 
 // assets
-import pokedex1 from '../assets/pokedex-1.png'
-import pokedex2 from '../assets/pokedex-2.png'
-import pokedex3 from '../assets/pokedex-3.png'
-import pokedexGif1 from '../assets/pokedexgif-1.gif'
-import memoryCow1 from '../assets/memorycow-1.png'
-import memoryCow2 from '../assets/memorycow-2.png'
-import jamilleSubs1 from '../assets/jamillesubs-1.png'
-import jamilleSubs2 from '../assets/jamillesubs-2.png'
-import jamilleSubs3 from '../assets/jamillesubs-3.png'
-import jamilleSubs4 from '../assets/jamillesubs-4.png'
-import jamilleSubs5 from '../assets/jamillesubs-5.png'
-import jamilleSubs6 from '../assets/jamillesubs-6.png'
-import jamilleSubs7 from '../assets/jamillesubs-7.png'
-import jamilleSubs8 from '../assets/jamillesubs-8.png'
-import jamilleSubs9 from '../assets/jamillesubs-9.png'
-import jamilleSubs10 from '../assets/jamillesubs-10.png'
-import jamilleSubsGif1 from '../assets/jamillesubsgif-1.gif'
-import miraPortfolio1 from '../assets/miraportfolio-1.png'
-import miraPortfolio2 from '../assets/miraportfolio-2.png'
-import miraPortfolio3 from '../assets/miraportfolio-3.png'
+import jamilleSubs10 from '../assets/jamillesubs-10.png';
+import jamilleSubs7 from '../assets/jamillesubs-7.png';
+import jamilleSubs8 from '../assets/jamillesubs-8.png';
+import jamilleSubs9 from '../assets/jamillesubs-9.png';
+import memoryCow1 from '../assets/memorycow-1.png';
+import memoryCow2 from '../assets/memorycow-2.png';
+import miraPortfolio1 from '../assets/miraportfolio-1.png';
+import miraPortfolio2 from '../assets/miraportfolio-2.png';
+import miraPortfolio3 from '../assets/miraportfolio-3.png';
+import mtsSensores1 from '../assets/mts-sensores-1.png';
+import mtsSensores2 from '../assets/mts-sensores-2.png';
+import mtsSensores3 from '../assets/mts-sensores-3.png';
+import mtsSensores4 from '../assets/mts-sensores-4.png';
+import mtsSensores5 from '../assets/mts-sensores-5.png';
+import mtsSensoresCliente1 from '../assets/mts-sensores-cliente-1.png';
+import mtsSensoresOld1 from '../assets/mts-sensores-old-1.png';
+import pokedex1 from '../assets/pokedex-1.png';
+import pokedex2 from '../assets/pokedex-2.png';
+import pokedex3 from '../assets/pokedex-3.png';
+import pokedexGif1 from '../assets/pokedexgif-1.gif';
 
 class ProjectsData {
     getProjects(): Promise<Project[]> {
@@ -99,6 +99,30 @@ class ProjectsData {
                 },
                 externalLinks: {
                     projectLink: 'https://miracampos.vercel.app/'
+                }
+            },
+            {
+                title: 'Dashboard - mTs Sensores',
+                projectLevel: 3,
+                images: [
+                    mtsSensores1.src,
+                    mtsSensores2.src,
+                    mtsSensores3.src,
+                    mtsSensores4.src,
+                    mtsSensores5.src,
+                    mtsSensoresCliente1.src,
+                    mtsSensoresOld1.src
+                ],
+                imageAlt: `${currentLang === 'us-en' ? `Sequence of pictures of Sensors' Dashboard` : 'Sequência de fotos do Dashboard dos Sensores'}`,
+                description: {
+                    projectDetails: `${currentLang === 'us-en' ? `Development of a web frontend, using Firebase as a BAAS; Refactoring of the sensors' management site, using React-Router/Vite; Implementation of authentication and customer/product registration screens.` : 'Desenvolvimento web frontend, utilizando Firebase como BAAS; Reformulação do site de gerenciamento de sensores, utilizando React-Router/Vite; Implementação de telas de autenticação e cadastro de clientes/produtos.'}`,
+                    techsUsed: `React-Router/Vite, React com TypeScript, ShadcnUI ${currentLang === 'us-en' ? `and` : 'e'} Firebase como BAAS`
+                },
+                externalLinks: {
+                    videos: [
+                        'https://youtu.be/kL7pxFOT8CQ',
+                        'https://youtu.be/28XaJXH_HjQ'
+                    ]
                 }
             },
         ]

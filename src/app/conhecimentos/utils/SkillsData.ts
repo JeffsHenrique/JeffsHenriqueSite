@@ -1,34 +1,36 @@
 import type { Skill } from '../types/Skill'
 
-import htmlIcon from '../assets/htmlicon.png'
+import aiIcon from '../assets/aiicon.png'
+import awsIcon from '../assets/awsicon.png'
 import cssIcon from '../assets/cssicon.png'
-import javascriptIcon from '../assets/javascripticon.png'
-import typescriptIcon from '../assets/typescripticon.png'
-import reactIcon from '../assets/reacticon.png'
-import nodejsIcon from '../assets/nodeicon.png'
-import pythonIcon from '../assets/pythonicon.png'
-import tailwindcssIcon from '../assets/tailwindcssicon.png'
-import gitIcon from '../assets/giticon.png'
+import dockerIcon from '../assets/dockericon.png'
 import githubIcon from '../assets/githubicon.png'
+import gitIcon from '../assets/giticon.png'
+import googleCloudIcon2 from '../assets/googlecloud2.png'
+import htmlIcon from '../assets/htmlicon.png'
+import javascriptIcon from '../assets/javascripticon.png'
+import kubernetesIcon from '../assets/kubernetesicon.png'
+import materialuiIcon from '../assets/materialuiicon.png'
 import mysqlIcon from '../assets/mysqlicon.png'
 import nextjsIcon from '../assets/nextjsicon.png'
-import materialuiIcon from '../assets/materialuiicon.png'
+import nodejsIcon from '../assets/nodeicon.png'
+import pythonIcon from '../assets/pythonicon.png'
+import reactIcon from '../assets/reacticon.png'
 import reactnativeIcon from '../assets/reactnativeicon.png'
-import awsIcon from '../assets/awsicon.png'
-import dockerIcon from '../assets/dockericon.png'
-import kubernetesIcon from '../assets/kubernetesicon.png'
-import aiIcon from '../assets/aiicon.png'
-import googleCloudIcon2 from '../assets/googlecloud2.png'
+import shadcnIcon from '../assets/shadcnicon.png'
+import tailwindcssIcon from '../assets/tailwindcssicon.png'
+import typescriptIcon from '../assets/typescripticon.png'
+import vueIcon from '../assets/vueicon.png'
 
-import figmaIcon from '../assets/figmaicon.png'
-import vscodeIcon from '../assets/vscodeicon.png'
 import aftereffectsIcon from '../assets/aftereffectsicon.png'
-import premiereproIcon from '../assets/premiereicon.png'
+import englishIcon from '../assets/englishicon.png'
+import figmaIcon from '../assets/figmaicon.png'
 import illustratorIcon from '../assets/illustratoricon.png'
 import photoshopIcon from '../assets/photoshopicon.png'
+import premiereproIcon from '../assets/premiereicon.png'
 import revisaoIcon from '../assets/revisaoicon.png'
 import subtitleeditIcon from '../assets/subtitleediticon.png'
-import englishIcon from '../assets/englishicon.png'
+import vscodeIcon from '../assets/vscodeicon.png'
 
 class SkillsData {
     getSkills(): Promise<Skill[]> {
@@ -43,7 +45,7 @@ class SkillsData {
                 name: 'HTML',
                 image: htmlIcon.src,
                 progressBar: {
-                    progressLevel: 95,
+                    progressLevel: 100,
                     color: '#E54C21'
                 },
             },
@@ -52,7 +54,7 @@ class SkillsData {
                 name: 'CSS',
                 image: cssIcon.src,
                 progressBar: {
-                    progressLevel: 90,
+                    progressLevel: 100,
                     color: '#214CE5'
                 },
             },
@@ -61,7 +63,7 @@ class SkillsData {
                 name: 'JavaScript',
                 image: javascriptIcon.src,
                 progressBar: {
-                    progressLevel: 80,
+                    progressLevel: 90,
                     color: '#F7E018'
                 },
             },
@@ -70,7 +72,7 @@ class SkillsData {
                 name: 'TypeScript',
                 image: typescriptIcon.src,
                 progressBar: {
-                    progressLevel: 60,
+                    progressLevel: 70,
                     color: '#007ACC'
                 },
             },
@@ -88,7 +90,7 @@ class SkillsData {
                 name: 'Node.js',
                 image: nodejsIcon.src,
                 progressBar: {
-                    progressLevel: 30,
+                    progressLevel: 60,
                     color: '#6FA660'
                 },
             },
@@ -97,7 +99,7 @@ class SkillsData {
                 name: 'Python',
                 image: pythonIcon.src,
                 progressBar: {
-                    progressLevel: 30,
+                    progressLevel: 50,
                     color: '#F7CE36'
                 },
             },
@@ -106,7 +108,7 @@ class SkillsData {
                 name: 'TailwindCss',
                 image: tailwindcssIcon.src,
                 progressBar: {
-                    progressLevel: 85,
+                    progressLevel: 100,
                     color: '#38BDF8'
                 },
             },
@@ -115,7 +117,7 @@ class SkillsData {
                 name: 'Git',
                 image: gitIcon.src,
                 progressBar: {
-                    progressLevel: 70,
+                    progressLevel: 80,
                     color: '#F34F29'
                 },
             },
@@ -124,7 +126,7 @@ class SkillsData {
                 name: 'Github',
                 image: githubIcon.src,
                 progressBar: {
-                    progressLevel: 65,
+                    progressLevel: 70,
                     color: '#f0f0f0'
                 },
             },
@@ -187,7 +189,7 @@ class SkillsData {
                 name: 'Docker',
                 image: dockerIcon.src,
                 progressBar: {
-                    progressLevel: 45,
+                    progressLevel: 60,
                     color: '#0DB7ED'
                 },
             },
@@ -196,7 +198,7 @@ class SkillsData {
                 name: 'Kubernetes',
                 image: kubernetesIcon.src,
                 progressBar: {
-                    progressLevel: 30,
+                    progressLevel: 40,
                     color: '#0DB7ED'
                 },
             },
@@ -216,6 +218,24 @@ class SkillsData {
                 progressBar: {
                     progressLevel: 15,
                     color: '#E9C825'
+                },
+            },
+            {
+                type: 'dev',
+                name: 'Shadcn/ui',
+                image: shadcnIcon.src,
+                progressBar: {
+                    progressLevel: 70,
+                    color: '#202121'
+                },
+            },
+            {
+                type: 'dev',
+                name: 'Vue.js',
+                image: vueIcon.src,
+                progressBar: {
+                    progressLevel: 35,
+                    color: '#42f5a7'
                 },
             },
 

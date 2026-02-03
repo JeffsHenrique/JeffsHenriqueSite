@@ -1,8 +1,7 @@
+import githubIcon from '@/app/assets/githubicon.png';
+import instagramIcon from '@/app/assets/instagramicon.png';
+import linkedinIcon from '@/app/assets/linkedinicon.png';
 import type { SocialMedia } from "../types/SocialMedia";
-import catTest from '@/app/images/cat.png'
-import githubIcon from '@/app/assets/githubicon.png'
-import linkedinIcon from '@/app/assets/linkedinicon.png'
-import instagramIcon from '@/app/assets/instagramicon.png'
 
 class SocialMediasData {
     getSocialMedias(): Promise<SocialMedia[]> {
@@ -20,7 +19,7 @@ class SocialMediasData {
             {
                 name: 'Instagram',
                 image: instagramIcon.src,
-                href: 'https://www.instagram.com/jeffshenrique_dev/'
+                href: 'https://www.instagram.com/jeffsfurlaneto_dev/'
             },
         ]
 
