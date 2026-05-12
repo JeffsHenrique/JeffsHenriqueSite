@@ -47,7 +47,7 @@ export const ProficiencySkillsHelper = (props: HelperProps) => {
                                         enterDelay={1000}
                                     >
                                         <button onClick={() => setShouldSuperficialShow(!shouldSuperficialShow)}>
-                                            <p className="ml-4 text-xl font-bold hover:text-purple-700 hover:dark:text-purple-400 duration-300">{currentLang === 'us-en' ? `0% to 10% - Surface Understanding` : '0% a 10% - Conhecimento Superficial'}</p>
+                                            <p className="ml-4 text-xl font-bold hover:text-purple-700 dark:hover:text-purple-400 duration-300">{currentLang === 'us-en' ? `0% to 10% - Surface Understanding` : '0% a 10% - Conhecimento Superficial'}</p>
                                         </button>
                                     </Tooltip>
 
@@ -67,7 +67,7 @@ export const ProficiencySkillsHelper = (props: HelperProps) => {
                                         placement="right"
                                     >
                                         <button onClick={() => setShouldBasicShow(!shouldBasicShow)}>
-                                            <p className="ml-4 text-xl font-bold hover:text-purple-700 hover:dark:text-purple-400 duration-300">{currentLang === 'us-en' ? `10% to 20% - Basics` : '10% a 20% - Noções Básicas'}</p>
+                                            <p className="ml-4 text-xl font-bold hover:text-purple-700 dark:hover:text-purple-400 duration-300">{currentLang === 'us-en' ? `10% to 20% - Basics` : '10% a 20% - Noções Básicas'}</p>
                                         </button>
                                     </Tooltip>
 
@@ -88,7 +88,7 @@ export const ProficiencySkillsHelper = (props: HelperProps) => {
                                         placement="right"
                                     >
                                         <button onClick={() => setShouldBeginnerShow(!shouldBeginnerShow)}>
-                                            <p className="ml-4 text-xl font-bold hover:text-purple-700 hover:dark:text-purple-400 duration-300">{currentLang === 'us-en' ? `20% to 40% - Beginner` : '20% a 40% - Iniciante'}</p>
+                                            <p className="ml-4 text-xl font-bold hover:text-purple-700 dark:hover:text-purple-400 duration-300">{currentLang === 'us-en' ? `20% to 40% - Beginner` : '20% a 40% - Iniciante'}</p>
                                         </button>
                                     </Tooltip>
 
@@ -109,7 +109,7 @@ export const ProficiencySkillsHelper = (props: HelperProps) => {
                                         placement="right"
                                     >
                                         <button onClick={() => setShouldIntermediateShow(!shouldIntermediateShow)}>
-                                            <p className="ml-4 text-xl font-bold hover:text-purple-700 hover:dark:text-purple-400 duration-300">{currentLang === 'us-en' ? `40% to 60% - Intermediate` : '40% a 60% - Intermediário'}</p>
+                                            <p className="ml-4 text-xl font-bold hover:text-purple-700 dark:hover:text-purple-400 duration-300">{currentLang === 'us-en' ? `40% to 60% - Intermediate` : '40% a 60% - Intermediário'}</p>
                                         </button>
                                     </Tooltip>
 
@@ -130,7 +130,7 @@ export const ProficiencySkillsHelper = (props: HelperProps) => {
                                         placement="right"
                                     >
                                         <button onClick={() => setShouldAdvancedShow(!shouldAdvancedShow)}>
-                                            <p className="ml-4 text-xl font-bold hover:text-purple-700 hover:dark:text-purple-400 duration-300">{currentLang === 'us-en' ? `60% to 80% - Advanced` : '60% a 80% - Avançado'}</p>
+                                            <p className="ml-4 text-xl font-bold hover:text-purple-700 dark:hover:text-purple-400 duration-300">{currentLang === 'us-en' ? `60% to 80% - Advanced` : '60% a 80% - Avançado'}</p>
                                         </button>
                                     </Tooltip>
 
@@ -151,7 +151,7 @@ export const ProficiencySkillsHelper = (props: HelperProps) => {
                                         placement="right"
                                     >
                                         <button onClick={() => setShouldSpecialistShow(!shouldSpecialistShow)}>
-                                            <p className="ml-4 text-xl font-bold hover:text-purple-700 hover:dark:text-purple-400 duration-300">{currentLang === 'us-en' ? `80% to 90% - Specialist` : '80% a 90% - Especialista'}</p>
+                                            <p className="ml-4 text-xl font-bold hover:text-purple-700 dark:hover:text-purple-400 duration-300">{currentLang === 'us-en' ? `80% to 90% - Specialist` : '80% a 90% - Especialista'}</p>
                                         </button>
                                     </Tooltip>
 
@@ -172,7 +172,7 @@ export const ProficiencySkillsHelper = (props: HelperProps) => {
                                         placement="right"
                                     >
                                         <button onClick={() => setShouldMasterShow(!shouldMasterShow)}>
-                                            <p className="ml-4 text-xl font-bold hover:text-purple-700 hover:dark:text-purple-400 duration-300">{currentLang === 'us-en' ? `90% to 100% - Master` : '90% a 100% - Mestre'}</p>
+                                            <p className="ml-4 text-xl font-bold hover:text-purple-700 dark:hover:text-purple-400 duration-300">{currentLang === 'us-en' ? `90% to 100% - Master` : '90% a 100% - Mestre'}</p>
                                         </button>
                                     </Tooltip>
 

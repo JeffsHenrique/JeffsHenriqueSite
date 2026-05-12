@@ -36,7 +36,7 @@ export const GameDialog = (props: GameProps) => {
                         <div className="border-2 rounded-md border-slate-700 dark:border-slate-300 bg-slate-200 shadow-lg">
                             <iframe
                             ref={iframeRef}
-                            className="w-[1080px] min-h-[100vh] max-laptop:w-[80vw]"
+                            className="w-[1080px] min-h-screen max-laptop:w-[80vw]"
                             title={title}
                             src={source}
                             tabIndex={0}

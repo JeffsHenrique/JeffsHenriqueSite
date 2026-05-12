@@ -42,7 +42,7 @@ const CertificatesDialog: FC<CertificatesDialogProps> = ({ open, onClose }) => {
                                         enterDelay={1000}
                                     >
                                         <button onClick={() => setShouldFreeCoursesCertificatesShow(!shouldFreeCoursesCertificatesShow)}>
-                                            <p className="ml-4 font-bold hover:text-purple-700 hover:dark:text-purple-400 duration-300">{currentLang === 'us-en' ? `Free Courses` : 'Cursos Livres'}</p>
+                                            <p className="ml-4 font-bold hover:text-purple-700 dark:hover:text-purple-400 duration-300">{currentLang === 'us-en' ? `Free Courses` : 'Cursos Livres'}</p>
                                         </button>
                                     </Tooltip>
 
@@ -136,7 +136,7 @@ const CertificatesDialog: FC<CertificatesDialogProps> = ({ open, onClose }) => {
                                         enterDelay={1000}
                                     >
                                         <button onClick={() => setShouldSpecializationCoursesCertificatesShow(!shouldSpecializationCoursesCertificatesShow)}>
-                                            <p className="ml-4 font-bold hover:text-purple-700 hover:dark:text-purple-400 duration-300">{currentLang === 'us-en' ? `Specialization Courses` : 'Cursos Especializantes'}</p>
+                                            <p className="ml-4 font-bold hover:text-purple-700 dark:hover:text-purple-400 duration-300">{currentLang === 'us-en' ? `Specialization Courses` : 'Cursos Especializantes'}</p>
                                         </button>
                                     </Tooltip>
 
@@ -156,7 +156,7 @@ const CertificatesDialog: FC<CertificatesDialogProps> = ({ open, onClose }) => {
                                         enterDelay={1000}
                                     >
                                         <button onClick={() => setShouldAcademicCoursesCertificatesShow(!shouldAcademicCoursesCertificatesShow)}>
-                                            <p className="ml-4 font-bold hover:text-purple-700 hover:dark:text-purple-400 duration-300">{currentLang === 'us-en' ? `Academic Courses` : 'Cursos Acadêmicos'}</p>
+                                            <p className="ml-4 font-bold hover:text-purple-700 dark:hover:text-purple-400 duration-300">{currentLang === 'us-en' ? `Academic Courses` : 'Cursos Acadêmicos'}</p>
                                         </button>
                                     </Tooltip>
 

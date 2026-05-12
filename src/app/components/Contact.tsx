@@ -158,7 +158,7 @@ export const Contact = (props: ContactDialogProps) => {
                                 />
                                 <div className="flex justify-center">
                                     <button
-                                        className="text-2xl max-tablet:text-lg p-2 border border-slate-700 dark:border-slate-300 hover:scale-105 transition-all duration-300 bg-sky-300 hover:bg-sky-400 dark:bg-slate-800 hover:dark:bg-slate-700 rounded-md shadow-lg"
+                                        className="text-2xl max-tablet:text-lg p-2 border border-slate-700 dark:border-slate-300 hover:scale-105 transition-all duration-300 bg-sky-300 hover:bg-sky-400 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-md shadow-lg"
                                         type="submit"
                                     >
                                         {currentLang === 'us-en' ? `Send` : 'Enviar'}
