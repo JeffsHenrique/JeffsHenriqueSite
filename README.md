@@ -24,6 +24,7 @@
 
 <h1 align="center">Version Updates</h1>
 
+- 2.0.0: New UI! Changed from Material UI to ShadcnUI components.
 - 1.3.3: Changing new LinkedIn URL
 - 1.3.2: Adding new information: Docker & Kubernetes certificate; end date of internship; update project session
 - 1.3.1: Adding new information: Knowledge (docker & kubernetes, AI & Google Cloud); New Experience (internship at Prefeitura Municipal de Campinas); and New Certificates (Program Generative AI by Google Cloud)
