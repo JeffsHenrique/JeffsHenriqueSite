@@ -1,37 +1,47 @@
-import { ReactNode, createContext, useContext, useEffect, useState } from "react"
+import {
+	ReactNode,
+	createContext,
+	useContext,
+	useEffect,
+	useState,
+} from "react";
 
-const STORAGE_KEY = 'ThemeContextKey'
+const STORAGE_KEY = "ThemeContextKey";
 
 type ThemeContext = {
-    theme: string
-    setTheme: (newTheme: string) => void
-}
+	theme: string;
+	setTheme: (newTheme: string) => void;
+};
 
-export const ThemeContext = createContext<ThemeContext | null>(null)
+export const ThemeContext = createContext<ThemeContext | null>(null);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-    const [isMounted, setIsMounted] = useState(false)
-    const [theme, setTheme] = useState(
-        typeof window !== 'undefined'
-        ? localStorage.getItem(STORAGE_KEY) || 'light'
-        : '[]'
-    )
+	const [isMounted, setIsMounted] = useState(false);
+	const [theme, setTheme] = useState(
+		typeof window !== "undefined"
+			? localStorage.getItem(STORAGE_KEY) || "light"
+			: "[]",
+	);
 
-    useEffect(() => {
-        setIsMounted(true)
+	useEffect(() => {
+		setIsMounted(true);
 
-        theme === 'dark' ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark')
+		theme === "dark"
+			? document.documentElement.classList.add("dark")
+			: document.documentElement.classList.remove("dark");
 
-        localStorage.setItem(STORAGE_KEY, theme)
-    }, [theme])
+		localStorage.setItem(STORAGE_KEY, theme);
+	}, [theme]);
 
-    if (!isMounted) {
-        return null
-    }
+	if (!isMounted) {
+		return null;
+	}
 
-    return (
-        <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>
-    )
-}
+	return (
+		<ThemeContext.Provider value={{ theme, setTheme }}>
+			{children}
+		</ThemeContext.Provider>
+	);
+};
 
-export const useTheme = () => useContext(ThemeContext)
+export const useTheme = () => useContext(ThemeContext);

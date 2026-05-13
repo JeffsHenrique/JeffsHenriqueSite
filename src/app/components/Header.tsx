@@ -1,53 +1,42 @@
-"use client"
+"use client";
 
-import * as React from 'react'
-import { useState } from "react"
-import { ThemeSwitch } from "./ThemeSwitch"
-import { Contact } from "./Contact"
+import { useState } from "react";
+import { Contact } from "./Contact";
+import { ThemeSwitch } from "./ThemeSwitch";
 
-import HomeIcon from '@mui/icons-material/Home';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import { MenuItem } from "@mui/material";
-import { useTheme } from '../contexts/ThemeContext'
-import LanguageSwitch from './LanguageSwitch'
-import { StyledMenuLight, StyledMenuDark, StyledButton } from '../utils/StyledMaterialComponents'
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Home, MoreHorizontal } from "lucide-react";
+import Link from "next/link";
+import LanguageSwitch from "./LanguageSwitch";
 
 export const Header = () => {
-    const [contactIsOpen, setContactIsOpen] = useState(false)
-    const [anchorMenuEl, setAnchorMenuEl] = useState<null | HTMLElement>(null)
+	const [contactIsOpen, setContactIsOpen] = useState(false);
 
-    const open = Boolean(anchorMenuEl)
-    const theme = useTheme()
-    const currentLang = localStorage.getItem('LangContextKey')
+	const currentLang = localStorage.getItem("LangContextKey");
 
-    const handleMoreButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorMenuEl(event.currentTarget)
-    }
+	const handleContactOpen = () => {
+		setContactIsOpen(!contactIsOpen);
+	};
 
-    const handleMoreButtonClose = () => {
-        setAnchorMenuEl(null)
-    }
+	return (
+		<header className="absolute top-0 z-10 p-2 w-full h-14 flex flex-row justify-start items-center gap-16 bg-sky-900 dark:bg-slate-950 text-sky-200 shadow-xl">
+			<h1 className="px-4 hover:scale-110 hover:text-sky-300 transition-all duration-500">
+				<Link href="/">
+					<Home size={40} />
+				</Link>
+			</h1>
 
-    const handleContactOpen = () => {
-        setContactIsOpen(!contactIsOpen)
-        setAnchorMenuEl(null)
-    }
+			<hr className="h-10 border opacity-35 border-slate-600 dark:border-slate-400 max-laptop:hidden" />
 
-    return (
-        <>
-            <header className="absolute top-0 p-2 w-full h-14 flex flex-row justify-start items-center gap-16 bg-sky-900 dark:bg-slate-950 text-sky-200 shadow-xl">
-                <h1 className="px-4 hover:scale-110 hover:text-sky-300 transition-all duration-500">
-                    <a href="/">
-                        <HomeIcon sx={{ fontSize: 40 }} />
-                    </a>
-                </h1>
+			<div className="hidden max-laptop:flex w-full justify-end items-center">
+				<LanguageSwitch />
 
-                <hr className="h-10 border opacity-35 border-slate-600 dark:border-slate-400 max-laptop:hidden" />
-
-                <div className="hidden max-laptop:flex w-full justify-end">
-                    <LanguageSwitch />
-
-                    <StyledButton
+				{/* <StyledButton
                         id="more-button"
                         aria-controls={open ? 'more-menu' : undefined}
                         aria-haspopup="true"
@@ -55,110 +44,89 @@ export const Header = () => {
                         onClick={handleMoreButtonClick}
                     >
                         <MoreHorizIcon sx={{ fontSize: 40 }} />
-                    </StyledButton>
+                    </StyledButton> */}
 
-                    {theme?.theme === 'dark' ?
-                        <StyledMenuDark
-                            id="more-menu"
-                            anchorEl={anchorMenuEl}
-                            open={open}
-                            onClose={handleMoreButtonClose}
-                            MenuListProps={{
-                                'aria-labelledby': 'more-button'
-                            }}
-                        >
-                            <a href="/projetos">
-                                <MenuItem onClick={handleMoreButtonClose}>
-                                    {currentLang === 'us-en' ? 'Projects' : 'Projetos'}
-                                </MenuItem>
-                            </a>
+				<DropdownMenu>
+					<DropdownMenuTrigger asChild>
+						<button type="button">
+							<MoreHorizontal size={40} />
+						</button>
+					</DropdownMenuTrigger>
 
-                            <a href="/conhecimentos">
-                                <MenuItem onClick={handleMoreButtonClose}>
-                                    {currentLang === 'us-en' ? 'Skills' : 'Conhecimentos'}
-                                </MenuItem>
-                            </a>
+					<DropdownMenuContent className="bg-sky-900 dark:bg-slate-950">
+						<Link href="/projetos">
+							<DropdownMenuItem className="text-sky-600 dark:text-sky-200">
+								{currentLang === "us-en" ? "Projects" : "Projetos"}
+							</DropdownMenuItem>
+							{/* <MenuItem onClick={handleMoreButtonClose}>
+                                </MenuItem> */}
+						</Link>
 
-                            <a href="/experiencias">
-                                <MenuItem onClick={handleMoreButtonClose}>
-                                    {currentLang === 'us-en' ? 'Experiences' : 'Experiências'}
-                                </MenuItem>
-                            </a>
+						<Link href="/conhecimentos">
+							<DropdownMenuItem className="text-sky-600 dark:text-sky-200">
+								{currentLang === "us-en" ? "Skills" : "Conhecimentos"}
+							</DropdownMenuItem>
+						</Link>
 
-                            <MenuItem onClick={handleContactOpen}>
-                                {currentLang === 'us-en' ? 'Contact' : 'Contato'}
-                            </MenuItem>
+						<Link href="/experiencias">
+							<DropdownMenuItem className="text-sky-600 dark:text-sky-200">
+								{currentLang === "us-en" ? "Experiences" : "Experiências"}
+							</DropdownMenuItem>
+						</Link>
 
-                            <MenuItem>
-                                <ThemeSwitch />
-                            </MenuItem>
-                        </StyledMenuDark>
+						<DropdownMenuItem
+							className="text-sky-600 dark:text-sky-200"
+							onClick={handleContactOpen}
+						>
+							{currentLang === "us-en" ? "Contact" : "Contato"}
+						</DropdownMenuItem>
 
-                        :
+						<DropdownMenuItem>
+							<ThemeSwitch />
+						</DropdownMenuItem>
+					</DropdownMenuContent>
+				</DropdownMenu>
+			</div>
 
-                        <StyledMenuLight
-                            id="more-menu"
-                            anchorEl={anchorMenuEl}
-                            open={open}
-                            onClose={handleMoreButtonClose}
-                            MenuListProps={{
-                                'aria-labelledby': 'more-button'
-                            }}
-                        >
-                            <a href="/projetos">
-                                <MenuItem onClick={handleMoreButtonClose}>
-                                    {currentLang === 'us-en' ? 'Projects' : 'Projetos'}
-                                </MenuItem>
-                            </a>
+			<div className="flex w-full justify-between max-laptop:hidden">
+				<ul className="flex flex-row items-center justify-end text-lg gap-8">
+					<li className="hover:scale-105 hover:text-sky-300 transition-all">
+						<Link href="/projetos">
+							{" "}
+							{currentLang === "us-en" ? "Projects" : "Projetos"}{" "}
+						</Link>
+					</li>
+					<li className="hover:scale-105 hover:text-sky-300 transition-all">
+						<Link href="/conhecimentos">
+							{" "}
+							{currentLang === "us-en" ? "Skills" : "Conhecimentos"}{" "}
+						</Link>
+					</li>
+					<li className="hover:scale-105 hover:text-sky-300 transition-all">
+						<Link href="/experiencias">
+							{" "}
+							{currentLang === "us-en" ? "Experiences" : "Experiências"}{" "}
+						</Link>
+					</li>
+					<li className="hover:scale-105 hover:text-sky-300 transition-all">
+						<button
+							type="button"
+							className="cursor-pointer"
+							onClick={handleContactOpen}
+						>
+							{currentLang === "us-en" ? "Contact" : "Contato"}
+						</button>
 
-                            <a href="/conhecimentos">
-                                <MenuItem onClick={handleMoreButtonClose}>
-                                    {currentLang === 'us-en' ? 'Skills' : 'Conhecimentos'}
-                                </MenuItem>
-                            </a>
+						<Contact open={contactIsOpen} onClose={handleContactOpen} />
+					</li>
+				</ul>
 
-                            <a href="/experiencias">
-                                <MenuItem onClick={handleMoreButtonClose}>
-                                    {currentLang === 'us-en' ? 'Experiences' : 'Experiências'}
-                                </MenuItem>
-                            </a>
+				<div className="flex justify-center items-center gap-4">
+					<LanguageSwitch />
 
-                            <MenuItem onClick={handleContactOpen}>
-                                {currentLang === 'us-en' ? 'Contact' : 'Contato'}
-                            </MenuItem>
-
-                            <MenuItem>
-                                <ThemeSwitch />
-                            </MenuItem>
-                        </StyledMenuLight>
-                    }
-                </div>
-
-                <div className="flex w-full justify-between max-laptop:hidden">
-                    <ul className="flex flex-row items-center justify-end text-lg gap-8">
-                        <li className="hover:scale-105 hover:text-sky-300 transition-all"><a href="/projetos"> {currentLang === 'us-en' ? 'Projects' : 'Projetos'} </a></li>
-                        <li className="hover:scale-105 hover:text-sky-300 transition-all"><a href="/conhecimentos"> {currentLang === 'us-en' ? 'Skills' : 'Conhecimentos'} </a></li>
-                        <li className="hover:scale-105 hover:text-sky-300 transition-all"><a href="/experiencias"> {currentLang === 'us-en' ? 'Experiences' : 'Experiências'} </a></li>
-                        <li className="hover:scale-105 hover:text-sky-300 transition-all">
-                            <button onClick={handleContactOpen}>
-                                {currentLang === 'us-en' ? 'Contact' : 'Contato'}
-                            </button>
-                            <Contact
-                                open={contactIsOpen}
-                                onClose={handleContactOpen}
-                            />
-                        </li>
-                    </ul>
-
-                    <div className='flex justify-center items-center gap-4'>
-                        <LanguageSwitch />
-
-                        <ThemeSwitch />
-                    </div>
-
-                </div>
-
-            </header>
-        </>
-    )
-}
+					<ThemeSwitch />
+				</div>
+			</div>
+		</header>
+	);
+};
