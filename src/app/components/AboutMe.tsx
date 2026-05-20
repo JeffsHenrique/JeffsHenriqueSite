@@ -87,7 +87,7 @@ export const AboutMe = ({ scrollToGames }: AboutMeProps) => {
 
 				<Contact open={contactIsOpen} onClose={handleContactOpen} />
 
-				{/* <p className="text-sm">
+				<p className="text-sm hidden md:laptop:block">
 					{currentLang === "us-en"
 						? `Or, maybe, you can`
 						: "Ou, se quiser, você também pode "}
@@ -100,7 +100,7 @@ export const AboutMe = ({ scrollToGames }: AboutMeProps) => {
 							? `take a break and have fun.`
 							: "tirar um tempo para se divertir."}
 					</button>
-				</p> */}
+				</p>
 
 				<div className="flex justify-center items-center">
 					<Image

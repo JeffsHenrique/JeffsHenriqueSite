@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { type MouseEventHandler, useState } from "react";
 import { Contact } from "./Contact";
 import { ThemeSwitch } from "./ThemeSwitch";
 
@@ -14,7 +14,19 @@ import { Home, MoreHorizontal } from "lucide-react";
 import Link from "next/link";
 import LanguageSwitch from "./LanguageSwitch";
 
-export const Header = () => {
+interface HeaderProps {
+	scrollToProject?: MouseEventHandler<HTMLButtonElement>;
+	scrollToKnowledge?: MouseEventHandler<HTMLButtonElement>;
+	scrollToExperience?: MouseEventHandler<HTMLButtonElement>;
+	shouldGoBackToHome?: boolean;
+}
+
+export const Header = ({
+	scrollToProject,
+	scrollToKnowledge,
+	scrollToExperience,
+	shouldGoBackToHome,
+}: HeaderProps) => {
 	const [contactIsOpen, setContactIsOpen] = useState(false);
 
 	const currentLang = localStorage.getItem("LangContextKey");
@@ -24,7 +36,7 @@ export const Header = () => {
 	};
 
 	return (
-		<header className="absolute top-0 z-10 p-2 w-full h-14 flex flex-row justify-start items-center gap-16 bg-sky-900 dark:bg-slate-950 text-sky-200 shadow-xl">
+		<header className="fixed w-full top-0 z-10 p-2 h-14 flex flex-row justify-start items-center gap-16 bg-sky-900 dark:bg-slate-950 text-sky-200 shadow-xl">
 			<h1 className="px-4 hover:scale-110 hover:text-sky-300 transition-all duration-500">
 				<Link href="/">
 					<Home size={40} />
@@ -91,22 +103,55 @@ export const Header = () => {
 			<div className="flex w-full justify-between max-laptop:hidden">
 				<ul className="flex flex-row items-center justify-end text-lg gap-8">
 					<li className="hover:scale-105 hover:text-sky-300 transition-all">
-						<Link href="/projetos">
-							{" "}
-							{currentLang === "us-en" ? "Projects" : "Projetos"}{" "}
-						</Link>
+						{shouldGoBackToHome ? (
+							<Link href="/">
+								{" "}
+								{currentLang === "us-en" ? "Projects" : "Projetos"}{" "}
+							</Link>
+						) : (
+							<button
+								type="button"
+								className="cursor-pointer"
+								onClick={scrollToProject}
+							>
+								{" "}
+								{currentLang === "us-en" ? "Projects" : "Projetos"}{" "}
+							</button>
+						)}
 					</li>
 					<li className="hover:scale-105 hover:text-sky-300 transition-all">
-						<Link href="/conhecimentos">
-							{" "}
-							{currentLang === "us-en" ? "Skills" : "Conhecimentos"}{" "}
-						</Link>
+						{shouldGoBackToHome ? (
+							<Link href="/">
+								{" "}
+								{currentLang === "us-en" ? "Skills" : "Conhecimentos"}{" "}
+							</Link>
+						) : (
+							<button
+								type="button"
+								className="cursor-pointer"
+								onClick={scrollToKnowledge}
+							>
+								{" "}
+								{currentLang === "us-en" ? "Skills" : "Conhecimentos"}{" "}
+							</button>
+						)}
 					</li>
 					<li className="hover:scale-105 hover:text-sky-300 transition-all">
-						<Link href="/experiencias">
-							{" "}
-							{currentLang === "us-en" ? "Experiences" : "Experiências"}{" "}
-						</Link>
+						{shouldGoBackToHome ? (
+							<Link href="/">
+								{" "}
+								{currentLang === "us-en" ? "Experiences" : "Experiências"}{" "}
+							</Link>
+						) : (
+							<button
+								type="button"
+								className="cursor-pointer"
+								onClick={scrollToExperience}
+							>
+								{" "}
+								{currentLang === "us-en" ? "Experiences" : "Experiências"}{" "}
+							</button>
+						)}
 					</li>
 					<li className="hover:scale-105 hover:text-sky-300 transition-all">
 						<button

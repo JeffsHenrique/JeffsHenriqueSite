@@ -238,6 +238,17 @@ class SkillsData {
 				},
 			},
 
+			// SOFT SKILLS
+			{
+				type: "soft",
+				name: "Comunicativo",
+				image: figmaIcon.src,
+				progressBar: {
+					progressLevel: 100,
+					color: "#002233",
+				},
+			},
+
 			// OTHERS SKILLS
 			{
 				type: "other",

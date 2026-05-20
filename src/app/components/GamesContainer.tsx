@@ -8,9 +8,8 @@ import {
 import { CheckSquare, Square } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useTheme } from "../contexts/ThemeContext";
 import catPlaying from "../images/cat-playing.gif";
-import { Game } from "../types/Game";
+import type { Game } from "../types/Game";
 import { gameData } from "../utils/GameData";
 import { GameDialog } from "./GameDialog";
 
@@ -21,7 +20,6 @@ export const GamesContainer = () => {
 		useState<boolean>(false);
 	const [isMyGamesShowing, setisMyGamesShowing] = useState<boolean>(false);
 
-	const theme = useTheme();
 	const currentLang = localStorage.getItem("LangContextKey");
 
 	useEffect(() => {
@@ -156,7 +154,8 @@ export const GamesContainer = () => {
 									type="button"
 									onClick={() => handleGameDialogOpen(game)}
 								>
-									<img
+									<Image
+										unoptimized
 										width={288}
 										height={288}
 										className="max-laptop:size-24 border-2 border-slate-700 dark:border-slate-300 rounded-md"
@@ -167,6 +166,8 @@ export const GamesContainer = () => {
 							</div>
 						</div>
 					);
+				} else {
+					return null;
 				}
 			})}
 

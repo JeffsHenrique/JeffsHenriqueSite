@@ -7,7 +7,6 @@ import { Header } from "../components/Header";
 import { ThemeProvider } from "../contexts/ThemeContext";
 import catCoding from "../images/cat-coding.gif";
 import catDreaming from "../images/cat-dreaming.gif";
-import { mainScreen } from "../utils/Styles";
 import { Ambitions } from "./components/Ambitions";
 import { Knowledges } from "./components/Knowledges";
 
@@ -30,10 +29,10 @@ const Skills = () => {
 		<ThemeProvider>
 			<TooltipProvider>
 				<LanguageProvider>
-					<Header />
+					<Header shouldGoBackToHome />
 
-					<div className={mainScreen}>
-						<div className="py-14 mx-8 flex justify-center items-center gap-8 text-sky-900 dark:text-sky-200">
+					<div className="overflow-auto bg-sky-200 dark:bg-slate-900">
+						<div className="py-14 m-8 flex justify-center items-center gap-8 text-sky-900 dark:text-sky-200">
 							<button
 								type="button"
 								className="cursor-pointer"

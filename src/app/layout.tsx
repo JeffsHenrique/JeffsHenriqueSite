@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
-import { Space_Mono, JetBrains_Mono } from "next/font/google";
-import "./globals.css";
 import { cn } from "@/lib/utils";
+import type { Metadata } from "next";
+import { JetBrains_Mono, Space_Mono } from "next/font/google";
+import "./globals.css";
 
 const jetbrainsMono = JetBrains_Mono({
 	subsets: ["latin"],
@@ -25,7 +25,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" className={cn("font-mono", jetbrainsMono.variable)}>
-			<body className={space_mono.className}>{children}</body>
+			<body
+				className={cn("bg-sky-200 dark:bg-slate-900", space_mono.className)}
+			>
+				{children}
+			</body>
 		</html>
 	);
 }

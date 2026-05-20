@@ -8,8 +8,8 @@ import {
 import { cn } from "@/lib/utils";
 import { HelpCircle } from "lucide-react";
 import Image from "next/image";
-import { ChangeEvent, useEffect, useState } from "react";
-import { Skill } from "../types/Skill";
+import { type ChangeEvent, useEffect, useState } from "react";
+import type { Skill } from "../types/Skill";
 import { skillsData } from "../utils/SkillsData";
 import CertificatesDialog from "./CertificatesDialog";
 import { ProficiencySkillsHelper } from "./ProficiencySkillsHelper";
@@ -84,6 +84,19 @@ export const Knowledges = () => {
 								onClick={() => setTypeSkill("dev")}
 							>
 								DEV SKILLS
+							</Button>
+							<Button
+								variant={typeSkill === "soft" ? "default" : "outline"}
+								className={cn(
+									"rounded-md w-32 h-10 text-sm text-sky-900 dark:text-sky-200 hover:text-sky-950 dark:hover:text-sky-300",
+									{
+										"bg-sky-400 hover:bg-sky-500 dark:bg-sky-600 dark:hover:bg-sky-700":
+											typeSkill === "soft",
+									},
+								)}
+								onClick={() => setTypeSkill("soft")}
+							>
+								SOFT SKILLS
 							</Button>
 							<Button
 								variant={typeSkill === "other" ? "default" : "outline"}
@@ -167,7 +180,7 @@ export const Knowledges = () => {
 				/>
 			)}
 
-			<div className="m-2 p-2 grid grid-cols-6 max-tablet:grid-cols-2 max-laptop:grid-cols-3 gap-12 max-tablet:gap-6 max-laptop:gap-8 text-sky-900 dark:text-sky-200 border-2 border-slate-700 dark:border-slate-300 shadow-lg rounded-md">
+			<div className="m-2 p-2 w-[98dvw] grid grid-cols-6 max-tablet:grid-cols-2 max-laptop:grid-cols-3 gap-12 max-tablet:gap-6 max-laptop:gap-8 text-sky-900 dark:text-sky-200 border-2 border-slate-700 dark:border-slate-300 shadow-lg rounded-md">
 				{filteredSkills.map((skill) => {
 					return (
 						<div

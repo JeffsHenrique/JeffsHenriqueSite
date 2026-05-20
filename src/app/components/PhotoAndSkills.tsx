@@ -1,3 +1,4 @@
+import Image from "next/image";
 import profilePicture from "../assets/fotoperfilatual.png";
 import matrixGif from "../assets/matrixbluebackground.gif";
 
@@ -17,12 +18,18 @@ export const PhotoAndSkills = () => {
 			<hr className="hidden max-laptop:flex w-full border border-slate-700 dark:border-slate-300" />
 
 			<div className="relative text-center">
-				<img
+				<Image
+					unoptimized
+					width={96}
+					height={96}
 					alt="Foto perfil Jeffs"
 					src={matrixGif.src}
 					className="size-96 max-laptop:size-72 object-cover rounded-md object-[10%_30%] blur-[2px]"
 				/>
-				<img
+				<Image
+					unoptimized
+					width={96}
+					height={96}
 					alt="Foto perfil Jeffs"
 					src={profilePicture.src}
 					className="size-96 max-laptop:size-72 object-cover rounded-md object-[10%_30%] absolute top-0 blur-[0.5px]"
