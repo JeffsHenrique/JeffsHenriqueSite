@@ -5,11 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Briefcase, GraduationCap } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { Experience } from "../types/Experience";
-import { experiencesData } from "../utils/ExperiencesData";
+import { useExperiencesService } from "../utils/ExperiencesData";
 
 import { VerticalTimelineSection } from "@/app/components/Section";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { useIntlayer } from "react-intlayer";
 import {
 	VerticalTimeline,
 	VerticalTimelineElement,
@@ -28,20 +29,28 @@ export const TimelineContent = ({ isPreview }: TimelineContentProps) => {
 	const [selectedPic, setSelectedPic] = useState<string | null>("");
 	const [filteredType, setFilteredType] = useState<string>("");
 
-	const currentLang = localStorage.getItem("LangContextKey");
+	const { getExperiences } = useExperiencesService();
 
+	const {
+		filters,
+		time_label,
+		experiences: experiencesIntl,
+	} = useIntlayer("experiences");
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <>
 	useEffect(() => {
-		async function getExperiences() {
+		async function fetchExperiences() {
 			try {
-				const data = await experiencesData.getExperiences();
+				const data = await getExperiences();
 				setExperiences(data);
 			} catch (error) {
 				console.error(error);
 			}
 		}
 
-		getExperiences();
-	}, []);
+		fetchExperiences();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [experiencesIntl]);
 
 	const handleSelectedPictureOpen = (image: string) => {
 		setSelectedPic(image);
@@ -116,7 +125,7 @@ export const TimelineContent = ({ isPreview }: TimelineContentProps) => {
 		<div className="m-2 p-2 flex flex-col gap-4">
 			{!isPreview && (
 				<div className="p-2 flex flex-row max-laptop:flex-col gap-4 max-laptop:gap-2 justify-center items-center max-laptop:text-xs text-sky-900 dark:text-sky-200">
-					<p>{currentLang === "us-en" ? `Filter by:` : "Filtrar por:"}</p>
+					<p>{filters.filter_by}</p>
 					<Button
 						variant={filteredType === "study" ? "default" : "ghost"}
 						className={cn(
@@ -128,7 +137,7 @@ export const TimelineContent = ({ isPreview }: TimelineContentProps) => {
 						)}
 						onClick={() => setFilteredType("study")}
 					>
-						{currentLang === "us-en" ? `Study` : "Especialização"}
+						{filters.study}
 					</Button>
 					<Button
 						variant={filteredType === "work" ? "default" : "ghost"}
@@ -141,7 +150,7 @@ export const TimelineContent = ({ isPreview }: TimelineContentProps) => {
 						)}
 						onClick={() => setFilteredType("work")}
 					>
-						{currentLang === "us-en" ? `Work` : "Trabalho"}
+						{filters.work}
 					</Button>
 					<Button
 						variant={filteredType === "" ? "default" : "ghost"}
@@ -154,7 +163,7 @@ export const TimelineContent = ({ isPreview }: TimelineContentProps) => {
 						)}
 						onClick={() => setFilteredType("")}
 					>
-						{currentLang === "us-en" ? `All` : "Todos"}
+						{filters.all}
 					</Button>
 				</div>
 			)}
@@ -171,23 +180,19 @@ export const TimelineContent = ({ isPreview }: TimelineContentProps) => {
 							);
 
 							const yearLabel =
-								years === 1
-									? `${currentLang === "us-en" ? "year" : "ano"}`
-									: `${currentLang === "us-en" ? "years" : "anos"}`;
+								years === 1 ? time_label.year : time_label.years;
 							const monthLabel =
-								months === 1
-									? `${currentLang === "us-en" ? "month" : "mês"}`
-									: `${currentLang === "us-en" ? "months" : "meses"}`;
+								months === 1 ? time_label.month : time_label.months;
 
 							if (years === 0) {
 								if (months < 1) {
-									return `${currentLang === "us-en" ? `Less than 1 month` : "Menos de 1 mês"}`;
+									return time_label.less_than_one_month;
 								}
 								return `${months} ${monthLabel}`;
 							}
 
 							if (months > 0) {
-								return `${years} ${yearLabel} ${currentLang === "us-en" ? "and" : "e"} ${months} ${monthLabel}`;
+								return `${years} ${yearLabel} ${time_label.and} ${months} ${monthLabel}`;
 							}
 
 							return `${years} ${yearLabel}`;
@@ -233,7 +238,7 @@ export const TimelineContent = ({ isPreview }: TimelineContentProps) => {
 										<div className="flex flex-col gap-2 justify-center items-center text-center">
 											{experience.isMyCurrentExperience && (
 												<p className="absolute top-0 px-2 bg-green-900 rounded-full shadow-lg text-sky-200">
-													{currentLang === "us-en" ? `Current` : "Atualmente"}
+													{experiencesIntl.current}
 												</p>
 											)}
 											<h1 className="text-2xl max-tablet:text-base pt-8">
@@ -247,9 +252,7 @@ export const TimelineContent = ({ isPreview }: TimelineContentProps) => {
 											</h3>
 											{experience.mainTools && (
 												<h3 className="max-tablet:text-xs">
-													{currentLang === "us-en"
-														? `Main Tools: `
-														: "Principais Ferramentas: "}
+													{experiencesIntl.main_tools}{" "}
 													<span className="font-bold">
 														{experience.mainTools}
 													</span>

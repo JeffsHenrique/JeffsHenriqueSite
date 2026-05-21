@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Home, MoreHorizontal } from "lucide-react";
 import Link from "next/link";
+import { useIntlayer } from "react-intlayer";
 import LanguageSwitch from "./LanguageSwitch";
 
 interface HeaderProps {
@@ -28,15 +29,14 @@ export const Header = ({
 	shouldGoBackToHome,
 }: HeaderProps) => {
 	const [contactIsOpen, setContactIsOpen] = useState(false);
-
-	const currentLang = localStorage.getItem("LangContextKey");
+	const { projects, skills, experiences, contact } = useIntlayer("header");
 
 	const handleContactOpen = () => {
 		setContactIsOpen(!contactIsOpen);
 	};
 
 	return (
-		<header className="fixed w-full top-0 z-10 p-2 h-14 flex flex-row justify-start items-center gap-16 bg-sky-900 dark:bg-slate-950 text-sky-200 shadow-xl">
+		<header className="fixed w-full top-0 z-10 p-2 h-14 flex flex-row justify-start items-center gap-16 bg-sky-900 dark:bg-slate-950 drop-shadow-sky-900 dark:drop-shadow-slate-950 drop-shadow-md dark:drop-shadow-xl text-sky-200 shadow-xl">
 			<h1 className="px-4 hover:scale-110 hover:text-sky-300 transition-all duration-500">
 				<Link href="/">
 					<Home size={40} />
@@ -68,7 +68,7 @@ export const Header = ({
 					<DropdownMenuContent className="bg-sky-900 dark:bg-slate-950">
 						<Link href="/projetos">
 							<DropdownMenuItem className="text-sky-600 dark:text-sky-200">
-								{currentLang === "us-en" ? "Projects" : "Projetos"}
+								{`${projects}`}
 							</DropdownMenuItem>
 							{/* <MenuItem onClick={handleMoreButtonClose}>
                                 </MenuItem> */}
@@ -76,13 +76,13 @@ export const Header = ({
 
 						<Link href="/conhecimentos">
 							<DropdownMenuItem className="text-sky-600 dark:text-sky-200">
-								{currentLang === "us-en" ? "Skills" : "Conhecimentos"}
+								{`${skills}`}
 							</DropdownMenuItem>
 						</Link>
 
 						<Link href="/experiencias">
 							<DropdownMenuItem className="text-sky-600 dark:text-sky-200">
-								{currentLang === "us-en" ? "Experiences" : "Experiências"}
+								{`${experiences}`}
 							</DropdownMenuItem>
 						</Link>
 
@@ -90,7 +90,7 @@ export const Header = ({
 							className="text-sky-600 dark:text-sky-200"
 							onClick={handleContactOpen}
 						>
-							{currentLang === "us-en" ? "Contact" : "Contato"}
+							{`${contact}`}
 						</DropdownMenuItem>
 
 						<DropdownMenuItem>
@@ -104,10 +104,7 @@ export const Header = ({
 				<ul className="flex flex-row items-center justify-end text-lg gap-8">
 					<li className="hover:scale-105 hover:text-sky-300 transition-all">
 						{shouldGoBackToHome ? (
-							<Link href="/">
-								{" "}
-								{currentLang === "us-en" ? "Projects" : "Projetos"}{" "}
-							</Link>
+							<Link href="/"> {`${projects}`}</Link>
 						) : (
 							<button
 								type="button"
@@ -115,16 +112,13 @@ export const Header = ({
 								onClick={scrollToProject}
 							>
 								{" "}
-								{currentLang === "us-en" ? "Projects" : "Projetos"}{" "}
+								{`${projects}`}
 							</button>
 						)}
 					</li>
 					<li className="hover:scale-105 hover:text-sky-300 transition-all">
 						{shouldGoBackToHome ? (
-							<Link href="/">
-								{" "}
-								{currentLang === "us-en" ? "Skills" : "Conhecimentos"}{" "}
-							</Link>
+							<Link href="/"> {`${skills}`}</Link>
 						) : (
 							<button
 								type="button"
@@ -132,16 +126,13 @@ export const Header = ({
 								onClick={scrollToKnowledge}
 							>
 								{" "}
-								{currentLang === "us-en" ? "Skills" : "Conhecimentos"}{" "}
+								{`${skills}`}
 							</button>
 						)}
 					</li>
 					<li className="hover:scale-105 hover:text-sky-300 transition-all">
 						{shouldGoBackToHome ? (
-							<Link href="/">
-								{" "}
-								{currentLang === "us-en" ? "Experiences" : "Experiências"}{" "}
-							</Link>
+							<Link href="/"> {`${experiences}`}</Link>
 						) : (
 							<button
 								type="button"
@@ -149,7 +140,7 @@ export const Header = ({
 								onClick={scrollToExperience}
 							>
 								{" "}
-								{currentLang === "us-en" ? "Experiences" : "Experiências"}{" "}
+								{`${experiences}`}
 							</button>
 						)}
 					</li>
@@ -159,7 +150,7 @@ export const Header = ({
 							className="cursor-pointer"
 							onClick={handleContactOpen}
 						>
-							{currentLang === "us-en" ? "Contact" : "Contato"}
+							{`${contact}`}
 						</button>
 
 						<Contact open={contactIsOpen} onClose={handleContactOpen} />

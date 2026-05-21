@@ -2,37 +2,42 @@
 
 import brazilFlag from "@/app/assets/Flag_of_Brazil.png";
 import unitedStatesFlag from "@/app/assets/Flag_of_USA.png";
+import { Button } from "@/components/ui/button";
 
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Globe } from "lucide-react";
+import { Locales } from "intlayer";
 import Image from "next/image";
-import { useLang } from "../contexts/LanguageContext";
+import { useLocale } from "react-intlayer";
 
 const LanguageSwitch = () => {
-	const langCtx = useLang();
-
-	const handleBRLang = () => {
-		if (langCtx) {
-			langCtx.setLang("pt-br");
-			location.reload();
-		}
-	};
-
-	const handleENLang = () => {
-		if (langCtx) {
-			langCtx.setLang("us-en");
-			location.reload();
-		}
-	};
+	const { setLocale } = useLocale();
 
 	return (
 		<div className="flex flex-row mr-4">
-			<DropdownMenu>
+			<Button
+				onClick={() => setLocale(Locales.PORTUGUESE_BRAZIL)}
+				className="cursor-pointer bg-transparent hover:scale-110 transition-all duration-200"
+			>
+				<Image
+					width={32}
+					height={0}
+					className="border rounded-md border-sky-500"
+					src={brazilFlag.src}
+					alt="Bandeira do Brasil"
+				/>
+			</Button>
+			<Button
+				onClick={() => setLocale(Locales.ENGLISH)}
+				className="cursor-pointer bg-transparent hover:scale-110 transition-all duration-200"
+			>
+				<Image
+					width={32}
+					height={0}
+					className="border rounded-md border-sky-500"
+					src={unitedStatesFlag.src}
+					alt="USA Flag"
+				/>
+			</Button>
+			{/* <DropdownMenu>
 				<DropdownMenuTrigger asChild>
 					<Globe size={20} className="size-8 cursor-pointer" />
 				</DropdownMenuTrigger>
@@ -42,7 +47,7 @@ const LanguageSwitch = () => {
 					className="rounded-md bg-accent dark:bg-accent-foreground grid gap-2"
 				>
 					<DropdownMenuItem
-						onClick={handleBRLang}
+						onClick={toggleLanguage}
 						className="w-full flex justify-center items-center cursor-pointer hover:bg-sky-600 dark:hover:bg-sky-950"
 					>
 						<Image
@@ -54,7 +59,7 @@ const LanguageSwitch = () => {
 						/>
 					</DropdownMenuItem>
 					<DropdownMenuItem
-						onClick={handleENLang}
+						onClick={toggleLanguage}
 						className="w-full flex justify-center items-center cursor-pointer hover:bg-sky-600 dark:hover:bg-sky-950"
 					>
 						<Image
@@ -66,7 +71,7 @@ const LanguageSwitch = () => {
 						/>
 					</DropdownMenuItem>
 				</DropdownMenuContent>
-			</DropdownMenu>
+			</DropdownMenu> */}
 		</div>
 	);
 };

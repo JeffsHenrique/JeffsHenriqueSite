@@ -12,6 +12,7 @@ import { Knowledges } from "./components/Knowledges";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Image from "next/image";
+import { useIntlayer } from "react-intlayer";
 import { LanguageProvider } from "../contexts/LanguageContext";
 
 const Skills = () => {
@@ -20,10 +21,7 @@ const Skills = () => {
 	const [isMyAmbitionsShowing, setIsMyAmbitionsShowing] =
 		useState<boolean>(false);
 
-	const currentLang =
-		typeof window !== "undefined"
-			? localStorage.getItem("LangContextKey")
-			: null;
+	const { title_skills, title_ambitions } = useIntlayer("skills");
 
 	return (
 		<ThemeProvider>
@@ -48,9 +46,7 @@ const Skills = () => {
 							</button>
 							<div className="flex justify-center gap-2 max-laptop:flex-col">
 								<h1 className="text-4xl text-center max-laptop:text-lg underline">
-									{currentLang === "us-en"
-										? `My knowledge and skills`
-										: "Meus conhecimentos e habilidades"}
+									{title_skills}
 								</h1>
 								<button
 									type="button"
@@ -94,7 +90,7 @@ const Skills = () => {
 							</button>
 							<div className="flex justify-center gap-2 max-laptop:flex-col">
 								<h1 className="text-4xl text-center max-laptop:text-lg underline">
-									{currentLang === "us-en" ? `My ambitions` : "Minhas ambições"}
+									{title_ambitions}
 								</h1>
 								<button
 									type="button"

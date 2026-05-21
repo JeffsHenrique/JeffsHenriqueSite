@@ -22,6 +22,7 @@ import tailwindcssIcon from "../assets/tailwindcssicon.png";
 import typescriptIcon from "../assets/typescripticon.png";
 import vueIcon from "../assets/vueicon.png";
 
+import { useIntlayer } from "react-intlayer";
 import aftereffectsIcon from "../assets/aftereffectsicon.png";
 import englishIcon from "../assets/englishicon.png";
 import figmaIcon from "../assets/figmaicon.png";
@@ -32,10 +33,10 @@ import revisaoIcon from "../assets/revisaoicon.png";
 import subtitleeditIcon from "../assets/subtitleediticon.png";
 import vscodeIcon from "../assets/vscodeicon.png";
 
-class SkillsData {
-	getSkills(): Promise<Skill[]> {
-		const currentLang = localStorage.getItem("LangContextKey");
+export const useSkillsService = () => {
+	const { knowledges } = useIntlayer("skills")
 
+	const getSkills = (): Promise<Skill[]> => {
 		const skills: Skill[] = [
 			// DEV SKILLS
 
@@ -297,7 +298,7 @@ class SkillsData {
 			},
 			{
 				type: "other",
-				name: `${currentLang === "us-en" ? `Grammar Review` : "Revisão Gramatical"}`,
+				name: knowledges.skills.grammar_review.name,
 				image: revisaoIcon.src,
 				progressBar: {
 					progressLevel: 100,
@@ -306,7 +307,7 @@ class SkillsData {
 			},
 			{
 				type: "other",
-				name: `${currentLang === "us-en" ? `Subtitles (CC | OC)` : "Legendas (CC | OC)"}`,
+				name: knowledges.skills.subtitles.name,
 				image: subtitleeditIcon.src,
 				progressBar: {
 					progressLevel: 100,
@@ -315,7 +316,7 @@ class SkillsData {
 			},
 			{
 				type: "other",
-				name: `${currentLang === "us-en" ? `English` : "Inglês"}`,
+				name: knowledges.skills.english.name,
 				image: englishIcon.src,
 				progressBar: {
 					progressLevel: 90,
@@ -326,6 +327,6 @@ class SkillsData {
 
 		return Promise.resolve(skills);
 	}
-}
 
-export const skillsData = new SkillsData();
+	return { getSkills };
+}

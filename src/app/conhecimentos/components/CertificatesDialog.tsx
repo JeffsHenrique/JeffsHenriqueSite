@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/tooltip";
 import Link from "next/link";
 import { type FC, useState } from "react";
+import { useIntlayer } from "react-intlayer";
 
 interface CertificatesDialogProps {
 	open: boolean;
@@ -29,23 +30,17 @@ const CertificatesDialog: FC<CertificatesDialogProps> = ({ open, onClose }) => {
 		setShouldAcademicCoursesCertificatesShow,
 	] = useState<boolean>(false);
 
-	const currentLang = localStorage.getItem("LangContextKey");
+	const { certificates, tooltips } = useIntlayer("skills");
 
 	return (
 		<Dialog open={open} onOpenChange={onClose}>
 			<DialogContent className={dialogBox}>
 				<DialogTitle className="text-sky-900 dark:text-sky-200 flex justify-center">
-					<p>
-						{currentLang === "us-en" ? `My Certificates` : "Meus Certificados"}
-					</p>
+					<p>{certificates.dialog_title}</p>
 				</DialogTitle>
 				<div className="text-sky-900 dark:text-sky-200 my-4 flex justify-center">
 					<div className="px-4 py-2 bg-sky-200 dark:bg-slate-800 border border-slate-700 dark:border-slate-300 rounded-md">
-						<p className="font-bold text-xl">
-							{currentLang === "us-en"
-								? `Here you can find all my certificates:`
-								: "Aqui, você pode encontrar os meus certificados:"}
-						</p>
+						<p className="font-bold text-xl">{certificates.description}</p>
 
 						<ul className="m-4 h-96 overflow-auto flex flex-col gap-4">
 							<li>
@@ -61,15 +56,13 @@ const CertificatesDialog: FC<CertificatesDialogProps> = ({ open, onClose }) => {
 											}
 										>
 											<p className="ml-4 font-bold hover:text-purple-700 dark:hover:text-purple-400 duration-300">
-												{currentLang === "us-en"
-													? `Free Courses`
-													: "Cursos Livres"}
+												{certificates.free_courses}
 											</p>
 										</button>
 									</TooltipTrigger>
 
 									<TooltipContent>
-										{`${currentLang === "us-en" ? `Click here to show the certificates` : "Clique para ver os certificados"}`}
+										{tooltips.click_to_show_certificates}
 									</TooltipContent>
 								</Tooltip>
 

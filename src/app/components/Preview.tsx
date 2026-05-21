@@ -1,4 +1,3 @@
-import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import type React from "react";
 
@@ -17,7 +16,6 @@ export function Preview({
 }: PreviewProps) {
 	return (
 		<div className="text-sky-900 dark:text-sky-200 mt-48">
-			{/* <div className="m-8 max-laptop:w-full border-2 overflow-auto border-slate-700 dark:border-slate-300 rounded-md shadow-lg text-sky-900 dark:text-sky-200 p-2"> */}
 			<div className="flex flex-col gap-8">
 				<p className="font-bold text-5xl max-laptop:text-3xl text-center">
 					{sectionTitle}
@@ -32,11 +30,6 @@ export function Preview({
 					</div>
 				</Link>
 			</div>
-
-			<Separator
-				className="m-4 border-2 border-slate-700 dark:border-slate-800 rounded-md shadow-lg"
-				orientation="horizontal"
-			/>
 		</div>
 	);
 }

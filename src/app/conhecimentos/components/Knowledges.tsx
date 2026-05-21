@@ -9,8 +9,9 @@ import { cn } from "@/lib/utils";
 import { HelpCircle } from "lucide-react";
 import Image from "next/image";
 import { type ChangeEvent, useEffect, useState } from "react";
+import { useIntlayer } from "react-intlayer";
 import type { Skill } from "../types/Skill";
-import { skillsData } from "../utils/SkillsData";
+import { useSkillsService } from "../utils/SkillsData";
 import CertificatesDialog from "./CertificatesDialog";
 import { ProficiencySkillsHelper } from "./ProficiencySkillsHelper";
 
@@ -23,12 +24,22 @@ export const Knowledges = () => {
 	const [searchSkill, setSearchSkill] = useState<string>("");
 	const [typeSkill, setTypeSkill] = useState<string>("dev");
 
-	const currentLang = localStorage.getItem("LangContextKey");
+	const { getSkills } = useSkillsService();
 
+	const {
+		certificates,
+		knowledges,
+		proficiency_skills_helper,
+		progress,
+		no_skills,
+		tooltips,
+	} = useIntlayer("skills");
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <>
 	useEffect(() => {
 		async function fetchSkills() {
 			try {
-				const data = await skillsData.getSkills();
+				const data = await getSkills();
 				setSkills(data);
 			} catch (error) {
 				console.error(error);
@@ -36,7 +47,8 @@ export const Knowledges = () => {
 		}
 
 		fetchSkills();
-	}, []);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [knowledges]);
 
 	const handleSearchInput = (event: ChangeEvent<HTMLInputElement>) => {
 		setSearchSkill(event.target.value);
@@ -67,7 +79,7 @@ export const Knowledges = () => {
 							className="rounded-md w-32 h-10 text-sm bg-purple-400 hover:bg-purple-500 dark:bg-purple-600 dark:hover:bg-purple-700 text-sky-900 dark:text-sky-200"
 							onClick={handleCertificatesOpen}
 						>
-							{currentLang === "us-en" ? `Certificates` : "Certificados"}
+							{certificates.title}
 						</Button>
 					</div>
 					<div className="flex flex-row max-laptop:flex-col justify-end items-center gap-8 max-laptop:gap-4">
@@ -83,7 +95,7 @@ export const Knowledges = () => {
 								)}
 								onClick={() => setTypeSkill("dev")}
 							>
-								DEV SKILLS
+								Dev Skills
 							</Button>
 							<Button
 								variant={typeSkill === "soft" ? "default" : "outline"}
@@ -96,7 +108,7 @@ export const Knowledges = () => {
 								)}
 								onClick={() => setTypeSkill("soft")}
 							>
-								SOFT SKILLS
+								Soft Skills
 							</Button>
 							<Button
 								variant={typeSkill === "other" ? "default" : "outline"}
@@ -109,16 +121,12 @@ export const Knowledges = () => {
 								)}
 								onClick={() => setTypeSkill("other")}
 							>
-								{currentLang === "us-en" ? `OTHERS SKILLS` : "OUTRAS SKILLS"}
+								{knowledges.others}
 							</Button>
 						</div>
 						<input
 							className="px-2 w-96 max-laptop:w-72 h-8 rounded-md max-laptop:text-center max-laptop:text-xs bg-sky-300 dark:bg-slate-950 border border-slate-700 dark:border-slate-300 text-sky-900 dark:text-sky-200"
-							placeholder={
-								currentLang === "us-en"
-									? `Search for a specific skill :)`
-									: "Procure por uma skill específica :)"
-							}
+							placeholder={knowledges.search_for}
 							value={searchSkill}
 							onChange={handleSearchInput}
 						/>
@@ -136,13 +144,9 @@ export const Knowledges = () => {
 
 								<TooltipContent>
 									<h1 className="text-lg text-center">
-										{currentLang === "us-en"
-											? `Click to open `
-											: "Clique para abrir a "}
+										{tooltips.click_to_open}{" "}
 										<span className="font-bold text-purple-300">
-											{currentLang === "us-en"
-												? `Skills Proficiency Scale`
-												: "Escala de Proficiência de Skills"}
+											{proficiency_skills_helper.title}
 										</span>
 									</h1>
 								</TooltipContent>
@@ -212,7 +216,7 @@ export const Knowledges = () => {
 
 								<TooltipContent>
 									<h1 className="text-lg">
-										{currentLang === "us-en" ? `Progress:` : "Progresso:"}{" "}
+										{progress}{" "}
 										<span className={`font-bold`}>
 											{skill.progressBar.progressLevel}%
 										</span>
@@ -223,13 +227,7 @@ export const Knowledges = () => {
 					);
 				})}
 
-				{filteredSkills.length === 0 && (
-					<p>
-						{currentLang === "us-en"
-							? `Your search didn't match any skill :(`
-							: "Não foi encontrada a skill :("}
-					</p>
-				)}
+				{filteredSkills.length === 0 && <p>{no_skills}</p>}
 			</div>
 		</Section>
 	);

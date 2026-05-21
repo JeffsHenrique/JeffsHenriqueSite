@@ -2,6 +2,7 @@ import catPlaying from "@/app/assets/cat-playing1.gif";
 import Image from "next/image";
 import Link from "next/link";
 import { type MouseEventHandler, useState } from "react";
+import { useIntlayer } from "react-intlayer";
 import { Contact } from "./Contact";
 
 interface AboutMeProps {
@@ -11,7 +12,7 @@ interface AboutMeProps {
 export const AboutMe = ({ scrollToGames }: AboutMeProps) => {
 	const [contactIsOpen, setContactIsOpen] = useState(false);
 
-	const currentLang = localStorage.getItem("LangContextKey");
+	const { about_me } = useIntlayer("home");
 
 	const handleContactOpen = () => {
 		setContactIsOpen(!contactIsOpen);
@@ -22,7 +23,7 @@ export const AboutMe = ({ scrollToGames }: AboutMeProps) => {
 			<div className="flex justify-center">
 				<h1 className="my-2 text-5xl max-laptop:text-3xl text-center">
 					{" "}
-					{currentLang === "us-en" ? "About me!" : "Quem sou eu?"}
+					{`${about_me.title}`}
 				</h1>
 			</div>
 
@@ -30,75 +31,61 @@ export const AboutMe = ({ scrollToGames }: AboutMeProps) => {
 
 			<div className="flex flex-col gap-2 text-lg max-laptop:text-sm text-center px-2">
 				<p>
-					{currentLang === "us-en"
-						? `I've been in love with technology since my childhood, but I only recently discovered just how much more fascinating this field can be.`
-						: "Apaixonado por computador desde a infância, descobri recentemente o quão mais apaixonante essa área pode ser."}
+					{about_me.texts.text_1}
 					<br />
-					{currentLang === "us-en"
-						? "I enjoy putting my knowledge into practice, which I have gained through countless hours of study and experience."
-						: "Gosto de colocar os conhecimentos em prática, estes adquiridos com estudo ou vivência."}
+					{about_me.texts.text_2}
 					<br />
-					{currentLang === "us-en"
-						? `I'm also a very communicative person, and I'm always willing to understand the other person's needs.`
-						: "Também sou uma pessoa bem comunicativa, estando sempre disposto a entender a outra parte."}{" "}
-					😊<br />
+					{about_me.texts.text_3} 😊
+					<br />
 				</p>
 
 				<p>
-					{currentLang === "us-en"
-						? "Take the opportunity to know more about my "
-						: "Aproveite para conhecer um pouco dos meus "}
+					{about_me.texts.text_4}
 					<Link
 						className="font-bold text-sky-700 dark:text-sky-500"
 						href="/projetos"
 					>
-						{currentLang === "us-en" ? "projects" : "projetos"}
+						{about_me.links.projects}
 					</Link>
 					,{" "}
 					<Link
 						className="font-bold text-sky-700 dark:text-sky-500"
 						href="/conhecimentos"
 					>
-						{currentLang === "us-en" ? "skills" : "conhecimentos"}{" "}
+						{about_me.links.skills}{" "}
 					</Link>
-					{currentLang === "us-en" ? "and" : "e"}{" "}
+					{about_me.texts.text_5}{" "}
 					<Link
 						className="font-bold text-sky-700 dark:text-sky-500"
 						href="/experiencias"
 					>
-						{currentLang === "us-en" ? "experiences" : "experiências"}
+						{about_me.links.experiences}
 					</Link>
 					.
 				</p>
 
 				<p className="my-4">
-					{currentLang === "us-en"
-						? `Feel free to `
-						: "Fique à vontade para entrar em "}
+					{about_me.texts.text_6}
 					<button
 						type="button"
 						className="underline font-bold cursor-pointer"
 						onClick={handleContactOpen}
 					>
-						{currentLang === "us-en" ? `contact` : "contato"}
+						{about_me.links.contact}
 					</button>{" "}
-					{currentLang === "us-en" ? `me!` : "comigo!"} 😁
+					{about_me.texts.text_7} 😁
 				</p>
 
 				<Contact open={contactIsOpen} onClose={handleContactOpen} />
 
 				<p className="text-sm hidden md:laptop:block">
-					{currentLang === "us-en"
-						? `Or, maybe, you can`
-						: "Ou, se quiser, você também pode "}
+					{about_me.texts.text_8}
 					<button
 						type="button"
 						className="text-purple-700 dark:text-purple-500 cursor-pointer"
 						onClick={scrollToGames}
 					>
-						{currentLang === "us-en"
-							? `take a break and have fun.`
-							: "tirar um tempo para se divertir."}
+						{about_me.texts.text_9}
 					</button>
 				</p>
 

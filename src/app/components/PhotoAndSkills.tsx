@@ -1,18 +1,15 @@
 import Image from "next/image";
+import { useIntlayer } from "react-intlayer";
 import profilePicture from "../assets/fotoperfilatual.png";
 import matrixGif from "../assets/matrixbluebackground.gif";
 
 export const PhotoAndSkills = () => {
-	const currentLang = localStorage.getItem("LangContextKey");
+	const { photo_and_skills } = useIntlayer("home");
 
 	return (
 		<div className="p-2 w-2/5 max-laptop:w-full flex flex-col-reverse max-laptop:flex-col justify-evenly gap-3 items-center border-2 overflow-auto border-slate-700 dark:border-slate-300 rounded-md shadow-lg text-sky-900 dark:text-sky-200">
 			<div className="hidden max-laptop:flex text-xl font-bold text-center">
-				<p>
-					{currentLang === "us-en"
-						? `Hello! Welcome to my website!`
-						: "Olá! Sejam bem-vindos ao meu site!"}
-				</p>
+				<p>{`${photo_and_skills.title_mobile}`}</p>
 			</div>
 
 			<hr className="hidden max-laptop:flex w-full border border-slate-700 dark:border-slate-300" />
@@ -39,11 +36,7 @@ export const PhotoAndSkills = () => {
 			<hr className="w-full border border-slate-700 dark:border-slate-300" />
 
 			<div className="flex text-xl font-bold text-center">
-				<p>
-					{currentLang === "us-en"
-						? `Web Developer | JavaScript and Typescript | React | Node`
-						: "Desenvolvedor Web | JavaScript e Typescript | React | Node"}
-				</p>
+				<p>{`${photo_and_skills.professional_titles}`}</p>
 			</div>
 		</div>
 	);

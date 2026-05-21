@@ -1,11 +1,11 @@
-import type { Ambition } from "../types/Ambition";
-import javaIcon from "../assets/javaicon.png";
-import phpIcon from "../assets/phpicon.png";
 import angularIcon from "../assets/angular.png";
+import javaIcon from "../assets/javaicon.png";
 import nestJSIcon from "../assets/nestjs.png";
+import phpIcon from "../assets/phpicon.png";
+import type { Ambition } from "../types/Ambition";
 
-class AmbitionsData {
-	getAmbitions(): Promise<Ambition[]> {
+export const useAmbitionsService = () => {
+	const getAmbitions = (): Promise<Ambition[]> => {
 		const ambitions: Ambition[] = [
 			{
 				name: "Angular",
@@ -27,6 +27,6 @@ class AmbitionsData {
 
 		return Promise.resolve(ambitions);
 	}
-}
 
-export const ambitionsData = new AmbitionsData();
+	return { getAmbitions };
+}

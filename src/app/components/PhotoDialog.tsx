@@ -17,7 +17,7 @@ export const PhotoDialog = (props: PhotoProps) => {
 				showCloseButton={false}
 			>
 				<DialogTitle>
-					<p className="text-sky-900 dark:text-sky-200 font-bold">Imagem</p>
+					<p className="text-sky-900 dark:text-sky-200 font-bold">Img</p>
 				</DialogTitle>
 
 				<div className="flex justify-center">

@@ -2,22 +2,25 @@ import { Section } from "@/app/components/Section";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { Ambition } from "../types/Ambition";
-import { ambitionsData } from "../utils/AmbitionsData";
+import { useAmbitionsService } from "../utils/AmbitionsData";
 
 export const Ambitions = () => {
 	const [ambitions, setAmbitions] = useState<Ambition[]>([]);
+	const { getAmbitions } = useAmbitionsService();
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <>
 	useEffect(() => {
-		async function getAmbitions() {
+		async function fetchAmbitions() {
 			try {
-				const data = await ambitionsData.getAmbitions();
+				const data = await getAmbitions();
 				setAmbitions(data);
 			} catch (error) {
 				console.error(error);
 			}
 		}
 
-		getAmbitions();
+		fetchAmbitions();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
