@@ -18,8 +18,6 @@ export const useProjectsService = () => {
 	const { projects: projectsIntl } = useIntlayer("projects")
 
 	const getProjects = (): Promise<Project[]> => {
-		// const currentLang = localStorage.getItem("LangContextKey");
-
 		const projects: Project[] = [
 			// {
 			// 	title: "Pokedex",

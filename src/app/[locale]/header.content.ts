@@ -3,6 +3,10 @@ import { type Dictionary, t } from "intlayer";
 const headerContent = {
     key: "header",
     content: {
+        about: t({
+            en: "About",
+            "pt-BR": "Sobre"
+        }),
         projects: t({
             en: "Projects",
             "pt-BR": "Projetos"

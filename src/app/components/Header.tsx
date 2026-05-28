@@ -29,24 +29,26 @@ export const Header = ({
 	shouldGoBackToHome,
 }: HeaderProps) => {
 	const [contactIsOpen, setContactIsOpen] = useState(false);
-	const { projects, skills, experiences, contact } = useIntlayer("header");
+	const { about, projects, skills, experiences, contact } =
+		useIntlayer("header");
 
 	const handleContactOpen = () => {
 		setContactIsOpen(!contactIsOpen);
 	};
 
 	return (
-		<header className="fixed w-full top-0 z-10 p-2 h-14 flex flex-row justify-start items-center gap-16 bg-sky-900 dark:bg-slate-950 drop-shadow-sky-900 dark:drop-shadow-slate-950 drop-shadow-md dark:drop-shadow-xl text-sky-200 shadow-xl">
-			<h1 className="px-4 hover:scale-110 hover:text-sky-300 transition-all duration-500">
+		<header className="fixed w-full top-0 z-50 p-2 h-14 flex flex-row justify-start items-center gap-16 bg-sky-900 dark:bg-slate-950 drop-shadow-sky-900 dark:drop-shadow-slate-950 drop-shadow-md dark:drop-shadow-xl text-yellow-200 shadow-xl">
+			<h1 className="px-4 hover:scale-110 hover:text-yellow-300 transition-all duration-500">
 				<Link href="/">
 					<Home size={40} />
 				</Link>
 			</h1>
 
-			<hr className="h-10 border opacity-35 border-slate-600 dark:border-slate-400 max-laptop:hidden" />
+			<hr className="h-10 border opacity-35 border-yellow-200 max-laptop:hidden" />
 
 			<div className="hidden max-laptop:flex w-full justify-end items-center">
 				<LanguageSwitch />
+				<ThemeSwitch />
 
 				{/* <StyledButton
                         id="more-button"
@@ -66,8 +68,13 @@ export const Header = ({
 					</DropdownMenuTrigger>
 
 					<DropdownMenuContent className="bg-sky-900 dark:bg-slate-950">
+						{/* <Link href="/sobre">
+							<DropdownMenuItem className="text-yellow-400 dark:text-yellow-300">
+								{`${about}`}
+							</DropdownMenuItem>
+						</Link> */}
 						<Link href="/projetos">
-							<DropdownMenuItem className="text-sky-600 dark:text-sky-200">
+							<DropdownMenuItem className="text-yellow-400 dark:text-yellow-300">
 								{`${projects}`}
 							</DropdownMenuItem>
 							{/* <MenuItem onClick={handleMoreButtonClose}>
@@ -75,26 +82,22 @@ export const Header = ({
 						</Link>
 
 						<Link href="/conhecimentos">
-							<DropdownMenuItem className="text-sky-600 dark:text-sky-200">
+							<DropdownMenuItem className="text-yellow-400 dark:text-yellow-300">
 								{`${skills}`}
 							</DropdownMenuItem>
 						</Link>
 
 						<Link href="/experiencias">
-							<DropdownMenuItem className="text-sky-600 dark:text-sky-200">
+							<DropdownMenuItem className="text-yellow-400 dark:text-yellow-300">
 								{`${experiences}`}
 							</DropdownMenuItem>
 						</Link>
 
 						<DropdownMenuItem
-							className="text-sky-600 dark:text-sky-200"
+							className="text-yellow-400 dark:text-yellow-300"
 							onClick={handleContactOpen}
 						>
 							{`${contact}`}
-						</DropdownMenuItem>
-
-						<DropdownMenuItem>
-							<ThemeSwitch />
 						</DropdownMenuItem>
 					</DropdownMenuContent>
 				</DropdownMenu>
@@ -102,7 +105,10 @@ export const Header = ({
 
 			<div className="flex w-full justify-between max-laptop:hidden">
 				<ul className="flex flex-row items-center justify-end text-lg gap-8">
-					<li className="hover:scale-105 hover:text-sky-300 transition-all">
+					{/* <li className="hover:scale-105 hover:text-yellow-300 transition-all">
+						<Link href="/sobre"> {`${about}`}</Link>
+					</li> */}
+					<li className="hover:scale-105 hover:text-yellow-300 transition-all">
 						{shouldGoBackToHome ? (
 							<Link href="/"> {`${projects}`}</Link>
 						) : (
@@ -116,7 +122,7 @@ export const Header = ({
 							</button>
 						)}
 					</li>
-					<li className="hover:scale-105 hover:text-sky-300 transition-all">
+					<li className="hover:scale-105 hover:text-yellow-300 transition-all">
 						{shouldGoBackToHome ? (
 							<Link href="/"> {`${skills}`}</Link>
 						) : (
@@ -130,7 +136,7 @@ export const Header = ({
 							</button>
 						)}
 					</li>
-					<li className="hover:scale-105 hover:text-sky-300 transition-all">
+					<li className="hover:scale-105 hover:text-yellow-300 transition-all">
 						{shouldGoBackToHome ? (
 							<Link href="/"> {`${experiences}`}</Link>
 						) : (
@@ -144,7 +150,7 @@ export const Header = ({
 							</button>
 						)}
 					</li>
-					<li className="hover:scale-105 hover:text-sky-300 transition-all">
+					<li className="hover:scale-105 hover:text-yellow-300 transition-all">
 						<button
 							type="button"
 							className="cursor-pointer"

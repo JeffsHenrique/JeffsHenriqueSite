@@ -5,12 +5,10 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { useRef } from "react";
 import { useIntlayer } from "react-intlayer";
 import { ToastContainer } from "react-toastify";
-import { AboutMe } from "./components/AboutMe";
 import { Footer } from "./components/Footer";
-import { GamesContainer } from "./components/GamesContainer";
-import { PhotoAndSkills } from "./components/PhotoAndSkills";
 import { Preview } from "./components/Preview";
 import { Section } from "./components/Section";
+import { Welcome } from "./components/Welcome";
 import { Knowledges } from "./conhecimentos/components/Knowledges";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { TimelineContent } from "./experiencias/components/Timeline";
@@ -66,19 +64,7 @@ const Homepage = () => {
 				/>
 				<div className="overflow-auto bg-sky-200 dark:bg-slate-900">
 					<Section>
-						<div className="flex pt-14 flex-row max-laptop:flex-col-reverse justify-between m-8 gap-8">
-							<AboutMe
-								scrollToGames={(event) => {
-									if (gameContainer.current) {
-										scrollTo(
-											{ element: gameContainer.current },
-											event as unknown as MouseEvent,
-										);
-									}
-								}}
-							/>
-							<PhotoAndSkills />
-						</div>
+						<Welcome />
 					</Section>
 
 					{/* <Section>
@@ -120,13 +106,15 @@ const Homepage = () => {
 						</div>
 					</Section>
 
-					<div className="hidden md:laptop:block">
+					{/* <div className="hidden md:laptop:block">
 						<Section>
 							<div ref={gameContainer} className="flex my-8 justify-center">
 								<GamesContainer />
 							</div>
 						</Section>
-					</div>
+					</div> */}
+
+					<br />
 
 					<Footer />
 				</div>

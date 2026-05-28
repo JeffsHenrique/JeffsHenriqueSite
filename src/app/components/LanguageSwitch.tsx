@@ -20,7 +20,7 @@ const LanguageSwitch = () => {
 				<Image
 					width={32}
 					height={0}
-					className="border rounded-md border-sky-500"
+					className="border rounded-md border-yellow-200"
 					src={brazilFlag.src}
 					alt="Bandeira do Brasil"
 				/>
@@ -32,7 +32,7 @@ const LanguageSwitch = () => {
 				<Image
 					width={32}
 					height={0}
-					className="border rounded-md border-sky-500"
+					className="border rounded-md border-yellow-200"
 					src={unitedStatesFlag.src}
 					alt="USA Flag"
 				/>
