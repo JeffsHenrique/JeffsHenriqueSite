@@ -2,6 +2,10 @@ import type { Project } from "../types/Project";
 
 // assets
 import { useIntlayer } from "react-intlayer";
+import adultGame1 from "../assets/adult-game-1.png";
+import adultGame2 from "../assets/adult-game-2.png";
+import adultGame3 from "../assets/adult-game-3.png";
+import adultGame4 from "../assets/adult-game-4.png";
 import jamilleSubs10 from "../assets/jamillesubs-10.png";
 import jamilleSubs7 from "../assets/jamillesubs-7.png";
 import jamilleSubs8 from "../assets/jamillesubs-8.png";
@@ -13,6 +17,9 @@ import mtsSensores4 from "../assets/mts-sensores-4.png";
 import mtsSensores5 from "../assets/mts-sensores-5.png";
 import mtsSensoresCliente1 from "../assets/mts-sensores-cliente-1.png";
 import mtsSensoresOld1 from "../assets/mts-sensores-old-1.png";
+import rickAndMorty1 from "../assets/rick-and-morty-project-1.png";
+import rickAndMorty2 from "../assets/rick-and-morty-project-2.jpg";
+import rickAndMorty3 from "../assets/rick-and-morty-project-3.png";
 
 export const useProjectsService = () => {
 	const { projects: projectsIntl } = useIntlayer("projects")
@@ -64,6 +71,7 @@ export const useProjectsService = () => {
 				],
 				imageAlt: projectsIntl.jamille_subs.image_alt,
 				description: {
+					summary: projectsIntl.jamille_subs.description.summary,
 					projectDetails: projectsIntl.jamille_subs.description.project_details,
 					techsUsed: projectsIntl.jamille_subs.description.techs_used,
 				},
@@ -95,6 +103,7 @@ export const useProjectsService = () => {
 				],
 				imageAlt: projectsIntl.dashboard_mts.image_alt,
 				description: {
+					summary: projectsIntl.dashboard_mts.description.summary,
 					projectDetails: projectsIntl.dashboard_mts.description.project_details,
 					techsUsed: projectsIntl.dashboard_mts.description.techs_used,
 				},
@@ -103,6 +112,37 @@ export const useProjectsService = () => {
 						"https://youtu.be/kL7pxFOT8CQ",
 						"https://youtu.be/28XaJXH_HjQ",
 					],
+				},
+			},
+			{
+				title: projectsIntl.adult_game.title,
+				projectLevel: 2,
+				images: [
+					adultGame1.src,
+					adultGame2.src,
+					adultGame3.src,
+					adultGame4.src,
+				],
+				imageAlt: projectsIntl.adult_game.image_alt,
+				description: {
+					summary: projectsIntl.adult_game.description.summary,
+					projectDetails: projectsIntl.adult_game.description.project_details,
+					techsUsed: projectsIntl.adult_game.description.techs_used,
+				},
+			},
+			{
+				title: projectsIntl.rick_and_morty.title,
+				projectLevel: 2,
+				images: [
+					rickAndMorty1.src,
+					rickAndMorty3.src,
+					rickAndMorty2.src,
+				],
+				imageAlt: projectsIntl.rick_and_morty.image_alt,
+				description: {
+					summary: projectsIntl.rick_and_morty.description.summary,
+					projectDetails: projectsIntl.rick_and_morty.description.project_details,
+					techsUsed: projectsIntl.rick_and_morty.description.techs_used,
 				},
 			},
 		];

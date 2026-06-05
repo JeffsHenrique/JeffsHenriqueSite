@@ -4,6 +4,7 @@ export interface Project {
 	images: string[];
 	imageAlt: string;
 	description: {
+		summary?: string
 		projectDetails: string;
 		techsUsed: string;
 	};

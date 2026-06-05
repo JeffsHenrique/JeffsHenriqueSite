@@ -75,6 +75,7 @@ export const Knowledges = () => {
 				<div className="flex max-laptop:flex-col justify-between max-laptop:gap-4">
 					<div className="flex flex-row max-laptop:justify-center">
 						<Button
+							aria-label="Certificados"
 							variant="default"
 							className="rounded-md w-32 h-10 text-sm bg-purple-400 hover:bg-purple-500 dark:bg-purple-600 dark:hover:bg-purple-700 text-sky-900 dark:text-sky-200"
 							onClick={handleCertificatesOpen}

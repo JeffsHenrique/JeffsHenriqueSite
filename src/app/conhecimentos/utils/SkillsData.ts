@@ -8,6 +8,7 @@ import githubIcon from "../assets/githubicon.png";
 import gitIcon from "../assets/giticon.png";
 import googleCloudIcon2 from "../assets/googlecloud2.png";
 import htmlIcon from "../assets/htmlicon.png";
+import javaIcon from "../assets/javaicon.png";
 import javascriptIcon from "../assets/javascripticon.png";
 import kubernetesIcon from "../assets/kubernetesicon.png";
 import materialuiIcon from "../assets/materialuiicon.png";
@@ -32,6 +33,8 @@ import premiereproIcon from "../assets/premiereicon.png";
 import revisaoIcon from "../assets/revisaoicon.png";
 import subtitleeditIcon from "../assets/subtitleediticon.png";
 import vscodeIcon from "../assets/vscodeicon.png";
+
+import communication from "../assets/communication.png";
 
 export const useSkillsService = () => {
 	const { knowledges } = useIntlayer("skills")
@@ -63,7 +66,7 @@ export const useSkillsService = () => {
 				name: "JavaScript",
 				image: javascriptIcon.src,
 				progressBar: {
-					progressLevel: 90,
+					progressLevel: 100,
 					color: "#F7E018",
 				},
 			},
@@ -72,7 +75,7 @@ export const useSkillsService = () => {
 				name: "TypeScript",
 				image: typescriptIcon.src,
 				progressBar: {
-					progressLevel: 70,
+					progressLevel: 90,
 					color: "#007ACC",
 				},
 			},
@@ -81,7 +84,7 @@ export const useSkillsService = () => {
 				name: "React",
 				image: reactIcon.src,
 				progressBar: {
-					progressLevel: 75,
+					progressLevel: 90,
 					color: "#7DDFFF",
 				},
 			},
@@ -90,7 +93,7 @@ export const useSkillsService = () => {
 				name: "Node.js",
 				image: nodejsIcon.src,
 				progressBar: {
-					progressLevel: 60,
+					progressLevel: 75,
 					color: "#6FA660",
 				},
 			},
@@ -126,7 +129,7 @@ export const useSkillsService = () => {
 				name: "Github",
 				image: githubIcon.src,
 				progressBar: {
-					progressLevel: 70,
+					progressLevel: 80,
 					color: "#f0f0f0",
 				},
 			},
@@ -135,7 +138,7 @@ export const useSkillsService = () => {
 				name: "MySQL",
 				image: mysqlIcon.src,
 				progressBar: {
-					progressLevel: 40,
+					progressLevel: 50,
 					color: "#00618A",
 				},
 			},
@@ -144,7 +147,7 @@ export const useSkillsService = () => {
 				name: "Next.js",
 				image: nextjsIcon.src,
 				progressBar: {
-					progressLevel: 55,
+					progressLevel: 70,
 					color: "#f0f0f0",
 				},
 			},
@@ -153,7 +156,7 @@ export const useSkillsService = () => {
 				name: "MaterialUI",
 				image: materialuiIcon.src,
 				progressBar: {
-					progressLevel: 80,
+					progressLevel: 100,
 					color: "#00B0FF",
 				},
 			},
@@ -162,7 +165,7 @@ export const useSkillsService = () => {
 				name: "VsCode",
 				image: vscodeIcon.src,
 				progressBar: {
-					progressLevel: 75,
+					progressLevel: 90,
 					color: "#0086D1",
 				},
 			},
@@ -207,7 +210,7 @@ export const useSkillsService = () => {
 				name: "AI",
 				image: aiIcon.src,
 				progressBar: {
-					progressLevel: 20,
+					progressLevel: 40,
 					color: "#3A9DEE",
 				},
 			},
@@ -225,7 +228,7 @@ export const useSkillsService = () => {
 				name: "Shadcn/ui",
 				image: shadcnIcon.src,
 				progressBar: {
-					progressLevel: 70,
+					progressLevel: 90,
 					color: "#202121",
 				},
 			},
@@ -238,15 +241,24 @@ export const useSkillsService = () => {
 					color: "#42f5a7",
 				},
 			},
+			{
+				type: "dev",
+				name: "Java",
+				image: javaIcon.src,
+				progressBar: {
+					progressLevel: 20,
+					color: "#FF5733",
+				},
+			},
 
 			// SOFT SKILLS
 			{
 				type: "soft",
 				name: "Comunicativo",
-				image: figmaIcon.src,
+				image: communication.src,
 				progressBar: {
 					progressLevel: 100,
-					color: "#002233",
+					color: "#42f5a7",
 				},
 			},
 

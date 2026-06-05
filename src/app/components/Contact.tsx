@@ -63,10 +63,10 @@ export const Contact = (props: ContactDialogProps) => {
 
 			emailjs
 				.sendForm(
-					"service_oeh6rx5",
-					"template_p3ats8v",
+					"service_76185ki",
+					"template_tojf4ti",
 					form,
-					"y4_ewEctVmh6Vywhn",
+					"JimhOtReJ6FpbYmRF",
 				)
 				.then(
 					() => {
@@ -168,14 +168,14 @@ export const Contact = (props: ContactDialogProps) => {
 							<div className="flex flex-row max-laptop:flex-col gap-4 justify-start items-center">
 								<label
 									className="text-xl max-tablet:text-base text-center font-bold"
-									htmlFor="emailFrom"
+									htmlFor="email"
 								>
 									{dialog.type_email}
 								</label>
 								<input
 									className="my-2 p-2 w-6/12 text-center max-tablet:text-xs max-laptop:w-full h-8 rounded-md bg-sky-300 dark:bg-slate-950 border border-slate-700 dark:border-slate-300"
 									type="text"
-									name="email_from"
+									name="email"
 									value={emailValue}
 									onChange={handleEmailInput}
 								/>
@@ -195,7 +195,7 @@ export const Contact = (props: ContactDialogProps) => {
 							/>
 							<div className="flex justify-center">
 								<button
-									className="text-2xl max-tablet:text-lg p-2 border border-slate-700 dark:border-slate-300 hover:scale-105 transition-all duration-300 bg-sky-300 hover:bg-sky-400 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-md shadow-lg"
+									className="cursor-pointer text-2xl max-tablet:text-lg p-2 border border-slate-700 dark:border-slate-300 hover:scale-105 transition-all duration-300 bg-sky-300 hover:bg-sky-400 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-md shadow-lg"
 									type="submit"
 								>
 									{dialog.send}

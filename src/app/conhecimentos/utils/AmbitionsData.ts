@@ -1,5 +1,4 @@
 import angularIcon from "../assets/angular.png";
-import javaIcon from "../assets/javaicon.png";
 import nestJSIcon from "../assets/nestjs.png";
 import phpIcon from "../assets/phpicon.png";
 import type { Ambition } from "../types/Ambition";
@@ -10,10 +9,6 @@ export const useAmbitionsService = () => {
 			{
 				name: "Angular",
 				image: angularIcon.src,
-			},
-			{
-				name: "Java",
-				image: javaIcon.src,
 			},
 			{
 				name: "NestJS",
