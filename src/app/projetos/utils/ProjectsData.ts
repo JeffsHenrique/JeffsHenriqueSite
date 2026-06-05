@@ -129,6 +129,9 @@ export const useProjectsService = () => {
 					projectDetails: projectsIntl.adult_game.description.project_details,
 					techsUsed: projectsIntl.adult_game.description.techs_used,
 				},
+				externalLinks: {
+					projectLink: "https://adult-game.vercel.app/",
+				},
 			},
 			{
 				title: projectsIntl.rick_and_morty.title,
@@ -143,6 +146,9 @@ export const useProjectsService = () => {
 					summary: projectsIntl.rick_and_morty.description.summary,
 					projectDetails: projectsIntl.rick_and_morty.description.project_details,
 					techsUsed: projectsIntl.rick_and_morty.description.techs_used,
+				},
+				externalLinks: {
+					projectLink: "https://rick-and-morty-terminal-game.vercel.app/",
 				},
 			},
 		];
