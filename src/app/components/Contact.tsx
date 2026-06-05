@@ -1,183 +1,216 @@
-import React, { ChangeEvent, FormEvent, useCallback, useEffect, useState } from "react"
-import { SocialMedia } from "../types/SocialMedia"
-import { socialMediasData } from "../utils/SocialMediasData"
-import emailjs from '@emailjs/browser'
-import { Backdrop, CircularProgress, Dialog, DialogContent, DialogTitle } from "@mui/material";
-import { dialogBox } from "../utils/Styles";
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/ReactToastify.css'
+import {
+	Dialog,
+	DialogContent,
+	DialogHeader,
+	DialogTitle,
+} from "@/components/ui/dialog";
+import emailjs from "@emailjs/browser";
+import { LoaderCircle } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { type ChangeEvent, type FormEvent, useEffect, useState } from "react";
+import { useIntlayer } from "react-intlayer";
+import { toast } from "react-toastify";
+import "react-toastify/ReactToastify.css";
 import { useTheme } from "../contexts/ThemeContext";
+import type { SocialMedia } from "../types/SocialMedia";
+import { socialMediasData } from "../utils/SocialMediasData";
+import { dialogBox } from "../utils/Styles";
 
 export interface ContactDialogProps {
-    open: boolean;
-    onClose: () => void
+	open: boolean;
+	onClose: () => void;
 }
 
 export const Contact = (props: ContactDialogProps) => {
-    const themeCtx = useTheme()
-    const [socialMedias, setSocialMedias] = useState<SocialMedia[]>([])
-    const [emailValue, setEmailValue] = useState<string>('')
-    const [contentFormValue, setContentFormValue] = useState<string>('')
-    const [shouldBackdropshow, setShouldBackdropShow] = useState<boolean>(false)
+	const themeCtx = useTheme();
+	const [socialMedias, setSocialMedias] = useState<SocialMedia[]>([]);
+	const [emailValue, setEmailValue] = useState<string>("");
+	const [contentFormValue, setContentFormValue] = useState<string>("");
+	const [shouldBackdropshow, setShouldBackdropShow] = useState<boolean>(false);
 
-    const currentLang = localStorage.getItem('LangContextKey')
+	const { onClose, open } = props;
+	const { toasts, dialog } = useIntlayer("contact");
 
-    const { onClose, open } = props
+	const handleEmailInput = (event: ChangeEvent<HTMLInputElement>) => {
+		setEmailValue(event.target.value);
+	};
 
-    const handleEmailInput = (event: ChangeEvent<HTMLInputElement>) => {
-        setEmailValue(event.target.value)
-    }
+	const handleContentFormInput = (event: ChangeEvent<HTMLTextAreaElement>) => {
+		setContentFormValue(event.target.value);
+	};
 
-    const handleContentFormInput = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        setContentFormValue(event.target.value)
-    }
+	useEffect(() => {
+		async function getSocialMedias() {
+			try {
+				const data = await socialMediasData.getSocialMedias();
+				setSocialMedias(data);
+			} catch (error) {
+				console.error(error);
+			}
+		}
 
-    const getSocialMedias = useCallback(async () => {
-        try {
-            const data = await socialMediasData.getSocialMedias()
-            setSocialMedias(data)
-        } catch (error) {
-            console.error(error)
-        }
-    }, [])
+		getSocialMedias();
+	}, []);
 
-    const sendEmail = (event: FormEvent<HTMLFormElement>): void => {
-        event.preventDefault()
+	const sendEmail = (event: FormEvent<HTMLFormElement>): void => {
+		event.preventDefault();
 
-        const form = event.target as HTMLFormElement
+		const form = event.target as HTMLFormElement;
 
-        if (emailValue && contentFormValue !== '') {
-            handleBackdropOpen()
+		if (emailValue && contentFormValue !== "") {
+			handleBackdropOpen();
 
-            emailjs.sendForm('service_oeh6rx5', 'template_p3ats8v', form, 'y4_ewEctVmh6Vywhn')
-                .then(() => {
-                    setEmailValue('')
-                    setContentFormValue('')
-                    const emailSent = () => {
-                        toast.success(`${currentLang === 'us-en' ? `The e-mail has been sent successfully!` : 'O e-mail foi enviado com sucesso!'} 😄`, {
-                            position: 'bottom-left',
-                            autoClose: 3000,
-                            style: {
-                                backgroundColor: `${themeCtx?.theme === 'dark' ? '#020617' : '#0c4a6e'}`,
-                                color: '#bae6fd'
-                            },
-                            className: 'max-tablet:text-sm max-tablet-w-48'
-                        })
-                    }
-                    emailSent()
-                    handleBackdropClose()
-                },
-                (error): void => {
-                    toast.error(`${currentLang === 'us-en' ? `Oops, something went wrong... :(` : 'Ops, deu algum erro :('}`, {
-                        position: 'bottom-left',
-                            autoClose: 3000,
-                            style: {
-                                backgroundColor: `${themeCtx?.theme === 'dark' ? '#020617' : '#0c4a6e'}`,
-                                color: '#bae6fd'
-                            },
-                            className: 'max-tablet:text-sm max-tablet-w-48'
-                        })
-                    console.log('Error: ', error)
-                    handleBackdropClose()
-                },
-            )
-        } else {
-            toast.warn(`${currentLang === 'us-en' ? `Fill in both fields, please!` : 'Preencha os dois campos, por favor!'}`, {
-                position: 'bottom-left',
-                autoClose: 3000,
-                style: {
-                    backgroundColor: `${themeCtx?.theme === 'dark' ? '#020617' : '#0c4a6e'}`,
-                    color: '#bae6fd',
-                },
-                className: 'max-tablet:text-sm max-tablet-w-48'
-            })
-        }
-    }
+			emailjs
+				.sendForm(
+					"service_76185ki",
+					"template_tojf4ti",
+					form,
+					"JimhOtReJ6FpbYmRF",
+				)
+				.then(
+					() => {
+						setEmailValue("");
+						setContentFormValue("");
+						const emailSent = () => {
+							toast.success(`${toasts.sent}`, {
+								position: "bottom-left",
+								autoClose: 3000,
+								style: {
+									backgroundColor: `${themeCtx?.theme === "dark" ? "#020617" : "#0c4a6e"}`,
+									color: "#bae6fd",
+								},
+								className: "max-tablet:text-sm max-tablet-w-48",
+							});
+						};
+						emailSent();
+						handleBackdropClose();
+					},
+					(error): void => {
+						toast.error(`${toasts.error}`, {
+							position: "bottom-left",
+							autoClose: 3000,
+							style: {
+								backgroundColor: `${themeCtx?.theme === "dark" ? "#020617" : "#0c4a6e"}`,
+								color: "#bae6fd",
+							},
+							className: "max-tablet:text-sm max-tablet-w-48",
+						});
+						console.log("Error: ", error);
+						handleBackdropClose();
+					},
+				);
+		} else {
+			toast.warn(`${toasts.warn}`, {
+				position: "bottom-left",
+				autoClose: 3000,
+				style: {
+					backgroundColor: `${themeCtx?.theme === "dark" ? "#020617" : "#0c4a6e"}`,
+					color: "#bae6fd",
+				},
+				className: "max-tablet:text-sm max-tablet-w-48",
+			});
+		}
+	};
 
-    const handleClose = () => {
-        onClose()
-    }
+	const handleBackdropClose = () => {
+		setShouldBackdropShow(false);
+	};
 
-    const handleBackdropClose = () => {
-        setShouldBackdropShow(false)
-    }
+	const handleBackdropOpen = () => {
+		setShouldBackdropShow(true);
+	};
 
-    const handleBackdropOpen = () => {
-        setShouldBackdropShow(true)
-    }
+	return (
+		<Dialog open={open} onOpenChange={onClose}>
+			<DialogContent className={`${dialogBox}`} showCloseButton={false}>
+				<DialogHeader className="text-sky-900 dark:text-sky-200 my-4 flex justify-center">
+					<DialogTitle className="text-2xl max-tablet:text-lg text-center font-bold">
+						{`${dialog.title}`}
+					</DialogTitle>
+				</DialogHeader>
+				<div className="flex max-mobile:flex-col justify-center items-center gap-12 max-mobile:gap-6 text-sky-900 dark:text-sky-200">
+					{socialMedias.map((socialMedia) => {
+						return (
+							<Link
+								key={socialMedia.name}
+								className="flex flex-col justify-center items-center hover:scale-105 transition-all"
+								href={`${socialMedia.href}`}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<p className="text-xl max-tablet:text-base font-bold mb-2 underline">
+									{socialMedia.name}
+								</p>
+								<Image
+									alt="Social image"
+									width={64}
+									height={0}
+									className="max-tablet:w-12"
+									src={`${socialMedia.image}`}
+								/>
+							</Link>
+						);
+					})}
+				</div>
 
-    useEffect(() => {
-        getSocialMedias()
-    }, [getSocialMedias])
+				<hr className="m-2 border border-slate-700 dark:border-slate-300" />
 
-    return (
-        <Dialog onClose={handleClose} open={open} fullWidth>
-            <div className={dialogBox}>
-                <DialogTitle className="text-sky-900 dark:text-sky-200 my-4 flex justify-center">
-                    <p className="text-2xl max-tablet:text-lg text-center font-bold">{currentLang === 'us-en' ? `You can find me on the social medias:` : 'Você pode me encontrar nas redes:'}</p>
-                </DialogTitle>
+				<div className="text-sky-900 dark:text-sky-200 flex justify-center">
+					<p className="text-2xl max-tablet:text-lg text-center font-bold">
+						{dialog.text_1}
+					</p>
+				</div>
 
-                <DialogContent dividers>
-                    <div className="flex max-mobile:flex-col justify-center items-center gap-12 max-mobile:gap-6 text-sky-900 dark:text-sky-200">
-                        {socialMedias.map((socialMedia) => {
-                            return (
-                                <a className="flex flex-col justify-center items-center hover:scale-105 transition-all" href={`${socialMedia.href}`} target="_blank">
-                                    <p className="text-xl max-tablet:text-base font-bold mb-2 underline">{socialMedia.name}</p>
-                                    <img className="w-16 max-tablet:w-12" src={`${socialMedia.image}`} />
-                                </a>
-                            )
-                        })}
-                    </div>
+				<div className="flex justify-center h-5/6">
+					<div className="m-2 p-2 w-10/12 gap-12 text-sky-900 dark:text-sky-200">
+						<form className="flex flex-col gap-3" onSubmit={sendEmail}>
+							<div className="flex flex-row max-laptop:flex-col gap-4 justify-start items-center">
+								<label
+									className="text-xl max-tablet:text-base text-center font-bold"
+									htmlFor="email"
+								>
+									{dialog.type_email}
+								</label>
+								<input
+									className="my-2 p-2 w-6/12 text-center max-tablet:text-xs max-laptop:w-full h-8 rounded-md bg-sky-300 dark:bg-slate-950 border border-slate-700 dark:border-slate-300"
+									type="text"
+									name="email"
+									value={emailValue}
+									onChange={handleEmailInput}
+								/>
+							</div>
 
-                    <hr className="my-8 mx-2 border border-slate-700 dark:border-slate-300" />
+							<label
+								className="mt-8 text-xl max-tablet:text-base text-center font-bold"
+								htmlFor="message"
+							>
+								{dialog.write_message}
+							</label>
+							<textarea
+								className="p-2 resize-none h-[32vh] max-tablet:text-xs rounded-md bg-sky-300 dark:bg-slate-950 border border-slate-700 dark:border-slate-300"
+								name="message"
+								value={contentFormValue}
+								onChange={handleContentFormInput}
+							/>
+							<div className="flex justify-center">
+								<button
+									className="cursor-pointer text-2xl max-tablet:text-lg p-2 border border-slate-700 dark:border-slate-300 hover:scale-105 transition-all duration-300 bg-sky-300 hover:bg-sky-400 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-md shadow-lg"
+									type="submit"
+								>
+									{dialog.send}
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
 
-                    <div className="text-sky-900 dark:text-sky-200 my-2 flex justify-center">
-                        <p className="text-2xl max-tablet:text-lg text-center font-bold">{currentLang === 'us-en' ? `Or you can send me an e-mail:` : 'Ou pode me mandar um e-mail:'}</p>
-                    </div>
-
-                    <div className="flex justify-center h-5/6">
-                        <div className="m-2 p-2 w-10/12 gap-12 text-sky-900 dark:text-sky-200">
-                            <form className="flex flex-col gap-3" onSubmit={sendEmail}>
-                                <div className="flex flex-row max-laptop:flex-col gap-4 justify-start items-center">
-                                    <label className="text-xl max-tablet:text-base text-center font-bold" htmlFor="emailFrom">{currentLang === 'us-en' ? `Type your e-mail:` : 'Digite o seu e-mail:'}</label>
-                                    <input
-                                        className="my-2 p-2 w-6/12 text-center max-tablet:text-xs max-laptop:w-full h-8 rounded-md bg-sky-300 dark:bg-slate-950 border border-slate-700 dark:border-slate-300"
-                                        type="text"
-                                        name="email_from"
-                                        value={emailValue}
-                                        onChange={handleEmailInput}
-                                    />
-                                </div>
-
-                                <label className="mt-8 text-xl max-tablet:text-base text-center font-bold" htmlFor="message">{currentLang === 'us-en' ? `Write your message:` : 'Escreva a sua mensagem:'}</label>
-                                <textarea
-                                    className="p-2 resize-none h-[32vh] max-tablet:text-xs rounded-md bg-sky-300 dark:bg-slate-950 border border-slate-700 dark:border-slate-300"
-                                    name="message"
-                                    value={contentFormValue}
-                                    onChange={handleContentFormInput}
-                                />
-                                <div className="flex justify-center">
-                                    <button
-                                        className="text-2xl max-tablet:text-lg p-2 border border-slate-700 dark:border-slate-300 hover:scale-105 transition-all duration-300 bg-sky-300 hover:bg-sky-400 dark:bg-slate-800 hover:dark:bg-slate-700 rounded-md shadow-lg"
-                                        type="submit"
-                                    >
-                                        {currentLang === 'us-en' ? `Send` : 'Enviar'}
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <Backdrop
-                        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                        open={shouldBackdropshow}
-                    >
-                        <CircularProgress color="inherit" />
-                    </Backdrop>
-
-                    <ToastContainer />
-                </DialogContent>
-            </div>
-        </Dialog>
-    )
-}
+				{shouldBackdropshow && (
+					<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+						<LoaderCircle className="h-8 w-8 animate-spin text-white" />
+					</div>
+				)}
+			</DialogContent>
+		</Dialog>
+	);
+};

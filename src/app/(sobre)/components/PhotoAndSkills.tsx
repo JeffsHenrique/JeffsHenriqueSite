@@ -1,0 +1,43 @@
+import Image from "next/image";
+import { useIntlayer } from "react-intlayer";
+import profilePicture from "../../assets/fotoperfilatual.png";
+import matrixGif from "../../assets/matrixbluebackground.gif";
+
+export const PhotoAndSkills = () => {
+	const { photo_and_skills } = useIntlayer("about");
+
+	return (
+		<div className="p-2 w-1/2 max-laptop:w-full flex flex-col-reverse max-laptop:flex-col justify-evenly gap-3 items-center border-2 overflow-auto border-slate-700 dark:border-slate-300 rounded-md shadow-lg text-sky-900 dark:text-sky-200">
+			<div className="hidden max-laptop:flex text-xl font-bold text-center">
+				<p>{`${photo_and_skills.title_mobile}`}</p>
+			</div>
+
+			<hr className="hidden max-laptop:flex w-full border border-slate-700 dark:border-slate-300" />
+
+			<div className="relative text-center">
+				<Image
+					unoptimized
+					width={160}
+					height={160}
+					alt="Foto perfil Jeffs"
+					src={matrixGif.src}
+					className="size-160 max-laptop:size-72 object-cover rounded-md object-[10%_30%] blur-[2px]"
+				/>
+				<Image
+					unoptimized
+					width={160}
+					height={160}
+					alt="Foto perfil Jeffs"
+					src={profilePicture.src}
+					className="size-160 max-laptop:size-72 object-cover rounded-md object-[10%_30%] absolute top-0 blur-[0.5px]"
+				/>
+			</div>
+
+			<hr className="w-full border border-slate-700 dark:border-slate-300" />
+
+			<div className="flex text-xl font-bold text-center">
+				<p>{`${photo_and_skills.professional_titles}`}</p>
+			</div>
+		</div>
+	);
+};

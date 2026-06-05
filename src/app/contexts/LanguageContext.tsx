@@ -1,35 +1,43 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react"
+import {
+	createContext,
+	ReactNode,
+	useContext,
+	useEffect,
+	useState,
+} from "react";
 
-const STORAGE_KEY = 'LangContextKey'
+const STORAGE_KEY = "LangContextKey";
 
 type LanguageContext = {
-    lang: string
-    setLang: (newLang: string) => void
-}
+	lang: string;
+	setLang: (newLang: string) => void;
+};
 
-export const LanguageContext = createContext<LanguageContext | null>(null)
+export const LanguageContext = createContext<LanguageContext | null>(null);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-    const [isMounted, setIsMounted] = useState(false)
-    const [lang, setLang] = useState(
-        typeof window !== 'undefined'
-        ? localStorage.getItem(STORAGE_KEY) || 'pt-br'
-        : '[]'
-    )
+	const [isMounted, setIsMounted] = useState(false);
+	const [lang, setLang] = useState(
+		typeof window !== "undefined"
+			? localStorage.getItem(STORAGE_KEY) || "pt-br"
+			: "[]",
+	);
 
-    useEffect(() => {
-        setIsMounted(true)
+	useEffect(() => {
+		setIsMounted(true);
 
-        localStorage.setItem(STORAGE_KEY, lang)
-    }, [lang])
+		localStorage.setItem(STORAGE_KEY, lang);
+	}, [lang]);
 
-    if (!isMounted) {
-        return null
-    }
+	if (!isMounted) {
+		return null;
+	}
 
-    return (
-        <LanguageContext.Provider value={{ lang, setLang }}>{children}</LanguageContext.Provider>
-    )
-}
+	return (
+		<LanguageContext.Provider value={{ lang, setLang }}>
+			{children}
+		</LanguageContext.Provider>
+	);
+};
 
-export const useLang = () => useContext(LanguageContext)
+export const useLang = () => useContext(LanguageContext);
